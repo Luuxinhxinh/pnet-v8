@@ -1,0 +1,10 @@
+{
+  "name": "pnet-webconsole-backend",
+  "version": "1.0.0",
+  "description": "PNETLab web-console RDP gateway (guacamole-lite -> guacd). Vendored for the offline appliance.",
+  "private": true,
+  "main": "guacamole-lite-server.js",
+  "dependencies": {
+    "guacamole-lite": "1.2.0"
+  }
+}
