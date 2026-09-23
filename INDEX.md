@@ -20,6 +20,7 @@ Bộ tài liệu được chuẩn hóa theo mô hình **C4 Model** và phân c�
 docs/
 ├── INDEX.md                                              # Trang mục lục điều hướng trung tâm (File hiện tại)
 ├── 00-overview.md                                        # [Level 0] SAD - System Context & Tech Stack Tổng quan
+├── 00-architecture.md                                    # [Level 0] SAD - Phân tích Kiến trúc Kỹ thuật Chuyên sâu (Tầng, Mạng, Data Path)
 │
 ├── 01-feature-groups/                                    # [Level 1] SAD/FSD - Danh mục 12 Nhóm Tính năng Lớn
 │   ├── 01-node-lifecycle-emulation.md                    # G01: Động cơ Giả lập & Quản lý Vòng đời Node
