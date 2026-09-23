@@ -32,9 +32,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-node-runon.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-node-runon.js)](../../../html/themes/default/js/pnetlab-node-runon.js) | `renderRunOnModal()` | Modal chọn máy chủ chạy node |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-sat-badge.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-sat-badge.js)](../../../html/themes/default/js/pnetlab-sat-badge.js) | `drawSatelliteBadge()` | Vẽ huy hiệu tên host lên icon node |
-| [`[`/opt/unetlab/html/pnq-placements.php`](../../../opt/unetlab/html/pnq-placements.php)](../../../html/pnq-placements.php) | PHP API | Lấy và cập nhật bảng vị trí cluster placement |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-node-runon.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-node-runon.js)](../../../html/themes/default/js/pnetlab-node-runon.js) | `renderRunOnModal()` | Modal chọn máy chủ chạy node |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-sat-badge.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-sat-badge.js)](../../../html/themes/default/js/pnetlab-sat-badge.js) | `drawSatelliteBadge()` | Vẽ huy hiệu tên host lên icon node |
+| [`/opt/unetlab/html/pnq-placements.php`](../../../opt/unetlab/html/pnq-placements.php)](../../../html/pnq-placements.php) | PHP API | Lấy và cập nhật bảng vị trí cluster placement |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /pnq-placements.php` với `{"node_id": 1, "host_id": 2}`

@@ -40,15 +40,15 @@ Dưới đây là 7 tính năng con độc lập thuộc Nhóm 02, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/includes/api_networks.php`](../../opt/unetlab/html/includes/api_networks.php)](../../html/includes/api_networks.php) | PHP | Nghiệp vụ mạng: `apiNetworkAdd()`, `apiNetworkEdit()`, `apiNetworkDelete()` |
-| [`[`/opt/unetlab/html/includes/__network.php`](../../opt/unetlab/html/includes/__network.php)](../../html/includes/__network.php) | PHP | Domain Object `Network`: Đọc ghi thuộc tính mạng trong Lab XML, gán loại mạng (bridge, pnet) |
-| [`[`/opt/unetlab/html/includes/api_topology.php`](../../opt/unetlab/html/includes/api_topology.php)](../../html/includes/api_topology.php) | PHP | Trả về cấu trúc đồ thị mạng hoàn chỉnh (nodes, links, interfaces) cho Canvas render |
-| [`[`/opt/unetlab/html/includes/api_pictures.php`](../../opt/unetlab/html/includes/api_pictures.php)](../../html/includes/api_pictures.php) | PHP | Xử lý tải ảnh nền, cắt ảnh, lưu trữ và ánh xạ vị trí hotspot |
-| [`[`/opt/unetlab/html/includes/api_textobjects.php`](../../opt/unetlab/html/includes/api_textobjects.php)](../../html/includes/api_textobjects.php)| PHP | Quản lý các đối tượng chữ chú thích (Text Objects) trên Canvas |
-| [`[`/opt/unetlab/html/themes/default/js/javascript.js`](../../opt/unetlab/html/themes/default/js/javascript.js)](../../html/themes/default/js/javascript.js)| JavaScript | Tệp điều khiển chính Canvas, xử lý mouse down/move/up, vẽ icon node và dây mạng |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-shape-draw.js`](../../opt/unetlab/html/themes/default/js/pnetlab-shape-draw.js)](../../html/themes/default/js/pnetlab-shape-draw.js)| JavaScript | Bộ công cụ vẽ vector hình khối (Shapes, Rectangles, Circles) |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js`](../../opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js)](../../html/themes/default/js/pnetlab-align-distribute.js)| JavaScript | Thuật toán tính toán tọa độ căn lề và dàn đều khoảng cách node |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js`](../../opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js)](../../html/themes/default/js/pnetlab-node-duplicate.js)| JavaScript | Xử lý sao chép node kèm cấu hình và giao diện kết nối |
+| [`/opt/unetlab/html/includes/api_networks.php`](../../opt/unetlab/html/includes/api_networks.php)](../../html/includes/api_networks.php) | PHP | Nghiệp vụ mạng: `apiNetworkAdd()`, `apiNetworkEdit()`, `apiNetworkDelete()` |
+| [`/opt/unetlab/html/includes/__network.php`](../../opt/unetlab/html/includes/__network.php)](../../html/includes/__network.php) | PHP | Domain Object `Network`: Đọc ghi thuộc tính mạng trong Lab XML, gán loại mạng (bridge, pnet) |
+| [`/opt/unetlab/html/includes/api_topology.php`](../../opt/unetlab/html/includes/api_topology.php)](../../html/includes/api_topology.php) | PHP | Trả về cấu trúc đồ thị mạng hoàn chỉnh (nodes, links, interfaces) cho Canvas render |
+| [`/opt/unetlab/html/includes/api_pictures.php`](../../opt/unetlab/html/includes/api_pictures.php)](../../html/includes/api_pictures.php) | PHP | Xử lý tải ảnh nền, cắt ảnh, lưu trữ và ánh xạ vị trí hotspot |
+| [`/opt/unetlab/html/includes/api_textobjects.php`](../../opt/unetlab/html/includes/api_textobjects.php)](../../html/includes/api_textobjects.php)| PHP | Quản lý các đối tượng chữ chú thích (Text Objects) trên Canvas |
+| [`/opt/unetlab/html/themes/default/js/javascript.js`](../../opt/unetlab/html/themes/default/js/javascript.js)](../../html/themes/default/js/javascript.js)| JavaScript | Tệp điều khiển chính Canvas, xử lý mouse down/move/up, vẽ icon node và dây mạng |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-shape-draw.js`](../../opt/unetlab/html/themes/default/js/pnetlab-shape-draw.js)](../../html/themes/default/js/pnetlab-shape-draw.js)| JavaScript | Bộ công cụ vẽ vector hình khối (Shapes, Rectangles, Circles) |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js`](../../opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js)](../../html/themes/default/js/pnetlab-align-distribute.js)| JavaScript | Thuật toán tính toán tọa độ căn lề và dàn đều khoảng cách node |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js`](../../opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js)](../../html/themes/default/js/pnetlab-node-duplicate.js)| JavaScript | Xử lý sao chép node kèm cấu hình và giao diện kết nối |
 
 ---
 

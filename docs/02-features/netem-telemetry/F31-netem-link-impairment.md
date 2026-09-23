@@ -44,9 +44,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-netem-advanced.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-netem-advanced.js)](../../../html/themes/default/js/pnetlab-netem-advanced.js) | `openNetemModal()`, `applyImpairment()` | Hộp thoại cấu hình thanh trượt NetEm |
-| [`[`/opt/unetlab/html/pnq-linkwatch.php`](../../../opt/unetlab/html/pnq-linkwatch.php)](../../../html/pnq-linkwatch.php) | PHP API | Tiếp nhận và biên dịch tham số sang lệnh `tc` |
-| [`[`/opt/unetlab/scripts/pnetlab-linkwatchd.py`](../../../opt/unetlab/scripts/pnetlab-linkwatchd.py)](../../../scripts/pnetlab-linkwatchd.py) | Python Daemon | Kiểm tra và duy trì qdisc trên interface |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-netem-advanced.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-netem-advanced.js)](../../../html/themes/default/js/pnetlab-netem-advanced.js) | `openNetemModal()`, `applyImpairment()` | Hộp thoại cấu hình thanh trượt NetEm |
+| [`/opt/unetlab/html/pnq-linkwatch.php`](../../../opt/unetlab/html/pnq-linkwatch.php)](../../../html/pnq-linkwatch.php) | PHP API | Tiếp nhận và biên dịch tham số sang lệnh `tc` |
+| [`/opt/unetlab/scripts/pnetlab-linkwatchd.py`](../../../opt/unetlab/scripts/pnetlab-linkwatchd.py)](../../../scripts/pnetlab-linkwatchd.py) | Python Daemon | Kiểm tra và duy trì qdisc trên interface |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /pnq-linkwatch.php` với JSON:

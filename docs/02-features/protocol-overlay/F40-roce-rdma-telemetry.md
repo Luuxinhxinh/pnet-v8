@@ -30,8 +30,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/pnq-roce.php`](../../../opt/unetlab/html/pnq-roce.php)](../../../html/pnq-roce.php) | PHP API (10KB) | Endpoint phục vụ dữ liệu phân tích RoCE |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-roce-lab.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-roce-lab.js)](../../../html/themes/default/js/pnetlab-roce-lab.js) | JavaScript | Giao diện đồ thị phân tích RDMA |
+| [`/opt/unetlab/html/pnq-roce.php`](../../../opt/unetlab/html/pnq-roce.php)](../../../html/pnq-roce.php) | PHP API (10KB) | Endpoint phục vụ dữ liệu phân tích RoCE |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-roce-lab.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-roce-lab.js)](../../../html/themes/default/js/pnetlab-roce-lab.js) | JavaScript | Giao diện đồ thị phân tích RDMA |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /pnq-roce.php`

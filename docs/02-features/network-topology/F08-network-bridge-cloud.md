@@ -31,9 +31,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/includes/api_networks.php`](../../../opt/unetlab/html/includes/api_networks.php)](../../../html/includes/api_networks.php) | `apiNetworkAdd()`, `apiNetworkEdit()` | Xử lý yêu cầu tạo/sửa đối tượng Network |
-| [`[`/opt/unetlab/html/includes/__network.php`](../../../opt/unetlab/html/includes/__network.php)](../../../html/includes/__network.php) | `class Network` | Mô hình dữ liệu Network trong Lab XML |
-| [`[`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `networkStart()`, `checkNetwork()` | Tạo bridge và quản lý giao diện kernel |
+| [`/opt/unetlab/html/includes/api_networks.php`](../../../opt/unetlab/html/includes/api_networks.php)](../../../html/includes/api_networks.php) | `apiNetworkAdd()`, `apiNetworkEdit()` | Xử lý yêu cầu tạo/sửa đối tượng Network |
+| [`/opt/unetlab/html/includes/__network.php`](../../../opt/unetlab/html/includes/__network.php)](../../../html/includes/__network.php) | `class Network` | Mô hình dữ liệu Network trong Lab XML |
+| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `networkStart()`, `checkNetwork()` | Tạo bridge và quản lý giao diện kernel |
 | `/opt/ovf/pnet-bridges.sh` | Shell Script | Khởi tạo sẵn các bridge `pnet0` - `pnet9` từ khi boot máy |
 
 ## 5. Input / Output & Xử lý Ngoại lệ

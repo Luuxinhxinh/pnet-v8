@@ -39,16 +39,16 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 06, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/pnetlab-linkwatchd.py`](../../opt/unetlab/scripts/pnetlab-linkwatchd.py)](../../scripts/pnetlab-linkwatchd.py) | Python | Daemon giám sát thông số mạng và cập nhật hàng đợi tc qdisc |
-| [`[`/opt/unetlab/scripts/pnetlab-labstated.py`](../../opt/unetlab/scripts/pnetlab-labstated.py)](../../scripts/pnetlab-labstated.py) | Python (asyncio) | Daemon quản lý trạng thái lab theo thời gian thực và phát SSE stream |
-| [`[`/opt/unetlab/html/pnq-linkwatch.php`](../../opt/unetlab/html/pnq-linkwatch.php)](../../html/pnq-linkwatch.php) | PHP | REST API tiếp nhận yêu cầu thay đổi tham số NetEm từ UI |
-| [`[`/opt/unetlab/html/pnq-linkstats.php`](../../opt/unetlab/html/pnq-linkstats.php)](../../html/pnq-linkstats.php) | PHP | API trả về số lượng packet/byte trên các interface của lab |
-| [`[`/opt/unetlab/html/pnq-nodestats.php`](../../opt/unetlab/html/pnq-nodestats.php)](../../html/pnq-nodestats.php) | PHP | API trả về tải CPU (%) và RAM (MB) của danh sách node |
-| [`[`/opt/unetlab/html/pnq-nodestats.sh`](../../opt/unetlab/html/pnq-nodestats.sh)](../../html/pnq-nodestats.sh) | Shell Script | Script hỗ trợ đọc nhanh cgroups và tính toán CPU % |
-| [`[`/opt/unetlab/html/pnq-sysmon.php`](../../opt/unetlab/html/pnq-sysmon.php)](../../html/pnq-sysmon.php) | PHP | API giám sát thông số tài nguyên toàn máy chủ |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-netem-advanced.js`](../../opt/unetlab/html/themes/default/js/pnetlab-netem-advanced.js)](../../html/themes/default/js/pnetlab-netem-advanced.js) | JavaScript | Hộp thoại cấu hình trực quan tham số NetEm (sliders delay, loss, jitter...) |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-egress-glow.js`](../../opt/unetlab/html/themes/default/js/pnetlab-egress-glow.js)](../../html/themes/default/js/pnetlab-egress-glow.js) | JavaScript | Hiệu ứng animation hạt sáng chạy dọc theo đường dây trên Canvas |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-labstate-client.js`](../../opt/unetlab/html/themes/default/js/pnetlab-labstate-client.js)](../../html/themes/default/js/pnetlab-labstate-client.js)| JavaScript | Client nhận luồng SSE từ máy chủ và cập nhật màu sắc node |
+| [`/opt/unetlab/scripts/pnetlab-linkwatchd.py`](../../opt/unetlab/scripts/pnetlab-linkwatchd.py)](../../scripts/pnetlab-linkwatchd.py) | Python | Daemon giám sát thông số mạng và cập nhật hàng đợi tc qdisc |
+| [`/opt/unetlab/scripts/pnetlab-labstated.py`](../../opt/unetlab/scripts/pnetlab-labstated.py)](../../scripts/pnetlab-labstated.py) | Python (asyncio) | Daemon quản lý trạng thái lab theo thời gian thực và phát SSE stream |
+| [`/opt/unetlab/html/pnq-linkwatch.php`](../../opt/unetlab/html/pnq-linkwatch.php)](../../html/pnq-linkwatch.php) | PHP | REST API tiếp nhận yêu cầu thay đổi tham số NetEm từ UI |
+| [`/opt/unetlab/html/pnq-linkstats.php`](../../opt/unetlab/html/pnq-linkstats.php)](../../html/pnq-linkstats.php) | PHP | API trả về số lượng packet/byte trên các interface của lab |
+| [`/opt/unetlab/html/pnq-nodestats.php`](../../opt/unetlab/html/pnq-nodestats.php)](../../html/pnq-nodestats.php) | PHP | API trả về tải CPU (%) và RAM (MB) của danh sách node |
+| [`/opt/unetlab/html/pnq-nodestats.sh`](../../opt/unetlab/html/pnq-nodestats.sh)](../../html/pnq-nodestats.sh) | Shell Script | Script hỗ trợ đọc nhanh cgroups và tính toán CPU % |
+| [`/opt/unetlab/html/pnq-sysmon.php`](../../opt/unetlab/html/pnq-sysmon.php)](../../html/pnq-sysmon.php) | PHP | API giám sát thông số tài nguyên toàn máy chủ |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-netem-advanced.js`](../../opt/unetlab/html/themes/default/js/pnetlab-netem-advanced.js)](../../html/themes/default/js/pnetlab-netem-advanced.js) | JavaScript | Hộp thoại cấu hình trực quan tham số NetEm (sliders delay, loss, jitter...) |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-egress-glow.js`](../../opt/unetlab/html/themes/default/js/pnetlab-egress-glow.js)](../../html/themes/default/js/pnetlab-egress-glow.js) | JavaScript | Hiệu ứng animation hạt sáng chạy dọc theo đường dây trên Canvas |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-labstate-client.js`](../../opt/unetlab/html/themes/default/js/pnetlab-labstate-client.js)](../../html/themes/default/js/pnetlab-labstate-client.js)| JavaScript | Client nhận luồng SSE từ máy chủ và cập nhật màu sắc node |
 
 ---
 

@@ -38,12 +38,12 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/enable-web-hardening.sh`](../../../opt/unetlab/scripts/enable-web-hardening.sh)](../../../scripts/enable-web-hardening.sh) | Shell Script (11KB) | Kịch bản cấu hình các tiêu chuẩn an ninh Apache |
-| [`[`/opt/unetlab/scripts/enable-php-fpm.sh`](../../../opt/unetlab/scripts/enable-php-fpm.sh)](../../../scripts/enable-php-fpm.sh) | Shell Script (3.7KB) | Kịch bản chuyển đổi sang PHP-FPM |
+| [`/opt/unetlab/scripts/enable-web-hardening.sh`](../../../opt/unetlab/scripts/enable-web-hardening.sh)](../../../scripts/enable-web-hardening.sh) | Shell Script (11KB) | Kịch bản cấu hình các tiêu chuẩn an ninh Apache |
+| [`/opt/unetlab/scripts/enable-php-fpm.sh`](../../../opt/unetlab/scripts/enable-php-fpm.sh)](../../../scripts/enable-php-fpm.sh) | Shell Script (3.7KB) | Kịch bản chuyển đổi sang PHP-FPM |
 | `/etc/apache2/conf-available/security.conf` | Apache Config | Tệp cấu hình an ninh máy chủ web |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
-- **Input CLI**: `sudo [`[`/opt/unetlab/scripts/enable-web-hardening.sh`](../../../opt/unetlab/scripts/enable-web-hardening.sh)](../../../scripts/enable-web-hardening.sh).
+- **Input CLI**: `sudo [`/opt/unetlab/scripts/enable-web-hardening.sh`](../../../opt/unetlab/scripts/enable-web-hardening.sh)](../../../scripts/enable-web-hardening.sh).
 - **Output**: Báo cáo kiểm tra các tiêu chuẩn bảo mật đạt điểm A+ trên SecurityHeaders.
 - **Edge Cases**: Có module ngoài cần nạp script inline bị CSP chặn -> Kịch bản tự động chèn cờ `'unsafe-inline'` hợp lệ cho riêng các thư viện giao diện Canvas.
 

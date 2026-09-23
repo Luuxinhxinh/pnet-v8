@@ -35,9 +35,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/pnq-nodestats.php`](../../../opt/unetlab/html/pnq-nodestats.php)](../../../html/pnq-nodestats.php) | PHP API | Endpoint trả về dữ liệu tài nguyên node |
-| [`[`/opt/unetlab/html/pnq-nodestats.sh`](../../../opt/unetlab/html/pnq-nodestats.sh)](../../../html/pnq-nodestats.sh) | Shell Script | Script đọc nhanh các file trong sysfs cgroup |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-node-stats.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-node-stats.js)](../../../html/themes/default/js/pnetlab-node-stats.js) | JavaScript | Vẽ thanh mini HUD hiển thị thông số trên Canvas |
+| [`/opt/unetlab/html/pnq-nodestats.php`](../../../opt/unetlab/html/pnq-nodestats.php)](../../../html/pnq-nodestats.php) | PHP API | Endpoint trả về dữ liệu tài nguyên node |
+| [`/opt/unetlab/html/pnq-nodestats.sh`](../../../opt/unetlab/html/pnq-nodestats.sh)](../../../html/pnq-nodestats.sh) | Shell Script | Script đọc nhanh các file trong sysfs cgroup |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-node-stats.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-node-stats.js)](../../../html/themes/default/js/pnetlab-node-stats.js) | JavaScript | Vẽ thanh mini HUD hiển thị thông số trên Canvas |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /pnq-nodestats.php`

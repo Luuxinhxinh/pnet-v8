@@ -38,14 +38,14 @@ Dưới đây là 5 tính năng con độc lập thuộc Nhóm 05, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/pnetlab-brokerd.py`](../../opt/unetlab/scripts/pnetlab-brokerd.py)](../../scripts/pnetlab-brokerd.py) | Python (asyncio) | Daemon trung tâm điều phối cụm (341KB code), quản lý kết nối mTLS và điều phối lệnh |
-| [`[`/opt/unetlab/scripts/pnetlab-satd.py`](../../opt/unetlab/scripts/pnetlab-satd.py)](../../scripts/pnetlab-satd.py) | Python | Daemon agent chạy trên từng máy chủ vệ tinh để nhận lệnh và báo cáo tình trạng |
-| [`[`/opt/unetlab/scripts/pnet-satellite-join`](../../opt/unetlab/scripts/pnet-satellite-join)](../../scripts/pnet-satellite-join) | Shell Script | Script dòng lệnh hướng dẫn máy chủ vệ tinh đăng ký vào cụm Master |
-| [`[`/opt/unetlab/html/cluster/api.php`](../../opt/unetlab/html/cluster/api.php)](../../html/cluster/api.php) | PHP | REST API quản trị cụm: Liệt kê danh sách host, thêm vệ tinh, xóa vệ tinh, xem tải |
-| [`[`/opt/unetlab/html/includes/cluster.php`](../../opt/unetlab/html/includes/cluster.php)](../../html/includes/cluster.php) | PHP | Thư viện giao tiếp giữa PHP API và socket IPC của `pnetlab-brokerd` |
-| [`[`/opt/unetlab/html/main/js/clusters.js`](../../opt/unetlab/html/main/js/clusters.js)](../../html/main/js/clusters.js) | JavaScript | Giao diện quản lý danh sách các máy chủ trong cụm, biểu đồ RAM/CPU từng host |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-node-runon.js`](../../opt/unetlab/html/themes/default/js/pnetlab-node-runon.js)](../../html/themes/default/js/pnetlab-node-runon.js) | JavaScript | Modal cho phép người dùng chọn host chạy cho từng node trên Canvas |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-sat-badge.js`](../../opt/unetlab/html/themes/default/js/pnetlab-sat-badge.js)](../../html/themes/default/js/pnetlab-sat-badge.js) | JavaScript | Vẽ huy hiệu (Badge) mang tên vệ tinh lên góc trên icon của node trên Canvas |
+| [`/opt/unetlab/scripts/pnetlab-brokerd.py`](../../opt/unetlab/scripts/pnetlab-brokerd.py)](../../scripts/pnetlab-brokerd.py) | Python (asyncio) | Daemon trung tâm điều phối cụm (341KB code), quản lý kết nối mTLS và điều phối lệnh |
+| [`/opt/unetlab/scripts/pnetlab-satd.py`](../../opt/unetlab/scripts/pnetlab-satd.py)](../../scripts/pnetlab-satd.py) | Python | Daemon agent chạy trên từng máy chủ vệ tinh để nhận lệnh và báo cáo tình trạng |
+| [`/opt/unetlab/scripts/pnet-satellite-join`](../../opt/unetlab/scripts/pnet-satellite-join)](../../scripts/pnet-satellite-join) | Shell Script | Script dòng lệnh hướng dẫn máy chủ vệ tinh đăng ký vào cụm Master |
+| [`/opt/unetlab/html/cluster/api.php`](../../opt/unetlab/html/cluster/api.php)](../../html/cluster/api.php) | PHP | REST API quản trị cụm: Liệt kê danh sách host, thêm vệ tinh, xóa vệ tinh, xem tải |
+| [`/opt/unetlab/html/includes/cluster.php`](../../opt/unetlab/html/includes/cluster.php)](../../html/includes/cluster.php) | PHP | Thư viện giao tiếp giữa PHP API và socket IPC của `pnetlab-brokerd` |
+| [`/opt/unetlab/html/main/js/clusters.js`](../../opt/unetlab/html/main/js/clusters.js)](../../html/main/js/clusters.js) | JavaScript | Giao diện quản lý danh sách các máy chủ trong cụm, biểu đồ RAM/CPU từng host |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-node-runon.js`](../../opt/unetlab/html/themes/default/js/pnetlab-node-runon.js)](../../html/themes/default/js/pnetlab-node-runon.js) | JavaScript | Modal cho phép người dùng chọn host chạy cho từng node trên Canvas |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-sat-badge.js`](../../opt/unetlab/html/themes/default/js/pnetlab-sat-badge.js)](../../html/themes/default/js/pnetlab-sat-badge.js) | JavaScript | Vẽ huy hiệu (Badge) mang tên vệ tinh lên góc trên icon của node trên Canvas |
 
 ---
 

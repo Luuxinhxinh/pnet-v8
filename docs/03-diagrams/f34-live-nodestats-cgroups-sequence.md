@@ -15,7 +15,7 @@ sequenceDiagram
     participant Cgroups as Linux Kernel Cgroups Subsystem
 
     UI->>API: GET /pnq-nodestats.php (Định kỳ mỗi 2s)
-    API->>Script: Thực thi [`[`/opt/unetlab/html/pnq-nodestats.sh`](../../opt/unetlab/html/pnq-nodestats.sh)](../../html/pnq-nodestats.sh)
+    API->>Script: Thực thi [`/opt/unetlab/html/pnq-nodestats.sh`](../../opt/unetlab/html/pnq-nodestats.sh)](../../html/pnq-nodestats.sh)
     Script->>Cgroups: Đọc cpuacct.usage (thời điểm t1)
     Script->>Script: Sleep 50ms
     Script->>Cgroups: Đọc cpuacct.usage (thời điểm t2) và memory.usage

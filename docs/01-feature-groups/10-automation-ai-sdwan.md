@@ -38,17 +38,17 @@ Dưới đây là 5 tính năng con độc lập thuộc Nhóm 10, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/mcp/pnetlab-mcp.py`](../../opt/unetlab/scripts/mcp/pnetlab-mcp.py)](../../scripts/mcp/pnetlab-mcp.py) | Python (52KB) | Máy chủ Model Context Protocol (MCP), đăng ký các công cụ quản trị lab |
-| [`[`/opt/unetlab/scripts/mcp/ai_lab_agent.py`](../../opt/unetlab/scripts/mcp/ai_lab_agent.py)](../../scripts/mcp/ai_lab_agent.py) | Python (28KB) | Agent thông minh xử lý prompt ngôn ngữ tự nhiên thành chuỗi hành động |
-| [`[`/opt/unetlab/html/mcp/api.php`](../../opt/unetlab/html/mcp/api.php)](../../html/mcp/api.php) | PHP | REST API tiếp nhận truy vấn MCP từ Web Canvas |
-| [`[`/opt/unetlab/html/mcp/bridge.php`](../../opt/unetlab/html/mcp/bridge.php)](../../html/mcp/bridge.php) | PHP | Cầu nối xác thực phiên đăng nhập web với MCP daemon |
-| [`[`/opt/unetlab/scripts/sdwan/sdwan-onboard.py`](../../opt/unetlab/scripts/sdwan/sdwan-onboard.py)](../../scripts/sdwan/sdwan-onboard.py) | Python (55KB) | Tự động hóa kết nối và xác thực Cisco vManage / vSmart |
-| [`[`/opt/unetlab/scripts/workers/sdwan.sh`](../../opt/unetlab/scripts/workers/sdwan.sh)](../../scripts/workers/sdwan.sh) | Shell Script | Worker chạy ngầm tiến trình khởi động SD-WAN |
-| [`[`/opt/unetlab/html/sdwan/api.php`](../../opt/unetlab/html/sdwan/api.php)](../../html/sdwan/api.php) | PHP | REST API cấu hình thông số SD-WAN |
-| [`[`/opt/unetlab/scripts/pnet-pushconfig.py`](../../opt/unetlab/scripts/pnet-pushconfig.py)](../../scripts/pnet-pushconfig.py) | Python (11KB) | Kịch bản đẩy file cấu hình đa luồng qua Netmiko / Telnetlib |
-| [`[`/opt/unetlab/scripts/pnet-showcmd.py`](../../opt/unetlab/scripts/pnet-showcmd.py)](../../scripts/pnet-showcmd.py) | Python (12KB) | Kịch bản thu thập kết quả lệnh show từ thiết bị |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-ai-builder.js`](../../opt/unetlab/html/themes/default/js/pnetlab-ai-builder.js)](../../html/themes/default/js/pnetlab-ai-builder.js) | JavaScript | Giao diện chat widget trợ lý AI Canvas |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-sdwan-builder.js`](../../opt/unetlab/html/themes/default/js/pnetlab-sdwan-builder.js)](../../html/themes/default/js/pnetlab-sdwan-builder.js) | JavaScript | Wizard tạo fabric SD-WAN 3 bước |
+| [`/opt/unetlab/scripts/mcp/pnetlab-mcp.py`](../../opt/unetlab/scripts/mcp/pnetlab-mcp.py)](../../scripts/mcp/pnetlab-mcp.py) | Python (52KB) | Máy chủ Model Context Protocol (MCP), đăng ký các công cụ quản trị lab |
+| [`/opt/unetlab/scripts/mcp/ai_lab_agent.py`](../../opt/unetlab/scripts/mcp/ai_lab_agent.py)](../../scripts/mcp/ai_lab_agent.py) | Python (28KB) | Agent thông minh xử lý prompt ngôn ngữ tự nhiên thành chuỗi hành động |
+| [`/opt/unetlab/html/mcp/api.php`](../../opt/unetlab/html/mcp/api.php)](../../html/mcp/api.php) | PHP | REST API tiếp nhận truy vấn MCP từ Web Canvas |
+| [`/opt/unetlab/html/mcp/bridge.php`](../../opt/unetlab/html/mcp/bridge.php)](../../html/mcp/bridge.php) | PHP | Cầu nối xác thực phiên đăng nhập web với MCP daemon |
+| [`/opt/unetlab/scripts/sdwan/sdwan-onboard.py`](../../opt/unetlab/scripts/sdwan/sdwan-onboard.py)](../../scripts/sdwan/sdwan-onboard.py) | Python (55KB) | Tự động hóa kết nối và xác thực Cisco vManage / vSmart |
+| [`/opt/unetlab/scripts/workers/sdwan.sh`](../../opt/unetlab/scripts/workers/sdwan.sh)](../../scripts/workers/sdwan.sh) | Shell Script | Worker chạy ngầm tiến trình khởi động SD-WAN |
+| [`/opt/unetlab/html/sdwan/api.php`](../../opt/unetlab/html/sdwan/api.php)](../../html/sdwan/api.php) | PHP | REST API cấu hình thông số SD-WAN |
+| [`/opt/unetlab/scripts/pnet-pushconfig.py`](../../opt/unetlab/scripts/pnet-pushconfig.py)](../../scripts/pnet-pushconfig.py) | Python (11KB) | Kịch bản đẩy file cấu hình đa luồng qua Netmiko / Telnetlib |
+| [`/opt/unetlab/scripts/pnet-showcmd.py`](../../opt/unetlab/scripts/pnet-showcmd.py)](../../scripts/pnet-showcmd.py) | Python (12KB) | Kịch bản thu thập kết quả lệnh show từ thiết bị |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-ai-builder.js`](../../opt/unetlab/html/themes/default/js/pnetlab-ai-builder.js)](../../html/themes/default/js/pnetlab-ai-builder.js) | JavaScript | Giao diện chat widget trợ lý AI Canvas |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-sdwan-builder.js`](../../opt/unetlab/html/themes/default/js/pnetlab-sdwan-builder.js)](../../html/themes/default/js/pnetlab-sdwan-builder.js) | JavaScript | Wizard tạo fabric SD-WAN 3 bước |
 
 ---
 

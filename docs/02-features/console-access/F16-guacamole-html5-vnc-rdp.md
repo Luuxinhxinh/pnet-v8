@@ -36,9 +36,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/pnet-webconsole/backend/guacamole-lite-server.js`](../../../opt/pnet-webconsole/backend/guacamole-lite-server.js)](../../../../pnet-webconsole/backend/guacamole-lite-server.js) | Node.js Server | Chuyển đổi WebSocket sang giao thức guacd |
+| [`/opt/pnet-webconsole/backend/guacamole-lite-server.js`](../../../opt/pnet-webconsole/backend/guacamole-lite-server.js)](../../../../pnet-webconsole/backend/guacamole-lite-server.js) | Node.js Server | Chuyển đổi WebSocket sang giao thức guacd |
 | `/etc/pnet-webconsole/guac.env` | Config env | Chứa thông tin đăng nhập MySQL guacdb và port guacd |
-| [`[`/opt/unetlab/html/rdp/index.php`](../../../opt/unetlab/html/rdp/index.php)](../../../html/rdp/index.php) | PHP | Trang nhúng trình xem đồ họa Guacamole |
+| [`/opt/unetlab/html/rdp/index.php`](../../../opt/unetlab/html/rdp/index.php)](../../../html/rdp/index.php) | PHP | Trang nhúng trình xem đồ họa Guacamole |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Tọa độ di chuyển chuột và phím bấm từ trình duyệt.

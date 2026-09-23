@@ -37,9 +37,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/pnet-webconsole/backend/http_ws_bridge.py`](../../../opt/pnet-webconsole/backend/http_ws_bridge.py)](../../../../pnet-webconsole/backend/http_ws_bridge.py) | `WebSocketServer`, `handle_client()` | Daemon cầu nối WebSocket sang TCP |
-| [`[`/opt/pnet-webconsole/backend/console_mux.py`](../../../opt/pnet-webconsole/backend/console_mux.py)](../../../../pnet-webconsole/backend/console_mux.py) | `ConsoleMux` | Bộ quản lý tập trung các kết nối console |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-webconsole.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-webconsole.js)](../../../html/themes/default/js/pnetlab-webconsole.js) | `initTerminal()`, `attachWebSocket()` | Khởi tạo terminal xterm.js trên trình duyệt |
+| [`/opt/pnet-webconsole/backend/http_ws_bridge.py`](../../../opt/pnet-webconsole/backend/http_ws_bridge.py)](../../../../pnet-webconsole/backend/http_ws_bridge.py) | `WebSocketServer`, `handle_client()` | Daemon cầu nối WebSocket sang TCP |
+| [`/opt/pnet-webconsole/backend/console_mux.py`](../../../opt/pnet-webconsole/backend/console_mux.py)](../../../../pnet-webconsole/backend/console_mux.py) | `ConsoleMux` | Bộ quản lý tập trung các kết nối console |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-webconsole.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-webconsole.js)](../../../html/themes/default/js/pnetlab-webconsole.js) | `initTerminal()`, `attachWebSocket()` | Khởi tạo terminal xterm.js trên trình duyệt |
 | `/etc/apache2/conf-available/pnet-console.conf` | Apache config | Cấu hình proxy WebSocket định tuyến cổng 8080 |
 
 ## 5. Input / Output & Xử lý Ngoại lệ

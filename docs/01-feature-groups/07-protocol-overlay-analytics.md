@@ -41,20 +41,20 @@ Dưới đây là 7 tính năng con độc lập thuộc Nhóm 07, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/pnet_routeoverlay.py`](../../opt/unetlab/scripts/pnet_routeoverlay.py)](../../scripts/pnet_routeoverlay.py) | Python (107KB) | Động cơ phân tích bảng định tuyến và tính toán tọa độ đường bao overlay |
-| [`[`/opt/unetlab/scripts/pnet_bgpparse.py`](../../opt/unetlab/scripts/pnet_bgpparse.py)](../../scripts/pnet_bgpparse.py) | Python (36KB) | Bộ bóc tách thông tin BGP neighbor, bảng prefix và AS-Path |
-| [`[`/opt/unetlab/scripts/pnetlab-prototracer.py`](../../opt/unetlab/scripts/pnetlab-prototracer.py)](../../scripts/pnetlab-prototracer.py)| Python | Bắt và giải mã gói tin thô trên các TAP interface |
-| [`[`/opt/unetlab/scripts/pnet_protodecode.py`](../../opt/unetlab/scripts/pnet_protodecode.py)](../../scripts/pnet_protodecode.py) | Python (57KB) | Thư viện giải mã chuyên sâu hơn 40 giao thức mạng viễn thông |
-| [`[`/opt/unetlab/scripts/airhandler.py`](../../opt/unetlab/scripts/airhandler.py)](../../scripts/airhandler.py) | Python (31KB) | Động cơ vật lý mô phỏng lan truyền sóng điện từ trong không gian 2D |
-| [`[`/opt/unetlab/scripts/pnet_racklayout.py`](../../opt/unetlab/scripts/pnet_racklayout.py)](../../scripts/pnet_racklayout.py) | Python (19KB) | Thuật toán xếp chồng thiết bị vào tủ rack 42U |
-| [`[`/opt/unetlab/html/pnq-overlay.php`](../../opt/unetlab/html/pnq-overlay.php)](../../html/pnq-overlay.php) | PHP (65KB) | REST API phục vụ dữ liệu overlay định tuyến cho frontend |
-| [`[`/opt/unetlab/html/pnq-bgppath.php`](../../opt/unetlab/html/pnq-bgppath.php)](../../html/pnq-bgppath.php) | PHP | API trả về cấu trúc đồ thị quan hệ AS-Path |
-| [`[`/opt/unetlab/html/pnq-prototrace.php`](../../opt/unetlab/html/pnq-prototrace.php)](../../html/pnq-prototrace.php) | PHP | API phục vụ dòng dữ liệu giải mã gói tin thời gian thực |
-| [`[`/opt/unetlab/html/pnq-wifi.php`](../../opt/unetlab/html/pnq-wifi.php)](../../html/pnq-wifi.php) | PHP | API lấy thông số RSSI và danh sách AP/Client lân cận |
-| [`[`/opt/unetlab/html/pnq-roce.php`](../../opt/unetlab/html/pnq-roce.php)](../../html/pnq-roce.php) | PHP | API cung cấp dữ liệu đo kiểm RDMA |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-lazy-overlays.js`](../../opt/unetlab/html/themes/default/js/pnetlab-lazy-overlays.js)](../../html/themes/default/js/pnetlab-lazy-overlays.js)| JavaScript | Quản lý việc hiển thị/ẩn các lớp phủ giao thức trên Canvas |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-wifi-painter.js`](../../opt/unetlab/html/themes/default/js/pnetlab-wifi-painter.js)](../../html/themes/default/js/pnetlab-wifi-painter.js) | JavaScript | Vẽ gradient màu biểu đồ nhiệt vô tuyến (WiFi RSSI Heatmap) |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-rack-view.js`](../../opt/unetlab/html/themes/default/js/pnetlab-rack-view.js)](../../html/themes/default/js/pnetlab-rack-view.js) | JavaScript | Giao diện hiển thị đồ họa tủ Rack Datacenter tương tác |
+| [`/opt/unetlab/scripts/pnet_routeoverlay.py`](../../opt/unetlab/scripts/pnet_routeoverlay.py)](../../scripts/pnet_routeoverlay.py) | Python (107KB) | Động cơ phân tích bảng định tuyến và tính toán tọa độ đường bao overlay |
+| [`/opt/unetlab/scripts/pnet_bgpparse.py`](../../opt/unetlab/scripts/pnet_bgpparse.py)](../../scripts/pnet_bgpparse.py) | Python (36KB) | Bộ bóc tách thông tin BGP neighbor, bảng prefix và AS-Path |
+| [`/opt/unetlab/scripts/pnetlab-prototracer.py`](../../opt/unetlab/scripts/pnetlab-prototracer.py)](../../scripts/pnetlab-prototracer.py)| Python | Bắt và giải mã gói tin thô trên các TAP interface |
+| [`/opt/unetlab/scripts/pnet_protodecode.py`](../../opt/unetlab/scripts/pnet_protodecode.py)](../../scripts/pnet_protodecode.py) | Python (57KB) | Thư viện giải mã chuyên sâu hơn 40 giao thức mạng viễn thông |
+| [`/opt/unetlab/scripts/airhandler.py`](../../opt/unetlab/scripts/airhandler.py)](../../scripts/airhandler.py) | Python (31KB) | Động cơ vật lý mô phỏng lan truyền sóng điện từ trong không gian 2D |
+| [`/opt/unetlab/scripts/pnet_racklayout.py`](../../opt/unetlab/scripts/pnet_racklayout.py)](../../scripts/pnet_racklayout.py) | Python (19KB) | Thuật toán xếp chồng thiết bị vào tủ rack 42U |
+| [`/opt/unetlab/html/pnq-overlay.php`](../../opt/unetlab/html/pnq-overlay.php)](../../html/pnq-overlay.php) | PHP (65KB) | REST API phục vụ dữ liệu overlay định tuyến cho frontend |
+| [`/opt/unetlab/html/pnq-bgppath.php`](../../opt/unetlab/html/pnq-bgppath.php)](../../html/pnq-bgppath.php) | PHP | API trả về cấu trúc đồ thị quan hệ AS-Path |
+| [`/opt/unetlab/html/pnq-prototrace.php`](../../opt/unetlab/html/pnq-prototrace.php)](../../html/pnq-prototrace.php) | PHP | API phục vụ dòng dữ liệu giải mã gói tin thời gian thực |
+| [`/opt/unetlab/html/pnq-wifi.php`](../../opt/unetlab/html/pnq-wifi.php)](../../html/pnq-wifi.php) | PHP | API lấy thông số RSSI và danh sách AP/Client lân cận |
+| [`/opt/unetlab/html/pnq-roce.php`](../../opt/unetlab/html/pnq-roce.php)](../../html/pnq-roce.php) | PHP | API cung cấp dữ liệu đo kiểm RDMA |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-lazy-overlays.js`](../../opt/unetlab/html/themes/default/js/pnetlab-lazy-overlays.js)](../../html/themes/default/js/pnetlab-lazy-overlays.js)| JavaScript | Quản lý việc hiển thị/ẩn các lớp phủ giao thức trên Canvas |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-wifi-painter.js`](../../opt/unetlab/html/themes/default/js/pnetlab-wifi-painter.js)](../../html/themes/default/js/pnetlab-wifi-painter.js) | JavaScript | Vẽ gradient màu biểu đồ nhiệt vô tuyến (WiFi RSSI Heatmap) |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-rack-view.js`](../../opt/unetlab/html/themes/default/js/pnetlab-rack-view.js)](../../html/themes/default/js/pnetlab-rack-view.js) | JavaScript | Giao diện hiển thị đồ họa tủ Rack Datacenter tương tác |
 
 ---
 

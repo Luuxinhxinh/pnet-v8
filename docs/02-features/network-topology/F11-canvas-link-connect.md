@@ -35,9 +35,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/themes/default/js/javascript.js`](../../../opt/unetlab/html/themes/default/js/javascript.js)](../../../html/themes/default/js/javascript.js) | `startLinkDrag()`, `drawRubberband()`, `openPortModal()` | Quản lý tương tác nối dây |
-| [`[`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->put("/api/labs/session/network/manage")` | Cập nhật cấu hình cổng mạng |
-| [`[`/opt/unetlab/html/devices/interfc.php`](../../../opt/unetlab/html/devices/interfc.php)](../../../html/devices/interfc.php) | `getInterfaces()` | Trích xuất danh sách interface hợp lệ |
+| [`/opt/unetlab/html/themes/default/js/javascript.js`](../../../opt/unetlab/html/themes/default/js/javascript.js)](../../../html/themes/default/js/javascript.js) | `startLinkDrag()`, `drawRubberband()`, `openPortModal()` | Quản lý tương tác nối dây |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->put("/api/labs/session/network/manage")` | Cập nhật cấu hình cổng mạng |
+| [`/opt/unetlab/html/devices/interfc.php`](../../../opt/unetlab/html/devices/interfc.php)](../../../html/devices/interfc.php) | `getInterfaces()` | Trích xuất danh sách interface hợp lệ |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

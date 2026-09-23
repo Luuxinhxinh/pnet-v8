@@ -32,9 +32,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->put("/api/labs/session/network/manage")` | API quản lý việc gán interface vào network |
-| [`[`/opt/unetlab/html/includes/api_networks.php`](../../../opt/unetlab/html/includes/api_networks.php)](../../../html/includes/api_networks.php) | `apiNetworkP2PConnect()` | Xử lý logic tự sinh mạng p2p |
-| [`[`/opt/unetlab/html/themes/default/js/javascript.js`](../../../opt/unetlab/html/themes/default/js/javascript.js)](../../../html/themes/default/js/javascript.js) | `connectNodes()` | Bắt sự kiện thả dây giữa 2 node trên UI |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->put("/api/labs/session/network/manage")` | API quản lý việc gán interface vào network |
+| [`/opt/unetlab/html/includes/api_networks.php`](../../../opt/unetlab/html/includes/api_networks.php)](../../../html/includes/api_networks.php) | `apiNetworkP2PConnect()` | Xử lý logic tự sinh mạng p2p |
+| [`/opt/unetlab/html/themes/default/js/javascript.js`](../../../opt/unetlab/html/themes/default/js/javascript.js)](../../../html/themes/default/js/javascript.js) | `connectNodes()` | Bắt sự kiện thả dây giữa 2 node trên UI |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

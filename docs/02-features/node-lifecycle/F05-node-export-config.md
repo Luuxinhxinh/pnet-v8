@@ -17,7 +17,7 @@ level: "Level 2"
 ## 2. Cơ chế Chạy (Mechanism)
 1. **Tiếp nhận Yêu cầu**: Gửi request `POST /api/labs/session/nodes/<node_id>/export`.
 2. **Xác định Loại Thiết bị**:
-   - Nếu là Cisco IOL: Đọc trực tiếp phân vùng NVRAM nhị phân bằng tiện ích [`[`/opt/unetlab/scripts/iou_export`](../../../opt/unetlab/scripts/iou_export)](../../../scripts/iou_export) để giải mã text file `startup-config`.
+   - Nếu là Cisco IOL: Đọc trực tiếp phân vùng NVRAM nhị phân bằng tiện ích [`/opt/unetlab/scripts/iou_export`](../../../opt/unetlab/scripts/iou_export)](../../../scripts/iou_export) để giải mã text file `startup-config`.
    - Nếu là Dynamips: Trích xuất file cấu hình `.cfg` từ thư mục làm việc.
    - Nếu là Cisco QEMU (CSR1000v, IOS-XR, vIOS): Kích hoạt kịch bản dòng lệnh tự động đăng nhập console qua Expect / Telnet, gửi lệnh `show running-config` và hứng lấy toàn bộ văn bản đầu ra.
 3. **Lưu trữ vào File Lab**:
@@ -35,10 +35,10 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeExport()` | Tiếp nhận request xuất cấu hình |
-| [`[`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `nodeExport()` | Điều phối giải mã NVRAM hoặc gọi script |
-| [`[`/opt/unetlab/scripts/iou_export`](../../../opt/unetlab/scripts/iou_export)](../../../scripts/iou_export) | C binary | Trích xuất cấu hình từ file NVRAM của IOL |
-| [`[`/opt/unetlab/html/includes/__lab.php`](../../../opt/unetlab/html/includes/__lab.php)](../../../html/includes/__lab.php) | `Lab::saveConfig()` | Ghi chuỗi cấu hình vào cây XML của lab |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeExport()` | Tiếp nhận request xuất cấu hình |
+| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `nodeExport()` | Điều phối giải mã NVRAM hoặc gọi script |
+| [`/opt/unetlab/scripts/iou_export`](../../../opt/unetlab/scripts/iou_export)](../../../scripts/iou_export) | C binary | Trích xuất cấu hình từ file NVRAM của IOL |
+| [`/opt/unetlab/html/includes/__lab.php`](../../../opt/unetlab/html/includes/__lab.php)](../../../html/includes/__lab.php) | `Lab::saveConfig()` | Ghi chuỗi cấu hình vào cây XML của lab |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/1/export`

@@ -21,7 +21,7 @@ level: "Level 2"
    - Ghi nhật ký vào `activity_log`.
    - Gọi lệnh đặc quyền: `sudo /sbin/reboot` hoặc `sudo /sbin/poweroff`.
 2. **Kịch bản Dọn Dẹp Rác Toàn Diện (`clean.sh`)**:
-   - Khi chọn "System Cleanup": Backend gọi kịch bản [`[`/opt/unetlab/scripts/clean.sh`](../../../opt/unetlab/scripts/clean.sh)](../../../scripts/clean.sh).
+   - Khi chọn "System Cleanup": Backend gọi kịch bản [`/opt/unetlab/scripts/clean.sh`](../../../opt/unetlab/scripts/clean.sh)](../../../scripts/clean.sh).
    - Kịch bản dừng an toàn tất cả các tiến trình hypervisor còn sót lại (`killall -9 qemu-system-x86_64 i386-exec dynamips`).
    - Xóa bỏ toàn bộ các thư mục tạm: `rm -rf /opt/unetlab/tmp/*`.
    - Xóa các card mạng ảo mồ côi: Gỡ bỏ tất cả các bridge `br-*` và card `tap*`.
@@ -35,9 +35,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/system/api.php`](../../../opt/unetlab/html/system/api.php)](../../../html/system/api.php) | PHP API | Endpoint tiếp nhận lệnh Reboot, Shutdown, Clean |
-| [`[`/opt/unetlab/scripts/clean.sh`](../../../opt/unetlab/scripts/clean.sh)](../../../scripts/clean.sh) | Shell Script | Kịch bản dọn dẹp toàn bộ dữ liệu tạm và tiến trình treo |
-| [`[`/opt/unetlab/html/main/js/system.js`](../../../opt/unetlab/html/main/js/system.js)](../../../html/main/js/system.js) | JavaScript | Giao diện điều khiển nút bấm bảo trì hệ thống |
+| [`/opt/unetlab/html/system/api.php`](../../../opt/unetlab/html/system/api.php)](../../../html/system/api.php) | PHP API | Endpoint tiếp nhận lệnh Reboot, Shutdown, Clean |
+| [`/opt/unetlab/scripts/clean.sh`](../../../opt/unetlab/scripts/clean.sh)](../../../scripts/clean.sh) | Shell Script | Kịch bản dọn dẹp toàn bộ dữ liệu tạm và tiến trình treo |
+| [`/opt/unetlab/html/main/js/system.js`](../../../opt/unetlab/html/main/js/system.js)](../../../html/main/js/system.js) | JavaScript | Giao diện điều khiển nút bấm bảo trì hệ thống |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /system/api.php?action=clean`.

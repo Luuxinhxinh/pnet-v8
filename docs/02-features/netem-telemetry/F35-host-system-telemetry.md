@@ -34,9 +34,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/pnq-sysmon.php`](../../../opt/unetlab/html/pnq-sysmon.php)](../../../html/pnq-sysmon.php) | PHP API | Cung cấp JSON thông số máy chủ |
-| [`[`/opt/unetlab/scripts/pnq-telemetryd.py`](../../../opt/unetlab/scripts/pnq-telemetryd.py)](../../../scripts/pnq-telemetryd.py) | Python Daemon (16KB) | Daemon gom chỉ số và lưu lịch sử |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-sysmon.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-sysmon.js)](../../../html/themes/default/js/pnetlab-sysmon.js) | JavaScript | Vẽ đồng hồ đo tài nguyên trên giao diện |
+| [`/opt/unetlab/html/pnq-sysmon.php`](../../../opt/unetlab/html/pnq-sysmon.php)](../../../html/pnq-sysmon.php) | PHP API | Cung cấp JSON thông số máy chủ |
+| [`/opt/unetlab/scripts/pnq-telemetryd.py`](../../../opt/unetlab/scripts/pnq-telemetryd.py)](../../../scripts/pnq-telemetryd.py) | Python Daemon (16KB) | Daemon gom chỉ số và lưu lịch sử |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-sysmon.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-sysmon.js)](../../../html/themes/default/js/pnetlab-sysmon.js) | JavaScript | Vẽ đồng hồ đo tài nguyên trên giao diện |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /pnq-sysmon.php`

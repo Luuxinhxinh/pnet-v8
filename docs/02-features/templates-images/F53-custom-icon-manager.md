@@ -16,7 +16,7 @@ level: "Level 2"
 
 ## 2. Cơ chế Chạy (Mechanism)
 1. **Duyệt Thư viện Biểu tượng**:
-   - `images-icons/api.php` quét toàn bộ thư mục [`[`/opt/unetlab/html/images/icons`](../../../opt/unetlab/html/images/icons)](../../../html/images/icons)/`.
+   - `images-icons/api.php` quét toàn bộ thư mục [`/opt/unetlab/html/images/icons/`](../../../opt/unetlab/html/images/icons)](../../../html/images/icons)/`.
    - Trả về danh sách tên file icon kèm phân loại danh mục (Networking, Security, Cloud, Endpoints).
 2. **Tải lên Biểu tượng Mới (Upload Custom Icon)**:
    - Người dùng tải lên file `.png` hoặc `.svg` qua `POST /images-icons/api.php`.
@@ -32,8 +32,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/images-icons/api.php`](../../../opt/unetlab/html/images-icons/api.php)](../../../html/images-icons/api.php) | PHP API | Quản lý duyệt và tải lên icon |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-template-icons.json`](../../../opt/unetlab/html/themes/default/js/pnetlab-template-icons.json)](../../../html/themes/default/js/pnetlab-template-icons.json)| Config JSON | Danh mục ánh xạ icon thiết bị |
+| [`/opt/unetlab/html/images-icons/api.php`](../../../opt/unetlab/html/images-icons/api.php)](../../../html/images-icons/api.php) | PHP API | Quản lý duyệt và tải lên icon |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-template-icons.json`](../../../opt/unetlab/html/themes/default/js/pnetlab-template-icons.json)](../../../html/themes/default/js/pnetlab-template-icons.json)| Config JSON | Danh mục ánh xạ icon thiết bị |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Upload file `my_custom_firewall.png`.

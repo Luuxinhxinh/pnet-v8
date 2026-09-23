@@ -34,9 +34,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/pnet-pushconfig.py`](../../../opt/unetlab/scripts/pnet-pushconfig.py)](../../../scripts/pnet-pushconfig.py) | Python Script (11KB) | Đẩy cấu hình đa luồng vào danh sách router |
-| [`[`/opt/unetlab/scripts/pnet-showcmd.py`](../../../opt/unetlab/scripts/pnet-showcmd.py)](../../../scripts/pnet-showcmd.py) | Python Script (12KB) | Thu thập kết quả lệnh show từ một router |
-| [`[`/opt/unetlab/scripts/pnet_showmany.py`](../../../opt/unetlab/scripts/pnet_showmany.py)](../../../scripts/pnet_showmany.py) | Python Script (3.3KB) | Thu thập lệnh show từ nhiều router đồng thời |
+| [`/opt/unetlab/scripts/pnet-pushconfig.py`](../../../opt/unetlab/scripts/pnet-pushconfig.py)](../../../scripts/pnet-pushconfig.py) | Python Script (11KB) | Đẩy cấu hình đa luồng vào danh sách router |
+| [`/opt/unetlab/scripts/pnet-showcmd.py`](../../../opt/unetlab/scripts/pnet-showcmd.py)](../../../scripts/pnet-showcmd.py) | Python Script (12KB) | Thu thập kết quả lệnh show từ một router |
+| [`/opt/unetlab/scripts/pnet_showmany.py`](../../../opt/unetlab/scripts/pnet_showmany.py)](../../../scripts/pnet_showmany.py) | Python Script (3.3KB) | Thu thập lệnh show từ nhiều router đồng thời |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input CLI**:

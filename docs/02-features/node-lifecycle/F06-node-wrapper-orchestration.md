@@ -40,16 +40,16 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/wrappers/qemu_wrapper`](../../../opt/unetlab/wrappers/qemu_wrapper)](../../../wrappers/qemu_wrapper) | C binary | Wrapper cho QEMU/KVM |
-| [`[`/opt/unetlab/wrappers/iol_wrapper`](../../../opt/unetlab/wrappers/iol_wrapper)](../../../wrappers/iol_wrapper) | C binary | Wrapper cho Cisco IOL |
-| [`[`/opt/unetlab/wrappers/docker_wrapper`](../../../opt/unetlab/wrappers/docker_wrapper)](../../../wrappers/docker_wrapper) | C binary | Wrapper cho Docker container |
-| [`[`/opt/unetlab/wrappers/unl_wrapper`](../../../opt/unetlab/wrappers/unl_wrapper)](../../../wrappers/unl_wrapper) | C binary | Wrapper điều phối chung |
-| [`[`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) | PHP CLI | Cầu nối sinh dòng lệnh gọi wrapper |
+| [`/opt/unetlab/wrappers/qemu_wrapper`](../../../opt/unetlab/wrappers/qemu_wrapper)](../../../wrappers/qemu_wrapper) | C binary | Wrapper cho QEMU/KVM |
+| [`/opt/unetlab/wrappers/iol_wrapper`](../../../opt/unetlab/wrappers/iol_wrapper)](../../../wrappers/iol_wrapper) | C binary | Wrapper cho Cisco IOL |
+| [`/opt/unetlab/wrappers/docker_wrapper`](../../../opt/unetlab/wrappers/docker_wrapper)](../../../wrappers/docker_wrapper) | C binary | Wrapper cho Docker container |
+| [`/opt/unetlab/wrappers/unl_wrapper`](../../../opt/unetlab/wrappers/unl_wrapper)](../../../wrappers/unl_wrapper) | C binary | Wrapper điều phối chung |
+| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) | PHP CLI | Cầu nối sinh dòng lệnh gọi wrapper |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input CLI**:
   ```bash
-  [`[`/opt/unetlab/wrappers/qemu_wrapper`](../../../opt/unetlab/wrappers/qemu_wrapper)](../../../wrappers/qemu_wrapper) -T 0 -D 1 -t "CSR1000v" -F /opt/qemu/bin/qemu-system-x86_64 -d 1 -- -smp 2 -m 4096 ...
+  [`/opt/unetlab/wrappers/qemu_wrapper`](../../../opt/unetlab/wrappers/qemu_wrapper)](../../../wrappers/qemu_wrapper) -T 0 -D 1 -t "CSR1000v" -F /opt/qemu/bin/qemu-system-x86_64 -d 1 -- -smp 2 -m 4096 ...
   ```
 - **Output**: PID của tiến trình con và descriptor chuyển tiếp console.
 - **Edge Cases**: Không thể tạo TAP do cạn kiệt tài nguyên kernel -> Ném lỗi `ioctl(TUNSETIFF) failed: Device or resource busy`.

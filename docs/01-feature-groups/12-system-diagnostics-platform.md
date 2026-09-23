@@ -40,19 +40,19 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 12, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/includes/doctor.php`](../../opt/unetlab/html/includes/doctor.php)](../../html/includes/doctor.php) | PHP (11KB) | Thư viện logic chẩn đoán lỗi hệ sinh thái PNet v8 |
-| [`[`/opt/unetlab/scripts/pnetlab_doctor.php`](../../opt/unetlab/scripts/pnetlab_doctor.php)](../../scripts/pnetlab_doctor.php) | PHP CLI | Trình kiểm tra doctor chạy bằng dòng lệnh terminal |
-| [`[`/opt/unetlab/html/system/api.php`](../../opt/unetlab/html/system/api.php)](../../html/system/api.php) | PHP | REST API thực hiện các tác vụ quản trị hệ thống |
-| [`[`/opt/unetlab/scripts/clean.sh`](../../opt/unetlab/scripts/clean.sh)](../../scripts/clean.sh) | Shell Script | Script xóa file tạm trong `/opt/unetlab/tmp` |
-| [`[`/opt/unetlab/scripts/pnetlab-ksm-tune.sh`](../../opt/unetlab/scripts/pnetlab-ksm-tune.sh)](../../scripts/pnetlab-ksm-tune.sh) | Shell Script | Script tối ưu thông số khử trùng lặp RAM KSM |
-| [`[`/opt/unetlab/wrappers/ksm_merge_exec`](../../opt/unetlab/wrappers/ksm_merge_exec)](../../wrappers/ksm_merge_exec) | C Binary | Nhị phân kích hoạt cờ `MADV_MERGEABLE` trên bộ nhớ ảo |
+| [`/opt/unetlab/html/includes/doctor.php`](../../opt/unetlab/html/includes/doctor.php)](../../html/includes/doctor.php) | PHP (11KB) | Thư viện logic chẩn đoán lỗi hệ sinh thái PNet v8 |
+| [`/opt/unetlab/scripts/pnetlab_doctor.php`](../../opt/unetlab/scripts/pnetlab_doctor.php)](../../scripts/pnetlab_doctor.php) | PHP CLI | Trình kiểm tra doctor chạy bằng dòng lệnh terminal |
+| [`/opt/unetlab/html/system/api.php`](../../opt/unetlab/html/system/api.php)](../../html/system/api.php) | PHP | REST API thực hiện các tác vụ quản trị hệ thống |
+| [`/opt/unetlab/scripts/clean.sh`](../../opt/unetlab/scripts/clean.sh)](../../scripts/clean.sh) | Shell Script | Script xóa file tạm trong `/opt/unetlab/tmp` |
+| [`/opt/unetlab/scripts/pnetlab-ksm-tune.sh`](../../opt/unetlab/scripts/pnetlab-ksm-tune.sh)](../../scripts/pnetlab-ksm-tune.sh) | Shell Script | Script tối ưu thông số khử trùng lặp RAM KSM |
+| [`/opt/unetlab/wrappers/ksm_merge_exec`](../../opt/unetlab/wrappers/ksm_merge_exec)](../../wrappers/ksm_merge_exec) | C Binary | Nhị phân kích hoạt cờ `MADV_MERGEABLE` trên bộ nhớ ảo |
 | `/opt/ovf/ovfstartup.sh` | Shell Script (14KB) | Kịch bản chạy khi khởi động máy ảo OVF |
 | `/opt/ovf/pnetlab-netcfg.sh` | Shell Script (25KB) | Trình tương tác cấu hình mạng console ban đầu (ncurses wizard) |
 | `/opt/ovf/pnet-bridges.sh` | Shell Script | Thiết lập các Linux Bridge cho 10 card Cloud |
 | `/opt/ovf/pnet-fwd-reconcile.sh` | Shell Script | Khắc phục quy tắc chuyển tiếp gói tin iptables |
-| [`[`/opt/unetlab/scripts/enable-web-hardening.sh`](../../opt/unetlab/scripts/enable-web-hardening.sh)](../../scripts/enable-web-hardening.sh) | Shell Script (11KB) | Kịch bản tự động gia cố an ninh Apache Web Server |
-| [`[`/opt/unetlab/scripts/enable-php-fpm.sh`](../../opt/unetlab/scripts/enable-php-fpm.sh)](../../scripts/enable-php-fpm.sh) | Shell Script | Chuyển đổi từ mod_php sang PHP-FPM hiệu năng cao |
-| [`[`/opt/unetlab/html/main/js/system.js`](../../opt/unetlab/html/main/js/system.js)](../../html/main/js/system.js) | JavaScript | Giao diện quản trị hệ thống trên Dashboard |
+| [`/opt/unetlab/scripts/enable-web-hardening.sh`](../../opt/unetlab/scripts/enable-web-hardening.sh)](../../scripts/enable-web-hardening.sh) | Shell Script (11KB) | Kịch bản tự động gia cố an ninh Apache Web Server |
+| [`/opt/unetlab/scripts/enable-php-fpm.sh`](../../opt/unetlab/scripts/enable-php-fpm.sh)](../../scripts/enable-php-fpm.sh) | Shell Script | Chuyển đổi từ mod_php sang PHP-FPM hiệu năng cao |
+| [`/opt/unetlab/html/main/js/system.js`](../../opt/unetlab/html/main/js/system.js)](../../html/main/js/system.js) | JavaScript | Giao diện quản trị hệ thống trên Dashboard |
 
 ---
 

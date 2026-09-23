@@ -35,9 +35,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/includes/doctor.php`](../../../opt/unetlab/html/includes/doctor.php)](../../../html/includes/doctor.php) | `class PnetDoctor`, `runAllChecks()`, `fixPermissions()` | Lõi chẩn đoán lỗi hệ thống (11KB) |
-| [`[`/opt/unetlab/scripts/pnetlab_doctor.php`](../../../opt/unetlab/scripts/pnetlab_doctor.php)](../../../scripts/pnetlab_doctor.php) | PHP CLI Script | Trình kiểm tra doctor chạy bằng dòng lệnh |
-| [`[`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->get("/api/health")` | REST API kiểm tra sức khỏe hệ thống |
+| [`/opt/unetlab/html/includes/doctor.php`](../../../opt/unetlab/html/includes/doctor.php)](../../../html/includes/doctor.php) | `class PnetDoctor`, `runAllChecks()`, `fixPermissions()` | Lõi chẩn đoán lỗi hệ thống (11KB) |
+| [`/opt/unetlab/scripts/pnetlab_doctor.php`](../../../opt/unetlab/scripts/pnetlab_doctor.php)](../../../scripts/pnetlab_doctor.php) | PHP CLI Script | Trình kiểm tra doctor chạy bằng dòng lệnh |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->get("/api/health")` | REST API kiểm tra sức khỏe hệ thống |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /api/health`.

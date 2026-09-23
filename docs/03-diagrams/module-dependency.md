@@ -13,8 +13,8 @@ level: "Level 3"
 Tài liệu này cung cấp **Sơ đồ Phụ thuộc Module Toàn Hệ thống (System-Wide Module Dependency Diagram)** của mã nguồn **PNet v8**. Sơ đồ thể hiện rõ mối quan hệ tương tác, import, require, gọi tiến trình con (IPC / exec) và liên kết cơ sở dữ liệu giữa tất cả các thành phần:
 - Tầng giao diện người dùng Web Canvas (`html/themes/`, `html/main/`)
 - Tầng Web Routing & Business Logic (`html/api.php`, `html/includes/`)
-- Tầng Cầu nối WebConsole & WebSockets ([`[`/opt/pnet-webconsole/backend`](../../opt/pnet-webconsole/backend)](../../../pnet-webconsole/backend)/`)
-- Tầng Daemons nền Python (`[`/opt/unetlab/scripts`](../../opt/unetlab/scripts)/`)
+- Tầng Cầu nối WebConsole & WebSockets ([`/opt/pnet-webconsole/backend/`](../../opt/pnet-webconsole/backend)](../../../pnet-webconsole/backend)/`)
+- Tầng Daemons nền Python (`[`/opt/unetlab/scripts/`](../../opt/unetlab/scripts)/`)
 - Tầng Binary Wrappers C/C++ ([`wrappers`](../../wrappers)/`)
 - Tầng Hạ tầng Nhân Linux Virtualization (KVM, Bridge, TAP, Cgroups, NetEm)
 - Tầng Cơ sở dữ liệu MariaDB (`pnetlab_db`, `guacdb`)
@@ -199,7 +199,7 @@ graph TD
 | **Tầng Định tuyến API** | `html/api.php` | PHP Slim Framework v2/v3, PDO MySQL | `includes/api_*.php`, `functions.php` |
 | **Tầng Mô hình Dữ liệu** | `html/includes/__*.php` | PHP SimpleXML, DOMDocument | File XML `.unl`, MySQL DB |
 | **Tầng Điều phối Hạ tầng** | `html/includes/functions.php` | POSIX, Shell Execution | `scripts/unl_wrapper.php`, `broker.sock` |
-| **Tầng WebConsole** | [`[`/opt/pnet-webconsole/backend`](../../opt/pnet-webconsole/backend)](../../../pnet-webconsole/backend)/` | Node.js, Python asyncio, websockets | `guacd`, raw TCP telnet sockets |
+| **Tầng WebConsole** | [`/opt/pnet-webconsole/backend/`](../../opt/pnet-webconsole/backend)](../../../pnet-webconsole/backend)/` | Node.js, Python asyncio, websockets | `guacd`, raw TCP telnet sockets |
 | **Tầng Quản lý Cụm** | `scripts/pnetlab-brokerd.py` | Python asyncio, OpenSSL, mTLS | `pnetlab-satd.py`, `/run/pnetlab/broker.sock` |
 | **Tầng Phân tích Giao thức** | `scripts/pnet_routeoverlay.py` | Python SciPy (Convex Hull), Netmiko | Canvas Overlay Layer, Telnet sockets |
 | **Tầng Đóng gói & Wrapper** | [`wrappers`](../../wrappers)/` | C/C++ glibc, Linux Kernel ioctl TUN/TAP | `qemu-system-x86_64`, `i386-exec`, `docker` |

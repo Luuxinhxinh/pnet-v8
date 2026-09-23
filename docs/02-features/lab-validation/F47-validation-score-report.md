@@ -35,8 +35,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/includes/lab_validation_store.php`](../../../opt/unetlab/html/includes/lab_validation_store.php)](../../../html/includes/lab_validation_store.php) | `LabValidationStore`, `saveScore()`, `getScore()` | Tầng lưu trữ và tính toán điểm số (36KB) |
-| [`[`/opt/unetlab/html/themes/default/js/validate.js`](../../../opt/unetlab/html/themes/default/js/validate.js)](../../../html/themes/default/js/validate.js) | `renderScoreboard()`, `updateProgressBar()` | Giao diện hiển thị bảng điểm |
+| [`/opt/unetlab/html/includes/lab_validation_store.php`](../../../opt/unetlab/html/includes/lab_validation_store.php)](../../../html/includes/lab_validation_store.php) | `LabValidationStore`, `saveScore()`, `getScore()` | Tầng lưu trữ và tính toán điểm số (36KB) |
+| [`/opt/unetlab/html/themes/default/js/validate.js`](../../../opt/unetlab/html/themes/default/js/validate.js)](../../../html/themes/default/js/validate.js) | `renderScoreboard()`, `updateProgressBar()` | Giao diện hiển thị bảng điểm |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Mảng kết quả sau khi chạy probe.

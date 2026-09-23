@@ -19,7 +19,7 @@ level: "Level 2"
    - Quản trị viên điền form: Tên thiết bị, Prefix tiền tố thư mục (ví dụ `myfirewall-`), Kiến trúc CPU (x86_64, i386, aarch64), Loại card mạng (e1000, virtio), Tiền tố cổng (`eth`, `port`, `ge-`), Dung lượng RAM, vCPU và Icon.
 2. **Sinh File Định nghĩa Template**:
    - `devices-factory/api.php` kiểm tra tính hợp lệ của tên định danh.
-   - Tự động sinh mã nguồn PHP template chuẩn và ghi vào [`[`/opt/unetlab/html/templates`](../../../opt/unetlab/html/templates)](../../../html/templates)/<template_name>.php`.
+   - Tự động sinh mã nguồn PHP template chuẩn và ghi vào [`/opt/unetlab/html/templates/`](../../../opt/unetlab/html/templates)](../../../html/templates)/<template_name>.php`.
 3. **Tạo Thư mục Lưu trữ Image**:
    - Tự động tạo thư mục tương ứng trong `/opt/unetlab/addons/qemu/<template_name>-default/`.
    - Phân quyền `755` cho người dùng `www-data` và nhóm `unl`.
@@ -33,8 +33,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/devices-factory/api.php`](../../../opt/unetlab/html/devices-factory/api.php)](../../../html/devices-factory/api.php) | PHP API | Endpoint tiếp nhận và sinh file template |
-| [`[`/opt/unetlab/html/main/js/devices.js`](../../../opt/unetlab/html/main/js/devices.js)](../../../html/main/js/devices.js) | JavaScript | Giao diện Device Factory Wizard |
+| [`/opt/unetlab/html/devices-factory/api.php`](../../../opt/unetlab/html/devices-factory/api.php)](../../../html/devices-factory/api.php) | PHP API | Endpoint tiếp nhận và sinh file template |
+| [`/opt/unetlab/html/main/js/devices.js`](../../../opt/unetlab/html/main/js/devices.js)](../../../html/main/js/devices.js) | JavaScript | Giao diện Device Factory Wizard |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

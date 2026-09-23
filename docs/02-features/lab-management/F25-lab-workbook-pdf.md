@@ -31,9 +31,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->get("/api/workbook/pdf/(:name)")` | API phục vụ luồng file PDF |
-| [`[`/opt/unetlab/html/includes/Parsedown.php`](../../../opt/unetlab/html/includes/Parsedown.php)](../../../html/includes/Parsedown.php) | `class Parsedown` | Bộ phân tích cú pháp nếu tài liệu là Markdown (.md) |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-sidebar-tools.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-sidebar-tools.js)](../../../html/themes/default/js/pnetlab-sidebar-tools.js) | `toggleWorkbookPane()` | Điều khiển ẩn hiện khung xem tài liệu |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->get("/api/workbook/pdf/(:name)")` | API phục vụ luồng file PDF |
+| [`/opt/unetlab/html/includes/Parsedown.php`](../../../opt/unetlab/html/includes/Parsedown.php)](../../../html/includes/Parsedown.php) | `class Parsedown` | Bộ phân tích cú pháp nếu tài liệu là Markdown (.md) |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-sidebar-tools.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-sidebar-tools.js)](../../../html/themes/default/js/pnetlab-sidebar-tools.js) | `toggleWorkbookPane()` | Điều khiển ẩn hiện khung xem tài liệu |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /api/workbook/pdf/CCNA_Lab_Guide.pdf`

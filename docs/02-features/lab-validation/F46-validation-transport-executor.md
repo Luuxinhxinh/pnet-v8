@@ -40,8 +40,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/pnet_validation_transport.py`](../../../opt/unetlab/scripts/pnet_validation_transport.py)](../../../scripts/pnet_validation_transport.py) | Python Script (4.5KB) | Kịch bản vận chuyển lệnh CLI qua Telnet/SSH |
-| [`[`/opt/unetlab/scripts/pnet-showcmd.py`](../../../opt/unetlab/scripts/pnet-showcmd.py)](../../../scripts/pnet-showcmd.py) | Python Script | Kịch bản hỗ trợ thu thập nhiều lệnh đồng thời |
+| [`/opt/unetlab/scripts/pnet_validation_transport.py`](../../../opt/unetlab/scripts/pnet_validation_transport.py)](../../../scripts/pnet_validation_transport.py) | Python Script (4.5KB) | Kịch bản vận chuyển lệnh CLI qua Telnet/SSH |
+| [`/opt/unetlab/scripts/pnet-showcmd.py`](../../../opt/unetlab/scripts/pnet-showcmd.py)](../../../scripts/pnet-showcmd.py) | Python Script | Kịch bản hỗ trợ thu thập nhiều lệnh đồng thời |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input CLI**: `python3 pnet_validation_transport.py --port 32769 --cmd "show version"`

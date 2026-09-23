@@ -26,7 +26,7 @@ level: "Level 2"
    - Tạo các giao diện mạng TAP cho từng cổng kết nối: `tap<tenant_pod>_<node_id>_<port_id>`.
    - Đưa các card TAP này vào Linux Bridge tương ứng của Network kết nối.
 5. **Kích hoạt Wrapper Nhị phân**:
-   - PHP API gọi dòng lệnh hệ thống: `sudo [`[`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) -a start -T <tenant_pod> -D <node_id>`.
+   - PHP API gọi dòng lệnh hệ thống: `sudo [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) -a start -T <tenant_pod> -D <node_id>`.
    - `unl_wrapper.php` gọi tiếp wrapper C (`qemu_wrapper`, `iol_wrapper` hoặc `docker_wrapper`).
    - Wrapper tạo tiến trình con (`fork` & `execve`), gán cgroups và chuyển hướng console ra cổng TCP Telnet/VNC.
 6. **Cập nhật Trạng thái**:
@@ -42,11 +42,11 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->post("/api/labs/session/nodes/(:action)")` | Định tuyến hành động `start` |
-| [`[`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeStart()` | Kiểm tra trạng thái và điều phối khởi động |
-| [`[`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `nodeStart()` | Sinh thư mục tmp, chuẩn bị đĩa và gọi unl_wrapper |
-| [`[`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) | `startNode()` | Script CLI phân tích loại thiết bị và gọi wrapper C |
-| [`[`/opt/unetlab/wrappers/qemu_wrapper`](../../../opt/unetlab/wrappers/qemu_wrapper)](../../../wrappers/qemu_wrapper) | C main process | Tạo TAP, cấu hình qemu cmdline và khởi chạy QEMU |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->post("/api/labs/session/nodes/(:action)")` | Định tuyến hành động `start` |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeStart()` | Kiểm tra trạng thái và điều phối khởi động |
+| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `nodeStart()` | Sinh thư mục tmp, chuẩn bị đĩa và gọi unl_wrapper |
+| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) | `startNode()` | Script CLI phân tích loại thiết bị và gọi wrapper C |
+| [`/opt/unetlab/wrappers/qemu_wrapper`](../../../opt/unetlab/wrappers/qemu_wrapper)](../../../wrappers/qemu_wrapper) | C main process | Tạo TAP, cấu hình qemu cmdline và khởi chạy QEMU |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/1/start`

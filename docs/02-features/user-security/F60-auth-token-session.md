@@ -38,8 +38,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/includes/api_authentication.php`](../../../opt/unetlab/html/includes/api_authentication.php)](../../../html/includes/api_authentication.php) | `apiAuthentication()`, `authorization()` | Xác thực thông tin đăng nhập và cấp token |
-| [`[`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | Middleware `$app->hook('slim.before')` | Bộ lọc kiểm tra phiên trước mọi API |
+| [`/opt/unetlab/html/includes/api_authentication.php`](../../../opt/unetlab/html/includes/api_authentication.php)](../../../html/includes/api_authentication.php) | `apiAuthentication()`, `authorization()` | Xác thực thông tin đăng nhập và cấp token |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | Middleware `$app->hook('slim.before')` | Bộ lọc kiểm tra phiên trước mọi API |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/auth` với username và password.

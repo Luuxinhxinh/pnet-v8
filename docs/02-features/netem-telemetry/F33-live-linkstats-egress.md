@@ -37,8 +37,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/pnq-linkstats.php`](../../../opt/unetlab/html/pnq-linkstats.php)](../../../html/pnq-linkstats.php) | PHP API | Đọc sysfs và tính toán tốc độ bit/s |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-egress-glow.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-egress-glow.js)](../../../html/themes/default/js/pnetlab-egress-glow.js) | `animateGlow()`, `renderParticles()` | Động cơ vẽ hạt sáng chuyển động |
+| [`/opt/unetlab/html/pnq-linkstats.php`](../../../opt/unetlab/html/pnq-linkstats.php)](../../../html/pnq-linkstats.php) | PHP API | Đọc sysfs và tính toán tốc độ bit/s |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-egress-glow.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-egress-glow.js)](../../../html/themes/default/js/pnetlab-egress-glow.js) | `animateGlow()`, `renderParticles()` | Động cơ vẽ hạt sáng chuyển động |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /pnq-linkstats.php?lab_session=...`

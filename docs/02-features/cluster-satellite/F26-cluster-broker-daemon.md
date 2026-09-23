@@ -37,8 +37,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/pnetlab-brokerd.py`](../../../opt/unetlab/scripts/pnetlab-brokerd.py)](../../../scripts/pnetlab-brokerd.py) | `BrokerServer`, `handle_ipc_command()` | Daemon điều phối cụm trung tâm |
-| [`[`/opt/unetlab/html/includes/cluster.php`](../../../opt/unetlab/html/includes/cluster.php)](../../../html/includes/cluster.php) | `broker_send_command()` | Client PHP gửi JSON-RPC qua Unix socket |
+| [`/opt/unetlab/scripts/pnetlab-brokerd.py`](../../../opt/unetlab/scripts/pnetlab-brokerd.py)](../../../scripts/pnetlab-brokerd.py) | `BrokerServer`, `handle_ipc_command()` | Daemon điều phối cụm trung tâm |
+| [`/opt/unetlab/html/includes/cluster.php`](../../../opt/unetlab/html/includes/cluster.php)](../../../html/includes/cluster.php) | `broker_send_command()` | Client PHP gửi JSON-RPC qua Unix socket |
 | `/etc/systemd/system/multi-user.target.wants/pnetlab-brokerd.service` | Systemd Service | Quản lý tiến trình daemon nền |
 
 ## 5. Input / Output & Xử lý Ngoại lệ

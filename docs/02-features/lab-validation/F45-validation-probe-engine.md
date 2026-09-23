@@ -40,9 +40,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/includes/lab_validation_probe.php`](../../../opt/unetlab/html/includes/lab_validation_probe.php)](../../../html/includes/lab_validation_probe.php) | `LabValidationProbe`, `executeTaskProbe()` | Động cơ điều phối và chấm điểm probe (34KB) |
-| [`[`/opt/unetlab/scripts/pnet_validation_transport.py`](../../../opt/unetlab/scripts/pnet_validation_transport.py)](../../../scripts/pnet_validation_transport.py) | Python Script | Kênh vận chuyển kết nối dòng lệnh |
-| [`[`/opt/unetlab/html/themes/default/js/validate.js`](../../../opt/unetlab/html/themes/default/js/validate.js)](../../../html/themes/default/js/validate.js) | JavaScript | Giao diện nút "Check Lab" và checklist kết quả |
+| [`/opt/unetlab/html/includes/lab_validation_probe.php`](../../../opt/unetlab/html/includes/lab_validation_probe.php)](../../../html/includes/lab_validation_probe.php) | `LabValidationProbe`, `executeTaskProbe()` | Động cơ điều phối và chấm điểm probe (34KB) |
+| [`/opt/unetlab/scripts/pnet_validation_transport.py`](../../../opt/unetlab/scripts/pnet_validation_transport.py)](../../../scripts/pnet_validation_transport.py) | Python Script | Kênh vận chuyển kết nối dòng lệnh |
+| [`/opt/unetlab/html/themes/default/js/validate.js`](../../../opt/unetlab/html/themes/default/js/validate.js)](../../../html/themes/default/js/validate.js) | JavaScript | Giao diện nút "Check Lab" và checklist kết quả |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/validate`

@@ -37,9 +37,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-ai-builder.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-ai-builder.js)](../../../html/themes/default/js/pnetlab-ai-builder.js) | JavaScript | Giao diện khung chat widget AI nổi |
-| [`[`/opt/unetlab/scripts/mcp/ai_lab_agent.py`](../../../opt/unetlab/scripts/mcp/ai_lab_agent.py)](../../../scripts/mcp/ai_lab_agent.py) | Python Script (28KB) | Động cơ agent thông minh phân tách lệnh |
-| [`[`/opt/unetlab/html/mcp/api.php`](../../../opt/unetlab/html/mcp/api.php)](../../../html/mcp/api.php) | PHP API | Cầu nối API giao tiếp với AI Agent |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-ai-builder.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-ai-builder.js)](../../../html/themes/default/js/pnetlab-ai-builder.js) | JavaScript | Giao diện khung chat widget AI nổi |
+| [`/opt/unetlab/scripts/mcp/ai_lab_agent.py`](../../../opt/unetlab/scripts/mcp/ai_lab_agent.py)](../../../scripts/mcp/ai_lab_agent.py) | Python Script (28KB) | Động cơ agent thông minh phân tách lệnh |
+| [`/opt/unetlab/html/mcp/api.php`](../../../opt/unetlab/html/mcp/api.php)](../../../html/mcp/api.php) | PHP API | Cầu nối API giao tiếp với AI Agent |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Chuỗi prompt: `"Tạo 2 router R1, R2 nối nhau qua cổng e0/0"`.

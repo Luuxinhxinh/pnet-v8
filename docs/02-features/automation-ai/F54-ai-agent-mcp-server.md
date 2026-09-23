@@ -35,10 +35,10 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/mcp/pnetlab-mcp.py`](../../../opt/unetlab/scripts/mcp/pnetlab-mcp.py)](../../../scripts/mcp/pnetlab-mcp.py) | `MCPServer`, `register_tools()` | Máy chủ MCP Server Python (52KB) |
-| [`[`/opt/unetlab/scripts/mcp/ai_lab_agent.py`](../../../opt/unetlab/scripts/mcp/ai_lab_agent.py)](../../../scripts/mcp/ai_lab_agent.py) | `AILabAgent` | Bộ xử lý lập luận và phân tách lệnh của AI |
-| [`[`/opt/unetlab/html/mcp/api.php`](../../../opt/unetlab/html/mcp/api.php)](../../../html/mcp/api.php) | PHP API | Endpoint tiếp nhận truy vấn MCP từ Web |
-| [`[`/opt/unetlab/html/mcp/bridge.php`](../../../opt/unetlab/html/mcp/bridge.php)](../../../html/mcp/bridge.php) | PHP | Cầu nối xác thực cookie token với MCP |
+| [`/opt/unetlab/scripts/mcp/pnetlab-mcp.py`](../../../opt/unetlab/scripts/mcp/pnetlab-mcp.py)](../../../scripts/mcp/pnetlab-mcp.py) | `MCPServer`, `register_tools()` | Máy chủ MCP Server Python (52KB) |
+| [`/opt/unetlab/scripts/mcp/ai_lab_agent.py`](../../../opt/unetlab/scripts/mcp/ai_lab_agent.py)](../../../scripts/mcp/ai_lab_agent.py) | `AILabAgent` | Bộ xử lý lập luận và phân tách lệnh của AI |
+| [`/opt/unetlab/html/mcp/api.php`](../../../opt/unetlab/html/mcp/api.php)](../../../html/mcp/api.php) | PHP API | Endpoint tiếp nhận truy vấn MCP từ Web |
+| [`/opt/unetlab/html/mcp/bridge.php`](../../../opt/unetlab/html/mcp/bridge.php)](../../../html/mcp/bridge.php) | PHP | Cầu nối xác thực cookie token với MCP |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input JSON-RPC**:

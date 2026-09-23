@@ -24,7 +24,7 @@ level: "Level 2"
 2. **Quy trình Nhập Khẩu (Import ZIP)**:
    - Người dùng kéo thả file ZIP vào màn hình Import.
    - `import/api.php` tiếp nhận file tải lên, lưu vào thư mục `/tmp/`.
-   - Kích hoạt worker nền [`[`/opt/unetlab/scripts/workers/import.sh`](../../../opt/unetlab/scripts/workers/import.sh)](../../../scripts/workers/import.sh).
+   - Kích hoạt worker nền [`/opt/unetlab/scripts/workers/import.sh`](../../../opt/unetlab/scripts/workers/import.sh)](../../../scripts/workers/import.sh).
    - Worker giải nén file ZIP, phân loại file `.unl` đưa vào thư mục `/opt/unetlab/labs/`, đưa ảnh vào đúng thư mục đính kèm, sửa quyền sở hữu thành `www-data:unl`.
 3. **Phản hồi**: Cập nhật lại cây thư mục trên giao diện người dùng.
 
@@ -35,9 +35,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->post("/api/export")` | Tiếp nhận yêu cầu xuất file ZIP |
-| [`[`/opt/unetlab/html/import/api.php`](../../../opt/unetlab/html/import/api.php)](../../../html/import/api.php) | PHP API | Tiếp nhận upload file ZIP bài lab |
-| [`[`/opt/unetlab/scripts/workers/import.sh`](../../../opt/unetlab/scripts/workers/import.sh)](../../../scripts/workers/import.sh) | Shell Script (12KB) | Worker giải nén và phân quyền an toàn |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->post("/api/export")` | Tiếp nhận yêu cầu xuất file ZIP |
+| [`/opt/unetlab/html/import/api.php`](../../../opt/unetlab/html/import/api.php)](../../../html/import/api.php) | PHP API | Tiếp nhận upload file ZIP bài lab |
+| [`/opt/unetlab/scripts/workers/import.sh`](../../../opt/unetlab/scripts/workers/import.sh)](../../../scripts/workers/import.sh) | Shell Script (12KB) | Worker giải nén và phân quyền an toàn |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Tải lên file `Advanced_OSPF_Lab.zip`.

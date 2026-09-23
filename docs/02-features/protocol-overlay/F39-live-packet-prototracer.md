@@ -37,10 +37,10 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/scripts/pnetlab-prototracer.py`](../../../opt/unetlab/scripts/pnetlab-prototracer.py)](../../../scripts/pnetlab-prototracer.py) | Python Daemon | Bắt gói tin raw trên card TAP |
-| [`[`/opt/unetlab/scripts/pnet_protodecode.py`](../../../opt/unetlab/scripts/pnet_protodecode.py)](../../../scripts/pnet_protodecode.py) | Python Library (57KB) | Thư viện giải mã hơn 40 giao thức mạng |
-| [`[`/opt/unetlab/html/pnq-prototrace.php`](../../../opt/unetlab/html/pnq-prototrace.php)](../../../html/pnq-prototrace.php) | PHP API | API stream gói tin giải mã về UI |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-protocol-inspector.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-protocol-inspector.js)](../../../html/themes/default/js/pnetlab-protocol-inspector.js) | JavaScript | Giao diện cây phân tích gói tin |
+| [`/opt/unetlab/scripts/pnetlab-prototracer.py`](../../../opt/unetlab/scripts/pnetlab-prototracer.py)](../../../scripts/pnetlab-prototracer.py) | Python Daemon | Bắt gói tin raw trên card TAP |
+| [`/opt/unetlab/scripts/pnet_protodecode.py`](../../../opt/unetlab/scripts/pnet_protodecode.py)](../../../scripts/pnet_protodecode.py) | Python Library (57KB) | Thư viện giải mã hơn 40 giao thức mạng |
+| [`/opt/unetlab/html/pnq-prototrace.php`](../../../opt/unetlab/html/pnq-prototrace.php)](../../../html/pnq-prototrace.php) | PHP API | API stream gói tin giải mã về UI |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-protocol-inspector.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-protocol-inspector.js)](../../../html/themes/default/js/pnetlab-protocol-inspector.js) | JavaScript | Giao diện cây phân tích gói tin |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Luồng byte Ethernet frame thô trên card TAP.

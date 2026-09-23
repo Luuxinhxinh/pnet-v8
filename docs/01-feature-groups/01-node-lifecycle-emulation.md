@@ -41,15 +41,15 @@ Toàn bộ logic của Nhóm 01 nằm tại các file nguồn cốt lõi sau:
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`[`/opt/unetlab/html/api.php`](../../opt/unetlab/html/api.php)](../../html/api.php) | PHP (Slim Framework) | Điểm tiếp nhận REST request: `/api/labs/session/nodes`, `/api/labs/session/nodes/(:action)`, `/api/nodestatus` |
-| [`[`/opt/unetlab/html/includes/api_nodes.php`](../../opt/unetlab/html/includes/api_nodes.php)](../../html/includes/api_nodes.php) | PHP | Các hàm xử lý nghiệp vụ node: `apiNodeAdd()`, `apiNodeEdit()`, `apiNodeDelete()`, `apiNodeStart()`, `apiNodeStop()`, `apiNodeWipe()` |
-| [`[`/opt/unetlab/html/includes/__node.php`](../../opt/unetlab/html/includes/__node.php)](../../html/includes/__node.php) | PHP (OOP Domain Object) | Đối tượng `Node`: Đọc ghi thuộc tính node từ Lab XML, tính toán port console, kiểm tra tính hợp lệ của tham số phần cứng |
-| [`[`/opt/unetlab/html/includes/functions.php`](../../opt/unetlab/html/includes/functions.php)](../../html/includes/functions.php) | PHP | Tầng điều phối hạ tầng: `nodeStart()`, `nodeStop()`, `nodeWipe()`, `nodeExport()`, gọi các script CLI hệ thống |
+| [`/opt/unetlab/html/api.php`](../../opt/unetlab/html/api.php)](../../html/api.php) | PHP (Slim Framework) | Điểm tiếp nhận REST request: `/api/labs/session/nodes`, `/api/labs/session/nodes/(:action)`, `/api/nodestatus` |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../opt/unetlab/html/includes/api_nodes.php)](../../html/includes/api_nodes.php) | PHP | Các hàm xử lý nghiệp vụ node: `apiNodeAdd()`, `apiNodeEdit()`, `apiNodeDelete()`, `apiNodeStart()`, `apiNodeStop()`, `apiNodeWipe()` |
+| [`/opt/unetlab/html/includes/__node.php`](../../opt/unetlab/html/includes/__node.php)](../../html/includes/__node.php) | PHP (OOP Domain Object) | Đối tượng `Node`: Đọc ghi thuộc tính node từ Lab XML, tính toán port console, kiểm tra tính hợp lệ của tham số phần cứng |
+| [`/opt/unetlab/html/includes/functions.php`](../../opt/unetlab/html/includes/functions.php)](../../html/includes/functions.php) | PHP | Tầng điều phối hạ tầng: `nodeStart()`, `nodeStop()`, `nodeWipe()`, `nodeExport()`, gọi các script CLI hệ thống |
 | [`wrappers`](../../wrappers)/` | C / C++ compiled binaries | `qemu_wrapper`, `iol_wrapper`, `docker_wrapper`, `dynamips_wrapper`, `unl_wrapper`: Tiến trình setuid root khởi chạy hypervisors |
-| [`[`/opt/unetlab/scripts/unl_wrapper.php`](../../opt/unetlab/scripts/unl_wrapper.php)](../../scripts/unl_wrapper.php) | PHP CLI | Cầu nối dòng lệnh giữa API Web và các wrapper nhị phân |
-| [`[`/opt/unetlab/html/themes/default/js/actions.js`](../../opt/unetlab/html/themes/default/js/actions.js)](../../html/themes/default/js/actions.js) | JavaScript | Giao diện điều khiển hành động: Start, Stop, Wipe, Export, Restart, Start Selected |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-node-form.js`](../../opt/unetlab/html/themes/default/js/pnetlab-node-form.js)](../../html/themes/default/js/pnetlab-node-form.js) | JavaScript | Form modal cấu hình node (chọn image, template, vCPU, RAM, Ethernet slots) |
-| [`[`/opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js`](../../opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js)](../../html/themes/default/js/pnetlab-bulk-node-edit.js)| JavaScript | Giao diện chỉnh sửa đồng loạt thuộc tính của nhiều node được chọn |
+| [`/opt/unetlab/scripts/unl_wrapper.php`](../../opt/unetlab/scripts/unl_wrapper.php)](../../scripts/unl_wrapper.php) | PHP CLI | Cầu nối dòng lệnh giữa API Web và các wrapper nhị phân |
+| [`/opt/unetlab/html/themes/default/js/actions.js`](../../opt/unetlab/html/themes/default/js/actions.js)](../../html/themes/default/js/actions.js) | JavaScript | Giao diện điều khiển hành động: Start, Stop, Wipe, Export, Restart, Start Selected |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-node-form.js`](../../opt/unetlab/html/themes/default/js/pnetlab-node-form.js)](../../html/themes/default/js/pnetlab-node-form.js) | JavaScript | Form modal cấu hình node (chọn image, template, vCPU, RAM, Ethernet slots) |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js`](../../opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js)](../../html/themes/default/js/pnetlab-bulk-node-edit.js)| JavaScript | Giao diện chỉnh sửa đồng loạt thuộc tính của nhiều node được chọn |
 
 ---
 
