@@ -18,7 +18,7 @@ sequenceDiagram
     Admin->>UI: Bấm nút "Clean System" để giải phóng đĩa cứng
     UI->>API: POST /system/api.php?action=clean
     API->>API: Xác thực quyền Admin
-    API->>Script: Kích hoạt sudo /opt/unetlab/scripts/clean.sh
+    API->>Script: Kích hoạt sudo [`scripts/clean.sh`](../../scripts/clean.sh)
     Script->>Kernel: Hủy tất cả tiến trình node mồ côi
     Script->>Script: Xóa sạch thư mục /opt/unetlab/tmp/*
     Script->>Kernel: Xóa các card mạng ảo TAP và Bridge mồ côi

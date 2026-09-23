@@ -34,9 +34,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnetlab-brokerd.py` | `check_satellite_heartbeats()` | Vòng lặp kiểm tra nhịp tim |
-| `/opt/unetlab/html/cluster/api.php` | `getClusterStatus()` | Trả về tình trạng sức khỏe cụm |
-| `/opt/unetlab/html/main/js/clusters.js` | `updateHostStatusHUD()` | Hiển thị chấm tròn xanh/đỏ trạng thái host |
+| [`scripts/pnetlab-brokerd.py`](../../../scripts/pnetlab-brokerd.py) | `check_satellite_heartbeats()` | Vòng lặp kiểm tra nhịp tim |
+| [`html/cluster/api.php`](../../../html/cluster/api.php) | `getClusterStatus()` | Trả về tình trạng sức khỏe cụm |
+| [`html/main/js/clusters.js`](../../../html/main/js/clusters.js) | `updateHostStatusHUD()` | Hiển thị chấm tròn xanh/đỏ trạng thái host |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Chu kỳ thời gian `time() - last_seen > 15s`.

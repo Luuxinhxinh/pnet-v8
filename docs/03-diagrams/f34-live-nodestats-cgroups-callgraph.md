@@ -9,7 +9,7 @@ feature_id: "F34"
 ```mermaid
 graph TD
     UI_TIMER["pnetlab-node-stats.js: updateHUD()"] --> GET_API["GET /pnq-nodestats.php"]
-    GET_API --> EXEC_SH["exec(/opt/unetlab/html/pnq-nodestats.sh)"]
+    GET_API --> EXEC_SH["exec([`html/pnq-nodestats.sh`](../../html/pnq-nodestats.sh))"]
     EXEC_SH --> READ_CPU["cat /sys/fs/cgroup/cpu/pnetlab/.../cpuacct.usage"]
     EXEC_SH --> READ_MEM["cat /sys/fs/cgroup/memory/pnetlab/.../memory.usage_in_bytes"]
     READ_CPU --> CALC_PERC["(delta_cpu / delta_nano) * 100"]

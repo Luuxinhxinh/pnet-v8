@@ -37,8 +37,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/sdwan/sdwan-onboard.py` | Python Script (55KB) | Kịch bản tự động hóa xác thực và cài đặt chứng chỉ |
-| `/opt/unetlab/scripts/workers/sdwan.sh` | Shell Script | Worker chạy tiến trình onboarding ngầm |
+| [`scripts/sdwan/sdwan-onboard.py`](../../../scripts/sdwan/sdwan-onboard.py) | Python Script (55KB) | Kịch bản tự động hóa xác thực và cài đặt chứng chỉ |
+| [`scripts/workers/sdwan.sh`](../../../scripts/workers/sdwan.sh) | Shell Script | Worker chạy tiến trình onboarding ngầm |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `python3 sdwan-onboard.py --vmanage 192.168.1.100 --org "Lab_Corp"`

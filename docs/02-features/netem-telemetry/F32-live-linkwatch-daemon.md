@@ -32,8 +32,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnetlab-linkwatchd.py` | `LinkWatchDaemon`, `listen_netlink()` | Daemon lắng nghe netlink sockets |
-| `/opt/unetlab/html/themes/default/js/pnetlab-network-watcher.js`| JavaScript | Client lắng nghe sự kiện link state trên UI |
+| [`scripts/pnetlab-linkwatchd.py`](../../../scripts/pnetlab-linkwatchd.py) | `LinkWatchDaemon`, `listen_netlink()` | Daemon lắng nghe netlink sockets |
+| [`html/themes/default/js/pnetlab-network-watcher.js`](../../../html/themes/default/js/pnetlab-network-watcher.js)| JavaScript | Client lắng nghe sự kiện link state trên UI |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Bản tin Netlink kernel `RTM_NEWLINK` hoặc `RTM_DELLINK`.

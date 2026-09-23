@@ -39,9 +39,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnet_racklayout.py` | Python Script (19KB) | Thuật toán tính toán bố cục tủ rack |
-| `/opt/unetlab/html/themes/default/js/pnetlab-rack-view.js` | JavaScript | Giao diện hiển thị đồ họa tủ Rack 42U |
-| `/opt/unetlab/html/pnq-overlay.php` | PHP API | API trả về JSON bố cục rack layout |
+| [`scripts/pnet_racklayout.py`](../../../scripts/pnet_racklayout.py) | Python Script (19KB) | Thuật toán tính toán bố cục tủ rack |
+| [`html/themes/default/js/pnetlab-rack-view.js`](../../../html/themes/default/js/pnetlab-rack-view.js) | JavaScript | Giao diện hiển thị đồ họa tủ Rack 42U |
+| [`html/pnq-overlay.php`](../../../html/pnq-overlay.php) | PHP API | API trả về JSON bố cục rack layout |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Danh sách 15 thiết bị trong lab.

@@ -36,9 +36,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/__lab.php` | `class Lab`, `save()`, `getNodes()` | Lõi đọc và ghi XML (100KB code) |
-| `/opt/unetlab/html/includes/__node.php` | `class Node` | Đọc ghi thuộc tính node XML |
-| `/opt/unetlab/html/includes/__network.php` | `class Network` | Đọc ghi thuộc tính network XML |
+| [`html/includes/__lab.php`](../../../html/includes/__lab.php) | `class Lab`, `save()`, `getNodes()` | Lõi đọc và ghi XML (100KB code) |
+| [`html/includes/__node.php`](../../../html/includes/__node.php) | `class Node` | Đọc ghi thuộc tính node XML |
+| [`html/includes/__network.php`](../../../html/includes/__network.php) | `class Network` | Đọc ghi thuộc tính network XML |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Đường dẫn file tệp `.unl` trên ổ đĩa.

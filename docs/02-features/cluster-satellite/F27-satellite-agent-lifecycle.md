@@ -34,9 +34,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnet-satellite-join` | Shell Script | Kịch bản dòng lệnh thực hiện quy trình join |
-| `/opt/unetlab/scripts/pnetlab-satd.py` | Python (14KB) | Daemon chạy trên vệ tinh để nhận lệnh |
-| `/opt/unetlab/html/cluster/api.php` | PHP | API tiếp nhận đăng ký vệ tinh trên Master |
+| [`scripts/pnet-satellite-join`](../../../scripts/pnet-satellite-join) | Shell Script | Kịch bản dòng lệnh thực hiện quy trình join |
+| [`scripts/pnetlab-satd.py`](../../../scripts/pnetlab-satd.py) | Python (14KB) | Daemon chạy trên vệ tinh để nhận lệnh |
+| [`html/cluster/api.php`](../../../html/cluster/api.php) | PHP | API tiếp nhận đăng ký vệ tinh trên Master |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input CLI**: `pnet-satellite-join --master 192.168.1.10 --token SECRET123`

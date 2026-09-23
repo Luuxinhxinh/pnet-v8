@@ -18,7 +18,7 @@ level: "Level 2"
 1. **Kích hoạt KSM Daemon Tầng Kernel**:
    - Dịch vụ kích hoạt cờ KSM trong nhân Linux: `echo 1 > /sys/kernel/mm/ksm/run`.
 2. **Kích hoạt Vùng Nhớ Có thể Gộp (`ksm_merge_exec`)**:
-   - Khi QEMU khởi chạy máy ảo: Tiện ích C `/opt/unetlab/wrappers/ksm_merge_exec` gọi hàm hệ thống `madvise(addr, length, MADV_MERGEABLE)` để đánh dấu vùng bộ nhớ RAM ảo của node được phép cho kernel quét gộp.
+   - Khi QEMU khởi chạy máy ảo: Tiện ích C [`wrappers/ksm_merge_exec`](../../../wrappers/ksm_merge_exec) gọi hàm hệ thống `madvise(addr, length, MADV_MERGEABLE)` để đánh dấu vùng bộ nhớ RAM ảo của node được phép cho kernel quét gộp.
 3. **Thuật toán Tinh chỉnh Thông số Tự động (`pnetlab-ksm-tune.sh`)**:
    - Kịch bản tự động điều chỉnh tốc độ quét dựa trên tổng dung lượng RAM của máy chủ:
      - `/sys/kernel/mm/ksm/pages_to_scan`: Số trang nhớ quét trong 1 chu kỳ (ví dụ 1000 trang).
@@ -35,8 +35,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnetlab-ksm-tune.sh` | Shell Script (2.8KB) | Kịch bản tinh chỉnh thông số KSM theo tải |
-| `/opt/unetlab/wrappers/ksm_merge_exec` | C Binary (1.5KB) | Binary nhị phân gọi `madvise(MADV_MERGEABLE)` |
+| [`scripts/pnetlab-ksm-tune.sh`](../../../scripts/pnetlab-ksm-tune.sh) | Shell Script (2.8KB) | Kịch bản tinh chỉnh thông số KSM theo tải |
+| [`wrappers/ksm_merge_exec`](../../../wrappers/ksm_merge_exec) | C Binary (1.5KB) | Binary nhị phân gọi `madvise(MADV_MERGEABLE)` |
 | `/etc/default/pnetlab-ksm` | Config file | Tham số cấu hình ngưỡng KSM mặc định |
 | `/etc/systemd/system/multi-user.target.wants/pnetlab-ksm.service`| Systemd Service | Quản lý daemon KSM khởi động cùng hệ điều hành |
 

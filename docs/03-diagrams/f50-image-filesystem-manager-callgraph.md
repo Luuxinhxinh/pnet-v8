@@ -15,5 +15,5 @@ graph TD
     CALC_SIZE --> JSON_PAYLOAD["Tổng hợp danh sách {name, size, valid}"]
     JSON_PAYLOAD --> RENDER_TABLE["Hiển thị danh sách kèm nút Xóa và Fix Permissions"]
     RENDER_TABLE --> CLICK_FIX["User click 'Fix Permissions'"]
-    CLICK_FIX --> EXEC_FIX["exec(sudo /opt/unetlab/wrappers/unl_wrapper -a fixpermissions)"]
+    CLICK_FIX --> EXEC_FIX["exec(sudo [`wrappers/unl_wrapper`](../../wrappers/unl_wrapper) -a fixpermissions)"]
 ```

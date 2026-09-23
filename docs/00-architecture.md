@@ -233,8 +233,8 @@ sequenceDiagram
     API->>DB: Đọc cấu hình phần cứng (vCPU, RAM, Image, Slot) từ Lab XML
     API->>API: Chuẩn bị thư mục /opt/unetlab/tmp/<pod>/<node_id>/
     API->>API: Tạo QCOW2 overlay disk trỏ về base image
-    API->>UNL: sudo /opt/unetlab/scripts/unl_wrapper.php -a start -d 1
-    UNL->>QWRAP: execve(/opt/unetlab/wrappers/qemu_wrapper, args)
+    API->>UNL: sudo [`scripts/unl_wrapper.php`](../scripts/unl_wrapper.php) -a start -d 1
+    UNL->>QWRAP: execve([`wrappers/qemu_wrapper`](../wrappers/qemu_wrapper), args)
     
     rect rgb(30, 40, 60)
         Note over QWRAP,Kernel: Tầng Wrapper Nhị phân xử lý đặc quyền root

@@ -15,7 +15,7 @@ sequenceDiagram
     participant KernelCG as Kernel Cgroups
     participant Hypervisor as QEMU Process (user: unl)
 
-    Script->>CWrap: execve(/opt/unetlab/wrappers/qemu_wrapper, args...)
+    Script->>CWrap: execve([`wrappers/qemu_wrapper`](../../wrappers/qemu_wrapper), args...)
     Note over CWrap: Tiến trình nâng quyền root (EUID=0)
     CWrap->>KernelNet: ioctl(TUNSETIFF) -> Tạo card mạng TAP
     CWrap->>KernelNet: ioctl(SIOCBRADDIF) -> Gán TAP vào Linux Bridge

@@ -35,9 +35,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/themes/default/js/pnetlab-sdwan-builder.js` | JavaScript | Giao diện wizard 3 bước thiết kế SD-WAN |
-| `/opt/unetlab/html/sdwan/api.php` | PHP API | Endpoint tiếp nhận tham số và sinh topo SD-WAN |
-| `/opt/unetlab/scripts/workers/sdwan.sh` | Shell Script | Worker chạy nạp cấu hình nền |
+| [`html/themes/default/js/pnetlab-sdwan-builder.js`](../../../html/themes/default/js/pnetlab-sdwan-builder.js) | JavaScript | Giao diện wizard 3 bước thiết kế SD-WAN |
+| [`html/sdwan/api.php`](../../../html/sdwan/api.php) | PHP API | Endpoint tiếp nhận tham số và sinh topo SD-WAN |
+| [`scripts/workers/sdwan.sh`](../../../scripts/workers/sdwan.sh) | Shell Script | Worker chạy nạp cấu hình nền |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

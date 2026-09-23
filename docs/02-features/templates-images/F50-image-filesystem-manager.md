@@ -26,7 +26,7 @@ level: "Level 2"
 3. **Thao tác Xóa & Sửa Tên**:
    - Cho phép xóa thư mục image qua lệnh an toàn có xác nhận.
 4. **Bộ Sửa Quyền Hệ thống (Fix Permissions Hook)**:
-   - Khi tải image mới lên qua WinSCP thường bị sai quyền root:root -> Chức năng "Fix Permissions" gọi lệnh: `/opt/unetlab/wrappers/unl_wrapper -a fixpermissions` để khôi phục quyền `chown -R root:unl` và gán setuid.
+   - Khi tải image mới lên qua WinSCP thường bị sai quyền root:root -> Chức năng "Fix Permissions" gọi lệnh: [`wrappers/unl_wrapper`](../../../wrappers/unl_wrapper) -a fixpermissions` để khôi phục quyền `chown -R root:unl` và gán setuid.
 
 ## 3. Công nghệ & Cơ sở Sử dụng
 - **Linux Filesystem Traversal**: Các API duyệt thư mục POSIX.
@@ -35,9 +35,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/images-manage/api.php` | PHP API | API quét danh sách và xóa image |
-| `/opt/unetlab/html/main/js/images.js` | JavaScript | Giao diện quản lý bảng image |
-| `/opt/unetlab/wrappers/unl_wrapper` | C binary | Tùy chọn `-a fixpermissions` sửa quyền đĩa |
+| [`html/images-manage/api.php`](../../../html/images-manage/api.php) | PHP API | API quét danh sách và xóa image |
+| [`html/main/js/images.js`](../../../html/main/js/images.js) | JavaScript | Giao diện quản lý bảng image |
+| [`wrappers/unl_wrapper`](../../../wrappers/unl_wrapper) | C binary | Tùy chọn `-a fixpermissions` sửa quyền đĩa |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /images-manage/api.php?type=qemu`

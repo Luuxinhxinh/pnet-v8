@@ -40,16 +40,16 @@ Dưới đây là 5 tính năng con độc lập thuộc Nhóm 11, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_authentication.php` | PHP | Xác thực thông tin đăng nhập, sinh session token và kiểm tra quyền truy cập API |
-| `/opt/unetlab/html/includes/api_uusers.php` | PHP | Nghiệp vụ CRUD người dùng, gán POD, phân quyền role |
-| `/opt/unetlab/html/users/api.php` | PHP | REST API phục vụ giao diện quản lý người dùng |
-| `/opt/unetlab/html/includes/password_reset.php` | PHP | Xử lý logic sinh token, kiểm tra hạn và cập nhật mật khẩu mới |
-| `/opt/unetlab/html/includes/smtp_mailer.php` | PHP | Thư viện gửi email qua giao thức SMTP (hỗ trợ STARTTLS và SSL) |
-| `/opt/unetlab/html/includes/activity_log.php` | PHP | Ghi lại hành vi người dùng vào bảng `activity_log` |
-| `/opt/unetlab/scripts/pki/pnet-pki.py` | Python (22KB) | Quản lý vòng đời chứng chỉ số X.509, khởi tạo Root CA và phát hành Cert cho nodes |
-| `/opt/unetlab/html/pki/api.php` | PHP | API kích hoạt sinh cert cho vệ tinh |
-| `/opt/unetlab/html/main/js/users.js` | JavaScript | Giao diện quản lý người dùng, tạo tài khoản, phân quyền POD |
-| `/opt/unetlab/html/main/js/mail-settings.js` | JavaScript | Giao diện thiết lập cấu hình SMTP server |
+| [`html/includes/api_authentication.php`](../../html/includes/api_authentication.php) | PHP | Xác thực thông tin đăng nhập, sinh session token và kiểm tra quyền truy cập API |
+| [`html/includes/api_uusers.php`](../../html/includes/api_uusers.php) | PHP | Nghiệp vụ CRUD người dùng, gán POD, phân quyền role |
+| [`html/users/api.php`](../../html/users/api.php) | PHP | REST API phục vụ giao diện quản lý người dùng |
+| [`html/includes/password_reset.php`](../../html/includes/password_reset.php) | PHP | Xử lý logic sinh token, kiểm tra hạn và cập nhật mật khẩu mới |
+| [`html/includes/smtp_mailer.php`](../../html/includes/smtp_mailer.php) | PHP | Thư viện gửi email qua giao thức SMTP (hỗ trợ STARTTLS và SSL) |
+| [`html/includes/activity_log.php`](../../html/includes/activity_log.php) | PHP | Ghi lại hành vi người dùng vào bảng `activity_log` |
+| [`scripts/pki/pnet-pki.py`](../../scripts/pki/pnet-pki.py) | Python (22KB) | Quản lý vòng đời chứng chỉ số X.509, khởi tạo Root CA và phát hành Cert cho nodes |
+| [`html/pki/api.php`](../../html/pki/api.php) | PHP | API kích hoạt sinh cert cho vệ tinh |
+| [`html/main/js/users.js`](../../html/main/js/users.js) | JavaScript | Giao diện quản lý người dùng, tạo tài khoản, phân quyền POD |
+| [`html/main/js/mail-settings.js`](../../html/main/js/mail-settings.js) | JavaScript | Giao diện thiết lập cấu hình SMTP server |
 
 ---
 

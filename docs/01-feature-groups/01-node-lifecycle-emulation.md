@@ -41,15 +41,15 @@ Toàn bộ logic của Nhóm 01 nằm tại các file nguồn cốt lõi sau:
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/api.php` | PHP (Slim Framework) | Điểm tiếp nhận REST request: `/api/labs/session/nodes`, `/api/labs/session/nodes/(:action)`, `/api/nodestatus` |
-| `/opt/unetlab/html/includes/api_nodes.php` | PHP | Các hàm xử lý nghiệp vụ node: `apiNodeAdd()`, `apiNodeEdit()`, `apiNodeDelete()`, `apiNodeStart()`, `apiNodeStop()`, `apiNodeWipe()` |
-| `/opt/unetlab/html/includes/__node.php` | PHP (OOP Domain Object) | Đối tượng `Node`: Đọc ghi thuộc tính node từ Lab XML, tính toán port console, kiểm tra tính hợp lệ của tham số phần cứng |
-| `/opt/unetlab/html/includes/functions.php` | PHP | Tầng điều phối hạ tầng: `nodeStart()`, `nodeStop()`, `nodeWipe()`, `nodeExport()`, gọi các script CLI hệ thống |
-| `/opt/unetlab/wrappers/` | C / C++ compiled binaries | `qemu_wrapper`, `iol_wrapper`, `docker_wrapper`, `dynamips_wrapper`, `unl_wrapper`: Tiến trình setuid root khởi chạy hypervisors |
-| `/opt/unetlab/scripts/unl_wrapper.php` | PHP CLI | Cầu nối dòng lệnh giữa API Web và các wrapper nhị phân |
-| `/opt/unetlab/html/themes/default/js/actions.js` | JavaScript | Giao diện điều khiển hành động: Start, Stop, Wipe, Export, Restart, Start Selected |
-| `/opt/unetlab/html/themes/default/js/pnetlab-node-form.js` | JavaScript | Form modal cấu hình node (chọn image, template, vCPU, RAM, Ethernet slots) |
-| `/opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js`| JavaScript | Giao diện chỉnh sửa đồng loạt thuộc tính của nhiều node được chọn |
+| [`html/api.php`](../../html/api.php) | PHP (Slim Framework) | Điểm tiếp nhận REST request: `/api/labs/session/nodes`, `/api/labs/session/nodes/(:action)`, `/api/nodestatus` |
+| [`html/includes/api_nodes.php`](../../html/includes/api_nodes.php) | PHP | Các hàm xử lý nghiệp vụ node: `apiNodeAdd()`, `apiNodeEdit()`, `apiNodeDelete()`, `apiNodeStart()`, `apiNodeStop()`, `apiNodeWipe()` |
+| [`html/includes/__node.php`](../../html/includes/__node.php) | PHP (OOP Domain Object) | Đối tượng `Node`: Đọc ghi thuộc tính node từ Lab XML, tính toán port console, kiểm tra tính hợp lệ của tham số phần cứng |
+| [`html/includes/functions.php`](../../html/includes/functions.php) | PHP | Tầng điều phối hạ tầng: `nodeStart()`, `nodeStop()`, `nodeWipe()`, `nodeExport()`, gọi các script CLI hệ thống |
+| [`wrappers`](../../wrappers)/` | C / C++ compiled binaries | `qemu_wrapper`, `iol_wrapper`, `docker_wrapper`, `dynamips_wrapper`, `unl_wrapper`: Tiến trình setuid root khởi chạy hypervisors |
+| [`scripts/unl_wrapper.php`](../../scripts/unl_wrapper.php) | PHP CLI | Cầu nối dòng lệnh giữa API Web và các wrapper nhị phân |
+| [`html/themes/default/js/actions.js`](../../html/themes/default/js/actions.js) | JavaScript | Giao diện điều khiển hành động: Start, Stop, Wipe, Export, Restart, Start Selected |
+| [`html/themes/default/js/pnetlab-node-form.js`](../../html/themes/default/js/pnetlab-node-form.js) | JavaScript | Form modal cấu hình node (chọn image, template, vCPU, RAM, Ethernet slots) |
+| [`html/themes/default/js/pnetlab-bulk-node-edit.js`](../../html/themes/default/js/pnetlab-bulk-node-edit.js)| JavaScript | Giao diện chỉnh sửa đồng loạt thuộc tính của nhiều node được chọn |
 
 ---
 
@@ -100,8 +100,8 @@ flowchart TD
     api_router -->|"Gọi hàm nghiệp vụ<br/><i>[apiNodeStart / apiNodeStop]</i>"| api_nodes
     api_nodes -->|"Đọc cấu hình node từ Lab XML<br/><i>[$lab->getNodes()]</i>"| node_model
     api_nodes -->|"Thực thi hạ tầng<br/><i>[nodeStart() / nodeStop()]</i>"| functions_core
-    functions_core -->|"Thực thi lệnh shell<br/><i>[sudo /opt/unetlab/scripts/unl_wrapper.php -a start]</i>"| unl_wrapper_php
-    unl_wrapper_php -->|"Gọi trực tiếp file nhị phân<br/><i>[execve(/opt/unetlab/wrappers/qemu_wrapper)]</i>"| c_wrappers
+    functions_core -->|"Thực thi lệnh shell<br/><i>[sudo [`scripts/unl_wrapper.php`](../../scripts/unl_wrapper.php) -a start]</i>"| unl_wrapper_php
+    unl_wrapper_php -->|"Gọi trực tiếp file nhị phân<br/><i>[execve([`wrappers/qemu_wrapper`](../../wrappers/qemu_wrapper))]</i>"| c_wrappers
     c_wrappers -->|"Khởi chạy tiến trình máy ảo<br/><i>[execve(qemu-system-x86_64)]</i>"| kvm_qemu
     c_wrappers -->|"Khởi chạy tiến trình IOL<br/><i>[execve(i386-exec)]</i>"| iol_exec
     c_wrappers -->|"Điều khiển container<br/><i>[docker run / docker exec]</i>"| docker_engine

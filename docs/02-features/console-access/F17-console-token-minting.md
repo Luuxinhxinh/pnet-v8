@@ -36,8 +36,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/console/token_mint.php` | `mintConsoleToken()` | Sinh token HMAC có thời hạn |
-| `/opt/pnet-webconsole/backend/http_ws_bridge.py` | `verify_token()` | Giải mã và kiểm tra tính hợp lệ của token |
+| [`html/console/token_mint.php`](../../../html/console/token_mint.php) | `mintConsoleToken()` | Sinh token HMAC có thời hạn |
+| [`pnet-webconsole/backend/http_ws_bridge.py`](../../../pnet-webconsole/backend/http_ws_bridge.py) | `verify_token()` | Giải mã và kiểm tra tính hợp lệ của token |
 | `/etc/systemd/system/timers.target.wants/pnet-token-janitor.timer` | Systemd Timer | Bộ hẹn giờ dọn dẹp token định kỳ |
 
 ## 5. Input / Output & Xử lý Ngoại lệ

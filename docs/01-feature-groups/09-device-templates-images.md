@@ -27,12 +27,12 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 09, được đ�
 
 | Mã tính năng | Tên tính năng con | File tài liệu Level 2 | Tóm tắt Chức năng |
 | :---: | :--- | :--- | :--- |
-| **F48** | **Hệ thống Định nghĩa Bản mẫu Thiết bị (Template Schema)** | [`F48-device-templates-schema.md`](../02-features/templates-images/F48-device-templates-schema.md) | Cấu trúc file định nghĩa template trong `/opt/unetlab/html/templates/`, thiết lập mặc định vCPU, RAM |
+| **F48** | **Hệ thống Định nghĩa Bản mẫu Thiết bị (Template Schema)** | [`F48-device-templates-schema.md`](../02-features/templates-images/F48-device-templates-schema.md) | Cấu trúc file định nghĩa template trong [`html/templates`](../../html/templates)/`, thiết lập mặc định vCPU, RAM |
 | **F49** | **Nhà máy Chế tạo Mẫu Thiết bị Tùy biến (Device Factory)** | [`F49-custom-device-factory.md`](../02-features/templates-images/F49-custom-device-factory.md) | API và giao diện tạo template mới: chọn kiến trúc x86/ARM, kiểu NIC e1000/virtio, tham số QEMU bổ sung |
 | **F50** | **Quản lý Thư mục Image Thiết bị Cục bộ (Image Manager)** | [`F50-image-filesystem-manager.md`](../02-features/templates-images/F50-image-filesystem-manager.md) | Quét các thư mục `/opt/unetlab/addons/` và trả về danh sách các phiên bản OS đã cài đặt |
 | **F51** | **Tích hợp Kho Đám mây IShare2 (IShare2 Cloud Store)** | [`F51-ishare2-cloud-store.md`](../02-features/templates-images/F51-ishare2-cloud-store.md) | Tra cứu kho image online, tải gói về ngầm qua worker `ishare2.sh` và giải nén tự động |
 | **F52** | **Bộ Chuẩn hóa Tên & Chuyển đổi Đĩa Ảo (Image Normalizer)** | [`F52-image-normalizer-qcow2.md`](../02-features/templates-images/F52-image-normalizer-qcow2.md) | Chuyển đổi định dạng file VMDK sang `virtioa.qcow2` bằng lệnh `qemu-img convert`, sửa quyền chmod |
-| **F53** | **Quản lý Biểu tượng Thiết bị Đồ họa (Custom Icon Manager)** | [`F53-custom-icon-manager.md`](../02-features/templates-images/F53-custom-icon-manager.md) | Upload và quản lý các file icon PNG/SVG trong thư mục `/opt/unetlab/html/images/icons/` |
+| **F53** | **Quản lý Biểu tượng Thiết bị Đồ họa (Custom Icon Manager)** | [`F53-custom-icon-manager.md`](../02-features/templates-images/F53-custom-icon-manager.md) | Upload và quản lý các file icon PNG/SVG trong thư mục [`html/images/icons`](../../html/images/icons)/` |
 
 ---
 
@@ -40,16 +40,16 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 09, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_templatedefaults.php` | PHP | Đọc và ghi các giá trị mặc định cho từng template |
-| `/opt/unetlab/html/templates/` | Config/PHP Templates | Thư mục chứa hàng trăm file định nghĩa template (.php/.yml) |
-| `/opt/unetlab/html/devices-factory/api.php` | PHP | API tạo và quản lý custom device templates |
-| `/opt/unetlab/html/images-manage/api.php` | PHP | API kiểm tra dung lượng, xóa, đổi tên thư mục image trên đĩa cứng |
-| `/opt/unetlab/html/ishare2/api.php` | PHP | API giao tiếp với kho cloud IShare2 |
-| `/opt/unetlab/html/ishare2/image_normalize.php` | PHP | Bộ kiểm tra tính chuẩn tắc của cấu trúc tên thư mục image |
-| `/opt/unetlab/scripts/workers/ishare2.sh` | Shell Script | Worker chạy tải ngầm image qua curl/aria2 |
-| `/opt/unetlab/html/images-icons/api.php` | PHP | API quản lý upload và duyệt danh mục icon |
-| `/opt/unetlab/html/main/js/devices.js` | JavaScript | Giao diện quản lý template thiết bị trên Dashboard |
-| `/opt/unetlab/html/main/js/images.js` | JavaScript | Giao diện xem danh sách image cục bộ và kho IShare2 |
+| [`html/includes/api_templatedefaults.php`](../../html/includes/api_templatedefaults.php) | PHP | Đọc và ghi các giá trị mặc định cho từng template |
+| [`html/templates`](../../html/templates)/` | Config/PHP Templates | Thư mục chứa hàng trăm file định nghĩa template (.php/.yml) |
+| [`html/devices-factory/api.php`](../../html/devices-factory/api.php) | PHP | API tạo và quản lý custom device templates |
+| [`html/images-manage/api.php`](../../html/images-manage/api.php) | PHP | API kiểm tra dung lượng, xóa, đổi tên thư mục image trên đĩa cứng |
+| [`html/ishare2/api.php`](../../html/ishare2/api.php) | PHP | API giao tiếp với kho cloud IShare2 |
+| [`html/ishare2/image_normalize.php`](../../html/ishare2/image_normalize.php) | PHP | Bộ kiểm tra tính chuẩn tắc của cấu trúc tên thư mục image |
+| [`scripts/workers/ishare2.sh`](../../scripts/workers/ishare2.sh) | Shell Script | Worker chạy tải ngầm image qua curl/aria2 |
+| [`html/images-icons/api.php`](../../html/images-icons/api.php) | PHP | API quản lý upload và duyệt danh mục icon |
+| [`html/main/js/devices.js`](../../html/main/js/devices.js) | JavaScript | Giao diện quản lý template thiết bị trên Dashboard |
+| [`html/main/js/images.js`](../../html/main/js/images.js) | JavaScript | Giao diện xem danh sách image cục bộ và kho IShare2 |
 
 ---
 
@@ -72,7 +72,7 @@ flowchart TD
 
     subgraph SG_image_apis [" 📦 Tầng Backend Image & Template APIs (PHP) "]
         direction TB
-        template_api["<b>api_templatedefaults.php</b><br/><i>(Template Config Service)</i><br/>Quét thư mục /opt/unetlab/html/templates/"]:::api
+        template_api["<b>api_templatedefaults.php</b><br/><i>(Template Config Service)</i><br/>Quét thư mục [`html/templates`](../../html/templates)/"]:::api
         factory_api["<b>devices-factory/api.php</b><br/><i>(Template Factory Service)</i><br/>Lưu file template tùy biến mới"]:::api
         manage_api["<b>images-manage/api.php</b><br/><i>(Filesystem Browser)</i><br/>Quét thư mục /opt/unetlab/addons/"]:::api
         ishare_api["<b>ishare2/api.php</b><br/><i>(IShare2 Client Service)</i><br/>Giao tiếp HTTPS với máy chủ đám mây IShare2"]:::api
@@ -90,7 +90,7 @@ flowchart TD
     images_ui -->|"GET /images-manage/api.php<br/><i>[Lấy danh sách image cục bộ]</i>"| manage_api
     images_ui -->|"POST /ishare2/api.php?action=download<br/><i>[Chọn tải image từ Cloud]</i>"| ishare_api
     manage_api -->|"Duyệt thư mục<br/><i>[scandir(/opt/unetlab/addons)]</i>"| addons_fs
-    ishare_api -->|"Kích hoạt worker nền<br/><i>[nohup /opt/unetlab/scripts/workers/ishare2.sh &]</i>"| ishare_worker
+    ishare_api -->|"Kích hoạt worker nền<br/><i>[nohup [`scripts/workers/ishare2.sh`](../../scripts/workers/ishare2.sh) &]</i>"| ishare_worker
     ishare_worker -->|"Ghi file đã tải về<br/><i>[Giải nén vào /opt/unetlab/addons/qemu/...]</i>"| addons_fs
     normalizer_api -->|"Chuyển đổi đĩa ảo<br/><i>[qemu-img convert -O qcow2]</i>"| qemu_img
     devices_ui -->|"GET /api/templatedefaults<br/><i>[Đọc cấu hình mẫu]</i>"| template_api

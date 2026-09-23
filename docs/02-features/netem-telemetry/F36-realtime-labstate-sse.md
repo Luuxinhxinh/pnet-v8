@@ -37,9 +37,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnetlab-labstated.py` | `LabStateServer`, `stream_events()` | Daemon quản lý kênh đẩy SSE (12KB) |
-| `/opt/unetlab/html/pnq-labstate-token.php` | PHP API | Cấp phát token bảo mật cho kết nối SSE |
-| `/opt/unetlab/html/themes/default/js/pnetlab-labstate-client.js`| JavaScript | Trình nghe EventSource trên trình duyệt |
+| [`scripts/pnetlab-labstated.py`](../../../scripts/pnetlab-labstated.py) | `LabStateServer`, `stream_events()` | Daemon quản lý kênh đẩy SSE (12KB) |
+| [`html/pnq-labstate-token.php`](../../../html/pnq-labstate-token.php) | PHP API | Cấp phát token bảo mật cho kết nối SSE |
+| [`html/themes/default/js/pnetlab-labstate-client.js`](../../../html/themes/default/js/pnetlab-labstate-client.js)| JavaScript | Trình nghe EventSource trên trình duyệt |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Kết nối HTTP GET duy trì lâu dài với `Accept: text/event-stream`.

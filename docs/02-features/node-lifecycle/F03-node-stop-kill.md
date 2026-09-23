@@ -18,7 +18,7 @@ level: "Level 2"
 1. **Gửi Lệnh**: Client gửi `POST /api/labs/session/nodes/<node_id>/stop`.
 2. **Truy vấn PID**: `functions.php::nodeStop()` đọc PID của tiến trình node từ file `/opt/unetlab/tmp/<pod>/<node_id>/.pid` hoặc truy vấn bảng `node_sessions`.
 3. **Gửi Tín hiệu Dừng (Graceful Signal)**:
-   - Gọi wrapper: `sudo /opt/unetlab/scripts/unl_wrapper.php -a stop -T <pod> -D <node_id>`.
+   - Gọi wrapper: `sudo [`scripts/unl_wrapper.php`](../../../scripts/unl_wrapper.php) -a stop -T <pod> -D <node_id>`.
    - Wrapper gửi tín hiệu `SIGTERM` (Signal 15) đến tiến trình hypervisor (QEMU/IOL/Docker) để cho phép thiết bị lưu trạng thái đệm.
 4. **Cưỡng bức Dừng nếu Quá Thời gian (Timeout Kill)**:
    - Hệ thống chờ trong khoảng 5 giây. Nếu tiến trình vẫn tồn tại trong danh sách tiến trình của kernel, wrapper sẽ gửi tiếp tín hiệu `SIGKILL` (Signal 9) để chấm dứt ngay lập tức.
@@ -36,10 +36,10 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_nodes.php` | `apiNodeStop()` | Tiếp nhận request stop từ router |
-| `/opt/unetlab/html/includes/functions.php` | `nodeStop()` | Quản lý logic gửi tín hiệu và dọn dẹp |
-| `/opt/unetlab/scripts/unl_wrapper.php` | `stopNode()` | Gọi wrapper dừng tiến trình |
-| `/opt/unetlab/wrappers/unl_wrapper` | C function | `kill(pid, SIGTERM)` & `kill(pid, SIGKILL)` |
+| [`html/includes/api_nodes.php`](../../../html/includes/api_nodes.php) | `apiNodeStop()` | Tiếp nhận request stop từ router |
+| [`html/includes/functions.php`](../../../html/includes/functions.php) | `nodeStop()` | Quản lý logic gửi tín hiệu và dọn dẹp |
+| [`scripts/unl_wrapper.php`](../../../scripts/unl_wrapper.php) | `stopNode()` | Gọi wrapper dừng tiến trình |
+| [`wrappers/unl_wrapper`](../../../wrappers/unl_wrapper) | C function | `kill(pid, SIGTERM)` & `kill(pid, SIGKILL)` |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/1/stop`

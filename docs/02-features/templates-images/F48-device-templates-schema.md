@@ -15,7 +15,7 @@ level: "Level 2"
 - **Thời điểm kích hoạt**: Khi hệ thống khởi tạo danh sách template hoặc khi người dùng mở form tạo node mới.
 
 ## 2. Cơ chế Chạy (Mechanism)
-1. **Cấu trúc File Template trong `/opt/unetlab/html/templates/`**:
+1. **Cấu trúc File Template trong [`html/templates`](../../../html/templates)/`**:
    - Mỗi dòng thiết bị được định nghĩa bằng một file PHP/YAML (ví dụ `cisco_csr1000v.php`, `juniper_vmx.php`, `arista_veos.php`):
      ```php
      <?php
@@ -42,9 +42,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_templatedefaults.php` | `apiGetTemplateDefaults()` | API đọc cấu hình mặc định của template |
-| `/opt/unetlab/html/templates/` | Template Definitions | Thư mục chứa hàng trăm file định nghĩa thiết bị |
-| `/opt/unetlab/html/themes/default/js/pnetlab-template-defaults.js`| JavaScript | Nạp cấu hình mẫu vào form giao diện |
+| [`html/includes/api_templatedefaults.php`](../../../html/includes/api_templatedefaults.php) | `apiGetTemplateDefaults()` | API đọc cấu hình mặc định của template |
+| [`html/templates`](../../../html/templates)/` | Template Definitions | Thư mục chứa hàng trăm file định nghĩa thiết bị |
+| [`html/themes/default/js/pnetlab-template-defaults.js`](../../../html/themes/default/js/pnetlab-template-defaults.js)| JavaScript | Nạp cấu hình mẫu vào form giao diện |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /api/templatedefaults/csr1000v`

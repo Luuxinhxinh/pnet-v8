@@ -20,7 +20,7 @@ level: "Level 2"
    - Nhận danh mục JSON gồm: Tên image, Phiên bản, Dung lượng nén (MB), Mô tả, Ảnh đại diện, và Mã băm SHA256 kiểm tra toàn vẹn.
 2. **Kích hoạt Tiến trình Tải Ngầm (Background Worker)**:
    - Khi người dùng nhấn nút "Get Image":
-   - API gọi kịch bản nền: `nohup /opt/unetlab/scripts/workers/ishare2.sh --download <image_id> > /tmp/ishare.log 2>&1 &`.
+   - API gọi kịch bản nền: `nohup [`scripts/workers/ishare2.sh`](../../../scripts/workers/ishare2.sh) --download <image_id> > /tmp/ishare.log 2>&1 &`.
 3. **Tải & Giải nén Tự động**:
    - Worker sử dụng công cụ tải đa luồng `aria2c` hoặc `curl` để đạt tốc độ tối đa.
    - Sau khi tải xong: Kiểm tra mã băm SHA256 đối chiếu với manifest.
@@ -36,9 +36,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/ishare2/api.php` | PHP API | API giao tiếp với kho IShare2 Cloud |
-| `/opt/unetlab/scripts/workers/ishare2.sh` | Shell Script (7.8KB) | Worker chạy ngầm tải và giải nén image |
-| `/opt/unetlab/html/main/js/images.js` | JavaScript | Giao diện kho IShare2 Store |
+| [`html/ishare2/api.php`](../../../html/ishare2/api.php) | PHP API | API giao tiếp với kho IShare2 Cloud |
+| [`scripts/workers/ishare2.sh`](../../../scripts/workers/ishare2.sh) | Shell Script (7.8KB) | Worker chạy ngầm tải và giải nén image |
+| [`html/main/js/images.js`](../../../html/main/js/images.js) | JavaScript | Giao diện kho IShare2 Store |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Nhấn "Download" trên gói `cisco-csr1000v-17.03.04`.

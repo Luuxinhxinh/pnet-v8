@@ -29,7 +29,8 @@ level: "Level 2"
 4. **Thực thi & Thu thập Buffer**:
    - Gửi lệnh cần kiểm tra (ví dụ `show running-config`).
    - Đọc toàn bộ chuỗi byte cho tới khi dấu nhắc `#` xuất hiện trở lại.
-   - Làm sạch văn bản: Loại bỏ các ký tự điều khiển ANSI escape codes, ký tự ``.
+   - Làm sạch văn bản: Loại bỏ các ký tự điều khiển ANSI escape codes, ký tự `
+`.
    - Xuất văn bản sạch ra định dạng JSON qua `stdout`.
 
 ## 3. Công nghệ & Cơ sở Sử dụng
@@ -39,8 +40,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnet_validation_transport.py` | Python Script (4.5KB) | Kịch bản vận chuyển lệnh CLI qua Telnet/SSH |
-| `/opt/unetlab/scripts/pnet-showcmd.py` | Python Script | Kịch bản hỗ trợ thu thập nhiều lệnh đồng thời |
+| [`scripts/pnet_validation_transport.py`](../../../scripts/pnet_validation_transport.py) | Python Script (4.5KB) | Kịch bản vận chuyển lệnh CLI qua Telnet/SSH |
+| [`scripts/pnet-showcmd.py`](../../../scripts/pnet-showcmd.py) | Python Script | Kịch bản hỗ trợ thu thập nhiều lệnh đồng thời |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input CLI**: `python3 pnet_validation_transport.py --port 32769 --cmd "show version"`

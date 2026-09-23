@@ -33,9 +33,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/lab-session-access.php` | `checkLabSessionLock()` | Kiểm tra quyền truy cập và cờ khóa |
-| `/opt/unetlab/html/api.php` | `$app->post("/api/labs/session/lock")` | API bật tắt cờ khóa F-LOCK |
-| `/opt/unetlab/html/includes/__lab.php` | `Lab::getLock()`, `Lab::setLock()` | Đọc ghi thuộc tính lock trong XML |
+| [`html/includes/lab-session-access.php`](../../../html/includes/lab-session-access.php) | `checkLabSessionLock()` | Kiểm tra quyền truy cập và cờ khóa |
+| [`html/api.php`](../../../html/api.php) | `$app->post("/api/labs/session/lock")` | API bật tắt cờ khóa F-LOCK |
+| [`html/includes/__lab.php`](../../../html/includes/__lab.php) | `Lab::getLock()`, `Lab::setLock()` | Đọc ghi thuộc tính lock trong XML |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/lock` với `{ "lock": 1 }`

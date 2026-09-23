@@ -37,8 +37,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/import/api.php` | `convertCmlToUnl()` | Điều phối chuyển đổi file CML sang UNL |
-| `/opt/unetlab/html/includes/__lab.php` | `buildFromCmlArray()` | Dựng cây đối tượng Lab từ dữ liệu CML |
+| [`html/import/api.php`](../../../html/import/api.php) | `convertCmlToUnl()` | Điều phối chuyển đổi file CML sang UNL |
+| [`html/includes/__lab.php`](../../../html/includes/__lab.php) | `buildFromCmlArray()` | Dựng cây đối tượng Lab từ dữ liệu CML |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: File `campus_network.yaml` (Cisco CML v2 export).

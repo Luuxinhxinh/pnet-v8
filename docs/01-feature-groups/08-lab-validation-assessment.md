@@ -36,11 +36,11 @@ Dưới đây là 4 tính năng con độc lập thuộc Nhóm 08, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/lab_validation_probe.php` | PHP (34KB) | Động cơ điều phối và phân tích các bài kiểm tra validation |
-| `/opt/unetlab/html/includes/lab_validation_store.php` | PHP (36KB) | Tầng lưu trữ kết quả kiểm tra, chấm điểm và tính toán lịch sử |
-| `/opt/unetlab/html/includes/lab_tasks_unl.php` | PHP | Trích xuất và cập nhật các thẻ `<tasks>` trong file `.unl` |
-| `/opt/unetlab/scripts/pnet_validation_transport.py` | Python | Kênh vận chuyển kết nối dòng lệnh Telnet/SSH vào thiết bị ảo |
-| `/opt/unetlab/html/themes/default/js/validate.js` | JavaScript | Giao diện thanh tiến độ hoàn thành, danh sách task và nút "Check Lab" |
+| [`html/includes/lab_validation_probe.php`](../../html/includes/lab_validation_probe.php) | PHP (34KB) | Động cơ điều phối và phân tích các bài kiểm tra validation |
+| [`html/includes/lab_validation_store.php`](../../html/includes/lab_validation_store.php) | PHP (36KB) | Tầng lưu trữ kết quả kiểm tra, chấm điểm và tính toán lịch sử |
+| [`html/includes/lab_tasks_unl.php`](../../html/includes/lab_tasks_unl.php) | PHP | Trích xuất và cập nhật các thẻ `<tasks>` trong file `.unl` |
+| [`scripts/pnet_validation_transport.py`](../../scripts/pnet_validation_transport.py) | Python | Kênh vận chuyển kết nối dòng lệnh Telnet/SSH vào thiết bị ảo |
+| [`html/themes/default/js/validate.js`](../../html/themes/default/js/validate.js) | JavaScript | Giao diện thanh tiến độ hoàn thành, danh sách task và nút "Check Lab" |
 
 ---
 

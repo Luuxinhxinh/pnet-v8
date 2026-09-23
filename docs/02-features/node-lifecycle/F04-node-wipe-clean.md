@@ -34,9 +34,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_nodes.php` | `apiNodeWipe()` | Kiểm tra node đã stop và điều phối wipe |
-| `/opt/unetlab/html/includes/functions.php` | `nodeWipe()` | Xóa các tệp đĩa tạm và nvram |
-| `/opt/unetlab/scripts/unl_wrapper.php` | `wipeNode()` | Thực hiện thao tác xóa an toàn qua quyền root |
+| [`html/includes/api_nodes.php`](../../../html/includes/api_nodes.php) | `apiNodeWipe()` | Kiểm tra node đã stop và điều phối wipe |
+| [`html/includes/functions.php`](../../../html/includes/functions.php) | `nodeWipe()` | Xóa các tệp đĩa tạm và nvram |
+| [`scripts/unl_wrapper.php`](../../../scripts/unl_wrapper.php) | `wipeNode()` | Thực hiện thao tác xóa an toàn qua quyền root |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/1/wipe`

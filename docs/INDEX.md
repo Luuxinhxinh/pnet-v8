@@ -147,18 +147,18 @@ Khi bạn cần sửa lỗi hoặc phát triển tính năng mới trong PNet v8
 
 | Nhu cầu Can thiệp Mã nguồn | Nhóm | File / Thư mục Mã nguồn Cần sửa | Tài liệu Chi tiết Cần đọc |
 | :--- | :---: | :--- | :--- |
-| **Sửa logic khởi động QEMU/IOL/Docker** | G01 | `/opt/unetlab/wrappers/`, `html/includes/functions.php` | [`F02-node-start-lifecycle.md`](02-features/node-lifecycle/F02-node-start-lifecycle.md) |
+| **Sửa logic khởi động QEMU/IOL/Docker** | G01 | [`wrappers`](../wrappers)/`, `html/includes/functions.php` | [`F02-node-start-lifecycle.md`](02-features/node-lifecycle/F02-node-start-lifecycle.md) |
 | **Thêm hoặc sửa loại card mạng, cổng nối dây** | G02 | `html/devices/interfc.php`, `html/includes/api_networks.php` | [`F08-network-bridge-cloud.md`](02-features/network-topology/F08-network-bridge-cloud.md) |
 | **Sửa giao diện vẽ Canvas hoặc kéo thả dây** | G02 | `html/themes/default/js/javascript.js` | [`F10-canvas-topology-engine.md`](02-features/network-topology/F10-canvas-topology-engine.md) |
-| **Khắc phục lỗi WebConsole Telnet không gõ được** | G03 | `/opt/pnet-webconsole/backend/http_ws_bridge.py` | [`F15-webconsole-websocket-bridge.md`](02-features/console-access/F15-webconsole-websocket-bridge.md) |
-| **Khắc phục lỗi Guacamole VNC màn hình đen** | G03 | `/opt/pnet-webconsole/backend/guacamole-lite-server.js` | [`F16-guacamole-html5-vnc-rdp.md`](02-features/console-access/F16-guacamole-html5-vnc-rdp.md) |
+| **Khắc phục lỗi WebConsole Telnet không gõ được** | G03 | [`pnet-webconsole/backend/http_ws_bridge.py`](../pnet-webconsole/backend/http_ws_bridge.py) | [`F15-webconsole-websocket-bridge.md`](02-features/console-access/F15-webconsole-websocket-bridge.md) |
+| **Khắc phục lỗi Guacamole VNC màn hình đen** | G03 | [`pnet-webconsole/backend/guacamole-lite-server.js`](../pnet-webconsole/backend/guacamole-lite-server.js) | [`F16-guacamole-html5-vnc-rdp.md`](02-features/console-access/F16-guacamole-html5-vnc-rdp.md) |
 | **Sửa cấu trúc đọc ghi file Lab XML `.unl`** | G04 | `html/includes/__lab.php`, `includes/__node.php` | [`F21-lab-xml-parser-serializer.md`](02-features/lab-management/F21-lab-xml-parser-serializer.md) |
-| **Sửa daemon điều phối cụm Satellite** | G05 | `/opt/unetlab/scripts/pnetlab-brokerd.py`, `pnetlab-satd.py`| [`F26-cluster-broker-daemon.md`](02-features/cluster-satellite/F26-cluster-broker-daemon.md) |
+| **Sửa daemon điều phối cụm Satellite** | G05 | [`scripts/pnetlab-brokerd.py`](../scripts/pnetlab-brokerd.py), `pnetlab-satd.py`| [`F26-cluster-broker-daemon.md`](02-features/cluster-satellite/F26-cluster-broker-daemon.md) |
 | **Sửa cơ chế tạo độ trễ NetEm đường dây cáp** | G06 | `html/pnq-linkwatch.php`, `scripts/pnetlab-linkwatchd.py` | [`F31-netem-link-impairment.md`](02-features/netem-telemetry/F31-netem-link-impairment.md) |
-| **Chỉnh sửa thuật toán vẽ đường bao OSPF/BGP** | G07 | `/opt/unetlab/scripts/pnet_routeoverlay.py` | [`F37-routing-protocol-overlay.md`](02-features/protocol-overlay/F37-routing-protocol-overlay.md) |
+| **Chỉnh sửa thuật toán vẽ đường bao OSPF/BGP** | G07 | [`scripts/pnet_routeoverlay.py`](../scripts/pnet_routeoverlay.py) | [`F37-routing-protocol-overlay.md`](02-features/protocol-overlay/F37-routing-protocol-overlay.md) |
 | **Bổ sung tiêu chí chấm bài thi lab tự động** | G08 | `html/includes/lab_validation_probe.php` | [`F45-validation-probe-engine.md`](02-features/lab-validation/F45-validation-probe-engine.md) |
 | **Bổ sung template thiết bị mạng mới** | G09 | `html/templates/`, `html/devices-factory/api.php` | [`F48-device-templates-schema.md`](02-features/templates-images/F48-device-templates-schema.md) |
-| **Tích hợp thêm Tool gọi lệnh cho AI Agent MCP**| G10 | `/opt/unetlab/scripts/mcp/pnetlab-mcp.py` | [`F54-ai-agent-mcp-server.md`](02-features/automation-ai/F54-ai-agent-mcp-server.md) |
+| **Tích hợp thêm Tool gọi lệnh cho AI Agent MCP**| G10 | [`scripts/mcp/pnetlab-mcp.py`](../scripts/mcp/pnetlab-mcp.py) | [`F54-ai-agent-mcp-server.md`](02-features/automation-ai/F54-ai-agent-mcp-server.md) |
 | **Sửa logic phân quyền người dùng và POD** | G11 | `html/includes/api_uusers.php`, `api_authentication.php` | [`F59-user-rbac-pod-isolation.md`](02-features/user-security/F59-user-rbac-pod-isolation.md) |
 | **Bổ sung bài kiểm tra tự chẩn đoán PNet Doctor**| G12 | `html/includes/doctor.php`, `scripts/pnetlab_doctor.php`| [`F64-system-doctor-diagnostics.md`](02-features/system-platform/F64-system-doctor-diagnostics.md) |
 

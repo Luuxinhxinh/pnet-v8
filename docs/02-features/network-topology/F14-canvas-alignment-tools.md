@@ -32,9 +32,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js` | `alignNodes()`, `distributeNodes()` | Thuật toán toán học căn chỉnh vị trí |
-| `/opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js` | `duplicateSelectedNodes()` | Xử lý nhân bản cấu hình thiết bị |
-| `/opt/unetlab/html/includes/api_nodes.php` | `apiNodeAdd()` | Tiếp nhận tạo node bản sao |
+| [`html/themes/default/js/pnetlab-align-distribute.js`](../../../html/themes/default/js/pnetlab-align-distribute.js) | `alignNodes()`, `distributeNodes()` | Thuật toán toán học căn chỉnh vị trí |
+| [`html/themes/default/js/pnetlab-node-duplicate.js`](../../../html/themes/default/js/pnetlab-node-duplicate.js) | `duplicateSelectedNodes()` | Xử lý nhân bản cấu hình thiết bị |
+| [`html/includes/api_nodes.php`](../../../html/includes/api_nodes.php) | `apiNodeAdd()` | Tiếp nhận tạo node bản sao |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Mảng các Node ID được chọn và loại căn chỉnh: `{ "action": "align_horizontal", "node_ids": [1, 2, 3] }`

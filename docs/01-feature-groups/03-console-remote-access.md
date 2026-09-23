@@ -38,13 +38,13 @@ Dưới đây là 5 tính năng con độc lập thuộc Nhóm 03, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| `/opt/pnet-webconsole/backend/http_ws_bridge.py` | Python (asyncio) | Daemon cầu nối WebSocket HTTP: Nhận kết nối ws từ client, xác thực token và mở TCP socket đến console port của node |
-| `/opt/pnet-webconsole/backend/console_mux.py` | Python | Bộ dồn kênh dòng lệnh (Console Multiplexer), quản lý nhiều phiên console đồng thời |
-| `/opt/pnet-webconsole/backend/guacamole-lite-server.js` | Node.js | Máy chủ Guacamole Lite: Chuyển đổi giao thức Guacamole tunnel sang WebSocket cho client VNC/RDP |
-| `/opt/unetlab/html/console/token_mint.php` | PHP | API cấp phát token bảo mật trước khi mở console |
-| `/opt/unetlab/html/console/capture_native.php` | PHP | API sinh kịch bản khởi động Wireshark native và truyền pipe dữ liệu pcap |
-| `/opt/unetlab/wrappers/simple_forwarder` | C nhị phân | Bộ chuyển tiếp dữ liệu nhị phân raw socket tốc độ cao cho Wireshark capture |
-| `/opt/unetlab/html/themes/default/js/pnetlab-webconsole.js` | JavaScript | Xử lý giao diện terminal xterm.js, kết nối WebSocket và quản lý tab console |
+| [`pnet-webconsole/backend/http_ws_bridge.py`](../../pnet-webconsole/backend/http_ws_bridge.py) | Python (asyncio) | Daemon cầu nối WebSocket HTTP: Nhận kết nối ws từ client, xác thực token và mở TCP socket đến console port của node |
+| [`pnet-webconsole/backend/console_mux.py`](../../pnet-webconsole/backend/console_mux.py) | Python | Bộ dồn kênh dòng lệnh (Console Multiplexer), quản lý nhiều phiên console đồng thời |
+| [`pnet-webconsole/backend/guacamole-lite-server.js`](../../pnet-webconsole/backend/guacamole-lite-server.js) | Node.js | Máy chủ Guacamole Lite: Chuyển đổi giao thức Guacamole tunnel sang WebSocket cho client VNC/RDP |
+| [`html/console/token_mint.php`](../../html/console/token_mint.php) | PHP | API cấp phát token bảo mật trước khi mở console |
+| [`html/console/capture_native.php`](../../html/console/capture_native.php) | PHP | API sinh kịch bản khởi động Wireshark native và truyền pipe dữ liệu pcap |
+| [`wrappers/simple_forwarder`](../../wrappers/simple_forwarder) | C nhị phân | Bộ chuyển tiếp dữ liệu nhị phân raw socket tốc độ cao cho Wireshark capture |
+| [`html/themes/default/js/pnetlab-webconsole.js`](../../html/themes/default/js/pnetlab-webconsole.js) | JavaScript | Xử lý giao diện terminal xterm.js, kết nối WebSocket và quản lý tab console |
 | `/etc/pnet-webconsole/guac.env` | Config env | Cấu hình biến môi trường kết nối MySQL `guacdb` và daemon `guacd` |
 
 ---

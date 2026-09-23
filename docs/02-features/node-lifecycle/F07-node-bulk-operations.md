@@ -34,9 +34,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_nodes.php` | `apiNodesStart()`, `apiNodesStop()` | Xử lý danh sách node hàng loạt |
-| `/opt/unetlab/html/themes/default/js/actions.js` | `startAllNodes()`, `stopAllNodes()` | Giao diện điều khiển nút bấm hàng loạt |
-| `/opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js` | `saveBulkNodeForm()` | Cập nhật tham số của nhiều node cùng lúc |
+| [`html/includes/api_nodes.php`](../../../html/includes/api_nodes.php) | `apiNodesStart()`, `apiNodesStop()` | Xử lý danh sách node hàng loạt |
+| [`html/themes/default/js/actions.js`](../../../html/themes/default/js/actions.js) | `startAllNodes()`, `stopAllNodes()` | Giao diện điều khiển nút bấm hàng loạt |
+| [`html/themes/default/js/pnetlab-bulk-node-edit.js`](../../../html/themes/default/js/pnetlab-bulk-node-edit.js) | `saveBulkNodeForm()` | Cập nhật tham số của nhiều node cùng lúc |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/start` với JSON: `{"nodes": [1, 2, 3]}`

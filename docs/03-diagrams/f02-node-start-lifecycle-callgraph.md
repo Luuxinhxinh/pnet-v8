@@ -15,7 +15,7 @@ graph TD
     FUNC_START --> PREP_DISK["functions.php: prepareDisk()"]
     PREP_DISK --> QEMU_IMG["qemu-img create -f qcow2 -b base virtioa.qcow2"]
     FUNC_START --> CLI_WRAPPER["exec: unl_wrapper.php -a start"]
-    CLI_WRAPPER --> C_WRAPPER["execve: /opt/unetlab/wrappers/qemu_wrapper"]
+    CLI_WRAPPER --> C_WRAPPER["execve: [`wrappers/qemu_wrapper`](../../wrappers/qemu_wrapper)"]
     C_WRAPPER --> CREATE_TAP["ip tuntap add dev tap... mode tap"]
     C_WRAPPER --> BR_ATTACH["brctl addif br-... tap..."]
     C_WRAPPER --> CGROUP_ATTACH["echo PID > /sys/fs/cgroup/cpu/..."]

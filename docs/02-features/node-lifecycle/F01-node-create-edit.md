@@ -37,11 +37,11 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/api.php` | `$app->post("/api/labs/session/nodes")` | Tiếp nhận REST request từ client |
-| `/opt/unetlab/html/includes/api_nodes.php` | `apiNodeAdd()`, `apiNodeEdit()` | Xử lý logic kiểm tra và gán tham số node |
-| `/opt/unetlab/html/includes/__node.php` | `class Node`, `checkNode()`, `getParams()` | Mô hình đối tượng Node, validate giá trị phần cứng |
-| `/opt/unetlab/html/includes/__lab.php` | `Lab::addNode()`, `Lab::editNode()`, `Lab::save()` | Cập nhật thẻ XML và lưu file lab vật lý |
-| `/opt/unetlab/html/themes/default/js/pnetlab-node-form.js` | `renderNodeForm()`, `saveNodeData()` | Form nhập liệu giao diện phía trình duyệt |
+| [`html/api.php`](../../../html/api.php) | `$app->post("/api/labs/session/nodes")` | Tiếp nhận REST request từ client |
+| [`html/includes/api_nodes.php`](../../../html/includes/api_nodes.php) | `apiNodeAdd()`, `apiNodeEdit()` | Xử lý logic kiểm tra và gán tham số node |
+| [`html/includes/__node.php`](../../../html/includes/__node.php) | `class Node`, `checkNode()`, `getParams()` | Mô hình đối tượng Node, validate giá trị phần cứng |
+| [`html/includes/__lab.php`](../../../html/includes/__lab.php) | `Lab::addNode()`, `Lab::editNode()`, `Lab::save()` | Cập nhật thẻ XML và lưu file lab vật lý |
+| [`html/themes/default/js/pnetlab-node-form.js`](../../../html/themes/default/js/pnetlab-node-form.js) | `renderNodeForm()`, `saveNodeData()` | Form nhập liệu giao diện phía trình duyệt |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

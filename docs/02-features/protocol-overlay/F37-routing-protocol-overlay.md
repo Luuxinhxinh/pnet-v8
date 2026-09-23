@@ -33,9 +33,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnet_routeoverlay.py` | Python Script (107KB) | Động cơ phân tích routing và tính toán tọa độ đường bao |
-| `/opt/unetlab/html/pnq-overlay.php` | PHP API (65KB) | Endpoint tổng hợp và phục vụ dữ liệu overlay |
-| `/opt/unetlab/html/themes/default/js/pnetlab-lazy-overlays.js`| JavaScript | Quản lý vẽ các lớp phủ đồ họa trên client |
+| [`scripts/pnet_routeoverlay.py`](../../../scripts/pnet_routeoverlay.py) | Python Script (107KB) | Động cơ phân tích routing và tính toán tọa độ đường bao |
+| [`html/pnq-overlay.php`](../../../html/pnq-overlay.php) | PHP API (65KB) | Endpoint tổng hợp và phục vụ dữ liệu overlay |
+| [`html/themes/default/js/pnetlab-lazy-overlays.js`](../../../html/themes/default/js/pnetlab-lazy-overlays.js)| JavaScript | Quản lý vẽ các lớp phủ đồ họa trên client |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /pnq-overlay.php?proto=ospf`

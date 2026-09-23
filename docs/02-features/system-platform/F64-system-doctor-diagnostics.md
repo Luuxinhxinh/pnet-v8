@@ -21,7 +21,7 @@ level: "Level 2"
      - **Test 1 - KVM Virtualization**: Kiểm tra file thiết bị `/dev/kvm` có tồn tại và user www-data có quyền đọc ghi không.
      - **Test 2 - Systemd Services**: Kiểm tra `systemctl is-active` đối với: `pnet-http-bridge`, `pnet-console-mux`, `pnet-guac-lite`, `pnetlab-brokerd`, `pnetlab-labstated`, `mysql`, `apache2`.
      - **Test 3 - Database Integrity**: Kiểm tra kết nối PDO tới `pnetlab_db` và `guacdb`.
-     - **Test 4 - Filesystem Permissions**: Quét kiểm tra quyền sở hữu `www-data:unl` và quyền setuid của các binary wrapper trong `/opt/unetlab/wrappers/`.
+     - **Test 4 - Filesystem Permissions**: Quét kiểm tra quyền sở hữu `www-data:unl` và quyền setuid của các binary wrapper trong [`wrappers`](../../../wrappers)/`.
      - **Test 5 - Disk Space**: Cảnh báo nếu phân vùng `/` hoặc `/opt/unetlab` còn dưới 5GB.
 2. **Tổng hợp Báo cáo Sức khỏe (Health Scorecard)**:
    - Phân loại kết quả: `OK` (Xanh lá), `WARNING` (Vàng), `CRITICAL` (Đỏ).
@@ -35,9 +35,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/doctor.php` | `class PnetDoctor`, `runAllChecks()`, `fixPermissions()` | Lõi chẩn đoán lỗi hệ thống (11KB) |
-| `/opt/unetlab/scripts/pnetlab_doctor.php` | PHP CLI Script | Trình kiểm tra doctor chạy bằng dòng lệnh |
-| `/opt/unetlab/html/api.php` | `$app->get("/api/health")` | REST API kiểm tra sức khỏe hệ thống |
+| [`html/includes/doctor.php`](../../../html/includes/doctor.php) | `class PnetDoctor`, `runAllChecks()`, `fixPermissions()` | Lõi chẩn đoán lỗi hệ thống (11KB) |
+| [`scripts/pnetlab_doctor.php`](../../../scripts/pnetlab_doctor.php) | PHP CLI Script | Trình kiểm tra doctor chạy bằng dòng lệnh |
+| [`html/api.php`](../../../html/api.php) | `$app->get("/api/health")` | REST API kiểm tra sức khỏe hệ thống |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /api/health`.

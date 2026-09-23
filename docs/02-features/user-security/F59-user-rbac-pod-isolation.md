@@ -37,9 +37,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_uusers.php` | `apiUserAdd()`, `apiUserEdit()`, `apiUserDelete()` | Nghiệp vụ quản lý user và gán POD |
-| `/opt/unetlab/html/users/api.php` | PHP API | Endpoint phục vụ giao diện quản trị user |
-| `/opt/unetlab/html/main/js/users.js` | JavaScript | Giao diện bảng danh sách tài khoản người dùng |
+| [`html/includes/api_uusers.php`](../../../html/includes/api_uusers.php) | `apiUserAdd()`, `apiUserEdit()`, `apiUserDelete()` | Nghiệp vụ quản lý user và gán POD |
+| [`html/users/api.php`](../../../html/users/api.php) | PHP API | Endpoint phục vụ giao diện quản trị user |
+| [`html/main/js/users.js`](../../../html/main/js/users.js) | JavaScript | Giao diện bảng danh sách tài khoản người dùng |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/uusers` với `{ "username": "student01", "role": "user", "pod": 5 }`.

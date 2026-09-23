@@ -40,9 +40,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnet_bgpparse.py` | Python Script | Bóc tách bảng BGP từ CLI |
-| `/opt/unetlab/html/pnq-bgppath.php` | PHP API | Endpoint cung cấp dữ liệu AS-Path |
-| `/opt/unetlab/html/themes/default/js/pnetlab-bgp-waterfall.js`| JavaScript | Render biểu đồ thác đổ và cây quyết định BGP |
+| [`scripts/pnet_bgpparse.py`](../../../scripts/pnet_bgpparse.py) | Python Script | Bóc tách bảng BGP từ CLI |
+| [`html/pnq-bgppath.php`](../../../html/pnq-bgppath.php) | PHP API | Endpoint cung cấp dữ liệu AS-Path |
+| [`html/themes/default/js/pnetlab-bgp-waterfall.js`](../../../html/themes/default/js/pnetlab-bgp-waterfall.js)| JavaScript | Render biểu đồ thác đổ và cây quyết định BGP |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Chọn tiền tố cần phân tích: `prefix = 10.0.0.0/24`.

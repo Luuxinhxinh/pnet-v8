@@ -38,10 +38,10 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/airhandler.py` | Python Daemon (31KB) | Động cơ vật lý tính toán RF và chuyển tiếp frame |
-| `/opt/unetlab/scripts/pnet-wifi-truth.py` | Python Script (11KB) | Kịch bản trích xuất thông số anten và công suất |
-| `/opt/unetlab/html/pnq-wifi.php` | PHP API (15KB) | Endpoint trả về RSSI của từng client |
-| `/opt/unetlab/html/themes/default/js/pnetlab-wifi-painter.js` | JavaScript | Vẽ gradient biểu đồ nhiệt vô tuyến |
+| [`scripts/airhandler.py`](../../../scripts/airhandler.py) | Python Daemon (31KB) | Động cơ vật lý tính toán RF và chuyển tiếp frame |
+| [`scripts/pnet-wifi-truth.py`](../../../scripts/pnet-wifi-truth.py) | Python Script (11KB) | Kịch bản trích xuất thông số anten và công suất |
+| [`html/pnq-wifi.php`](../../../html/pnq-wifi.php) | PHP API (15KB) | Endpoint trả về RSSI của từng client |
+| [`html/themes/default/js/pnetlab-wifi-painter.js`](../../../html/themes/default/js/pnetlab-wifi-painter.js) | JavaScript | Vẽ gradient biểu đồ nhiệt vô tuyến |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Tọa độ di chuyển của WiFi Client trên màn hình.

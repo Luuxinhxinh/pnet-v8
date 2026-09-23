@@ -34,9 +34,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_folders.php` | `apiFoldersGet()`, `apiFolderAdd()` | Quản lý thư mục chứa lab |
-| `/opt/unetlab/html/includes/api_labs.php` | `apiLabAdd()`, `apiLabDelete()`, `apiLabRename()` | Điều phối thao tác bài lab |
-| `/opt/unetlab/html/main/js/labs.js` | `renderLabTree()`, `onNewLabClick()` | Giao diện hiển thị cây bài lab |
+| [`html/includes/api_folders.php`](../../../html/includes/api_folders.php) | `apiFoldersGet()`, `apiFolderAdd()` | Quản lý thư mục chứa lab |
+| [`html/includes/api_labs.php`](../../../html/includes/api_labs.php) | `apiLabAdd()`, `apiLabDelete()`, `apiLabRename()` | Điều phối thao tác bài lab |
+| [`html/main/js/labs.js`](../../../html/main/js/labs.js) | `renderLabTree()`, `onNewLabClick()` | Giao diện hiển thị cây bài lab |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs` với payload:

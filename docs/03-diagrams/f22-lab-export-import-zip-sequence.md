@@ -18,7 +18,7 @@ sequenceDiagram
     User->>UI: Kéo thả file "SDWAN_Lab.zip" để nhập khẩu
     UI->>API: POST /import/api.php (Multipart file)
     API->>API: Lưu tệp tạm vào /tmp/upload_xyz.zip
-    API->>Worker: Kích hoạt sudo /opt/unetlab/scripts/workers/import.sh
+    API->>Worker: Kích hoạt sudo [`scripts/workers/import.sh`](../../scripts/workers/import.sh)
     Worker->>Worker: Quét kiểm tra bảo mật cấu trúc zip
     Worker->>Storage: Giải nén file .unl và hình ảnh vào thư mục đích
     Worker->>Storage: Thiết lập quyền chown www-data:unl

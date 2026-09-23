@@ -33,8 +33,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pnetlab-brokerd.py` | `setup_cross_host_link()` | Điều phối tạo VXLAN trên 2 đầu |
-| `/opt/unetlab/scripts/pnet-satdeploy.sh` | Shell Script | Cấu hình tham số kernel VXLAN trên vệ tinh |
+| [`scripts/pnetlab-brokerd.py`](../../../scripts/pnetlab-brokerd.py) | `setup_cross_host_link()` | Điều phối tạo VXLAN trên 2 đầu |
+| [`scripts/pnet-satdeploy.sh`](../../../scripts/pnet-satdeploy.sh) | Shell Script | Cấu hình tham số kernel VXLAN trên vệ tinh |
 | `/opt/ovf/pnet-fwd-reconcile.sh` | Shell Script | Đảm bảo tường lửa không chặn cổng UDP 4789 |
 
 ## 5. Input / Output & Xử lý Ngoại lệ

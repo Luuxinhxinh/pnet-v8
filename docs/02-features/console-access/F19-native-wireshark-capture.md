@@ -22,7 +22,7 @@ level: "Level 2"
 3. **Thiết lập Kênh Named Pipe qua SSH**:
    - Trình duyệt trả về một file kịch bản chạy (ví dụ `capture.cmd` trên Windows hoặc `capture.sh` trên macOS/Linux).
    - Khi người dùng chạy file này: Kịch bản mở một đường hầm SSH kết nối vào máy chủ PNet v8.
-   - Trên máy chủ, lệnh sau được thực thi: `sudo /opt/unetlab/wrappers/simple_forwarder -i tap...`.
+   - Trên máy chủ, lệnh sau được thực thi: `sudo [`wrappers/simple_forwarder`](../../../wrappers/simple_forwarder) -i tap...`.
 4. **Bộ Chuyển tiếp Nhị phân Tốc độ Cao (`simple_forwarder`)**:
    - Binary C `simple_forwarder` mở một raw socket ở chế độ `ETH_P_ALL` để lắng nghe mọi frame Ethernet đi qua card TAP.
    - Đóng gói frame theo cấu dạng chuẩn PCAP (Global Header + Packet Headers) và ghi thẳng ra luồng đầu ra tiêu chuẩn `stdout`.
@@ -38,9 +38,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/console/capture_native.php` | PHP API | Sinh file script kịch bản bắt gói tin |
-| `/opt/unetlab/wrappers/simple_forwarder` | C binary (39KB) | Bắt raw socket và xuất dữ liệu pcap ra stdout |
-| `/opt/unetlab/html/themes/default/js/pnetlab-capture-console.js`| JavaScript | Menu chọn cổng mạng cần capture |
+| [`html/console/capture_native.php`](../../../html/console/capture_native.php) | PHP API | Sinh file script kịch bản bắt gói tin |
+| [`wrappers/simple_forwarder`](../../../wrappers/simple_forwarder) | C binary (39KB) | Bắt raw socket và xuất dữ liệu pcap ra stdout |
+| [`html/themes/default/js/pnetlab-capture-console.js`](../../../html/themes/default/js/pnetlab-capture-console.js)| JavaScript | Menu chọn cổng mạng cần capture |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /console/capture_native.php?node=1&port=0`

@@ -40,13 +40,13 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 04, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/api_labs.php` | PHP | Nghiệp vụ chính: `apiLabAdd()`, `apiLabEdit()`, `apiLabDelete()`, `apiLabGet()`, `apiLabMove()` |
-| `/opt/unetlab/html/includes/api_folders.php` | PHP | Quản lý thư mục: `apiFolderGet()`, `apiFolderAdd()`, `apiFolderEdit()`, `apiFolderDelete()` |
-| `/opt/unetlab/html/includes/__lab.php` | PHP (OOP) | Domain Object `Lab` (100KB code): Quản lý toàn bộ cấu trúc dữ liệu XML của bài lab, nạp/lưu nodes, networks, textobjects |
-| `/opt/unetlab/html/includes/lab-session-access.php` | PHP | Kiểm tra phiên làm việc và quyền sửa đổi bài lab của người dùng |
-| `/opt/unetlab/html/import/api.php` | PHP | API tiếp nhận file tải lên, xác thực định dạng và gọi script chuyển đổi |
-| `/opt/unetlab/scripts/workers/import.sh` | Shell Script | Script nền giải nén, thiết lập quyền phân phối và di chuyển lab vào thư mục hệ thống |
-| `/opt/unetlab/html/main/js/labs.js` | JavaScript | Giao diện quản lý danh sách lab, cây thư mục, dialog tạo mới và chọn thao tác |
+| [`html/includes/api_labs.php`](../../html/includes/api_labs.php) | PHP | Nghiệp vụ chính: `apiLabAdd()`, `apiLabEdit()`, `apiLabDelete()`, `apiLabGet()`, `apiLabMove()` |
+| [`html/includes/api_folders.php`](../../html/includes/api_folders.php) | PHP | Quản lý thư mục: `apiFolderGet()`, `apiFolderAdd()`, `apiFolderEdit()`, `apiFolderDelete()` |
+| [`html/includes/__lab.php`](../../html/includes/__lab.php) | PHP (OOP) | Domain Object `Lab` (100KB code): Quản lý toàn bộ cấu trúc dữ liệu XML của bài lab, nạp/lưu nodes, networks, textobjects |
+| [`html/includes/lab-session-access.php`](../../html/includes/lab-session-access.php) | PHP | Kiểm tra phiên làm việc và quyền sửa đổi bài lab của người dùng |
+| [`html/import/api.php`](../../html/import/api.php) | PHP | API tiếp nhận file tải lên, xác thực định dạng và gọi script chuyển đổi |
+| [`scripts/workers/import.sh`](../../scripts/workers/import.sh) | Shell Script | Script nền giải nén, thiết lập quyền phân phối và di chuyển lab vào thư mục hệ thống |
+| [`html/main/js/labs.js`](../../html/main/js/labs.js) | JavaScript | Giao diện quản lý danh sách lab, cây thư mục, dialog tạo mới và chọn thao tác |
 
 ---
 
@@ -92,7 +92,7 @@ flowchart TD
     session_access -->|"Đọc ghi trạng thái khóa<br/><i>[SELECT / INSERT / UPDATE]</i>"| db_sessions
     lab_api -->|"Nạp mô hình Lab<br/><i>[new Lab('/opt/unetlab/labs/...')]</i>"| lab_model
     lab_model -->|"Ghi nội dung file .unl<br/><i>[file_put_contents()]</i>"| labs_dir
-    import_api -->|"Kích hoạt worker nền<br/><i>[sudo /opt/unetlab/scripts/workers/import.sh]</i>"| import_worker
+    import_api -->|"Kích hoạt worker nền<br/><i>[sudo [`scripts/workers/import.sh`](../../scripts/workers/import.sh)]</i>"| import_worker
     import_worker -->|"Giải nén file vào đích<br/><i>[unzip / rsync]</i>"| labs_dir
 ```
 

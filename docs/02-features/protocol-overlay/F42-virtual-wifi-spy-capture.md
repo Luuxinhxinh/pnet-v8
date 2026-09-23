@@ -29,8 +29,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/vwifi-spy-capture.py` | Python Script (5.7KB) | Bắt gói tin không gian và chèn Radiotap header |
-| `/opt/unetlab/scripts/airhandler.py` | Python Daemon | Cung cấp luồng frame vô tuyến thô |
+| [`scripts/vwifi-spy-capture.py`](../../../scripts/vwifi-spy-capture.py) | Python Script (5.7KB) | Bắt gói tin không gian và chèn Radiotap header |
+| [`scripts/airhandler.py`](../../../scripts/airhandler.py) | Python Daemon | Cung cấp luồng frame vô tuyến thô |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Lệnh bắt gói tin vô tuyến trên Channel 6.

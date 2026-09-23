@@ -36,7 +36,7 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/ishare2/image_normalize.php` | PHP Script | Logic kiểm tra và chuẩn hóa image |
+| [`html/ishare2/image_normalize.php`](../../../html/ishare2/image_normalize.php) | PHP Script | Logic kiểm tra và chuẩn hóa image |
 | `/usr/bin/qemu-img` | Linux Binary | Công cụ chuyển đổi đĩa ảo sang qcow2 |
 
 ## 5. Input / Output & Xử lý Ngoại lệ

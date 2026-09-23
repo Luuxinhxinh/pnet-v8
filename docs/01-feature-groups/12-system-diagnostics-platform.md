@@ -40,19 +40,19 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 12, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/doctor.php` | PHP (11KB) | Thư viện logic chẩn đoán lỗi hệ sinh thái PNet v8 |
-| `/opt/unetlab/scripts/pnetlab_doctor.php` | PHP CLI | Trình kiểm tra doctor chạy bằng dòng lệnh terminal |
-| `/opt/unetlab/html/system/api.php` | PHP | REST API thực hiện các tác vụ quản trị hệ thống |
-| `/opt/unetlab/scripts/clean.sh` | Shell Script | Script xóa file tạm trong `/opt/unetlab/tmp` |
-| `/opt/unetlab/scripts/pnetlab-ksm-tune.sh` | Shell Script | Script tối ưu thông số khử trùng lặp RAM KSM |
-| `/opt/unetlab/wrappers/ksm_merge_exec` | C Binary | Nhị phân kích hoạt cờ `MADV_MERGEABLE` trên bộ nhớ ảo |
+| [`html/includes/doctor.php`](../../html/includes/doctor.php) | PHP (11KB) | Thư viện logic chẩn đoán lỗi hệ sinh thái PNet v8 |
+| [`scripts/pnetlab_doctor.php`](../../scripts/pnetlab_doctor.php) | PHP CLI | Trình kiểm tra doctor chạy bằng dòng lệnh terminal |
+| [`html/system/api.php`](../../html/system/api.php) | PHP | REST API thực hiện các tác vụ quản trị hệ thống |
+| [`scripts/clean.sh`](../../scripts/clean.sh) | Shell Script | Script xóa file tạm trong `/opt/unetlab/tmp` |
+| [`scripts/pnetlab-ksm-tune.sh`](../../scripts/pnetlab-ksm-tune.sh) | Shell Script | Script tối ưu thông số khử trùng lặp RAM KSM |
+| [`wrappers/ksm_merge_exec`](../../wrappers/ksm_merge_exec) | C Binary | Nhị phân kích hoạt cờ `MADV_MERGEABLE` trên bộ nhớ ảo |
 | `/opt/ovf/ovfstartup.sh` | Shell Script (14KB) | Kịch bản chạy khi khởi động máy ảo OVF |
 | `/opt/ovf/pnetlab-netcfg.sh` | Shell Script (25KB) | Trình tương tác cấu hình mạng console ban đầu (ncurses wizard) |
 | `/opt/ovf/pnet-bridges.sh` | Shell Script | Thiết lập các Linux Bridge cho 10 card Cloud |
 | `/opt/ovf/pnet-fwd-reconcile.sh` | Shell Script | Khắc phục quy tắc chuyển tiếp gói tin iptables |
-| `/opt/unetlab/scripts/enable-web-hardening.sh` | Shell Script (11KB) | Kịch bản tự động gia cố an ninh Apache Web Server |
-| `/opt/unetlab/scripts/enable-php-fpm.sh` | Shell Script | Chuyển đổi từ mod_php sang PHP-FPM hiệu năng cao |
-| `/opt/unetlab/html/main/js/system.js` | JavaScript | Giao diện quản trị hệ thống trên Dashboard |
+| [`scripts/enable-web-hardening.sh`](../../scripts/enable-web-hardening.sh) | Shell Script (11KB) | Kịch bản tự động gia cố an ninh Apache Web Server |
+| [`scripts/enable-php-fpm.sh`](../../scripts/enable-php-fpm.sh) | Shell Script | Chuyển đổi từ mod_php sang PHP-FPM hiệu năng cao |
+| [`html/main/js/system.js`](../../html/main/js/system.js) | JavaScript | Giao diện quản trị hệ thống trên Dashboard |
 
 ---
 
@@ -99,8 +99,8 @@ flowchart TD
     system_ui -->|"POST /system/api.php<br/><i>[Lệnh Reboot / Cleanup / Doctor]</i>"| sys_api
     sys_api -->|"Thực thi chẩn đoán<br/><i>[runDoctorChecks()]</i>"| doctor_core
     doctor_core -->|"Kiểm tra dịch vụ<br/><i>[systemctl is-active ...]</i>"| systemd_svc
-    sys_api -->|"Kích hoạt dọn dẹp<br/><i>[sudo /opt/unetlab/scripts/clean.sh]</i>"| clean_script
-    sys_api -->|"Cấu hình KSM<br/><i>[sudo /opt/unetlab/scripts/pnetlab-ksm-tune.sh]</i>"| ksm_tuner
+    sys_api -->|"Kích hoạt dọn dẹp<br/><i>[sudo [`scripts/clean.sh`](../../scripts/clean.sh)]</i>"| clean_script
+    sys_api -->|"Cấu hình KSM<br/><i>[sudo [`scripts/pnetlab-ksm-tune.sh`](../../scripts/pnetlab-ksm-tune.sh)]</i>"| ksm_tuner
     ksm_tuner -->|"Ghi thông số<br/><i>[echo 1 > /sys/kernel/mm/ksm/run]</i>"| ksm_kernel
     bridge_init -->|"Áp cấu hình<br/><i>[iptables -A FORWARD ...]</i>"| iptables_fwd
 ```

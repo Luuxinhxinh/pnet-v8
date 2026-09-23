@@ -32,9 +32,9 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/smtp_mailer.php` | `SMTPMailer`, `sendMail()`, `testConnection()` | Lõi gửi email qua SMTP socket (9.4KB) |
-| `/opt/unetlab/html/main/js/mail-settings.js` | JavaScript | Giao diện cấu hình máy chủ gửi thư |
-| `/opt/unetlab/html/api.php` | Các route `/api/admin/mail/*` | REST API quản trị cấu hình mail |
+| [`html/includes/smtp_mailer.php`](../../../html/includes/smtp_mailer.php) | `SMTPMailer`, `sendMail()`, `testConnection()` | Lõi gửi email qua SMTP socket (9.4KB) |
+| [`html/main/js/mail-settings.js`](../../../html/main/js/mail-settings.js) | JavaScript | Giao diện cấu hình máy chủ gửi thư |
+| [`html/api.php`](../../../html/api.php) | Các route `/api/admin/mail/*` | REST API quản trị cấu hình mail |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/admin/mail/test` với `{ "recipient": "admin@domain.com" }`.

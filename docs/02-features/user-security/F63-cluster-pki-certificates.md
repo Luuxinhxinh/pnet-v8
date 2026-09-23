@@ -34,8 +34,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/scripts/pki/pnet-pki.py` | Python Script (22KB) | Quản lý CA và ký chứng chỉ số |
-| `/opt/unetlab/html/pki/api.php` | PHP API | Endpoint tiếp nhận yêu cầu ký chứng chỉ |
+| [`scripts/pki/pnet-pki.py`](../../../scripts/pki/pnet-pki.py) | Python Script (22KB) | Quản lý CA và ký chứng chỉ số |
+| [`html/pki/api.php`](../../../html/pki/api.php) | PHP API | Endpoint tiếp nhận yêu cầu ký chứng chỉ |
 | `/etc/pnetlab/pki/` | Filesystem Directory | Nơi lưu trữ chứng chỉ và khóa bảo mật |
 
 ## 5. Input / Output & Xử lý Ngoại lệ

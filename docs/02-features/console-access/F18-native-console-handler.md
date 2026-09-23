@@ -33,8 +33,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/themes/default/js/browsers.js` | `openNativeConsole()` | Sinh URL telnet/pnetlab và gọi trình duyệt mở |
-| `/opt/unetlab/html/includes/api_nodes.php` | `calculateConsolePort()` | Tính toán port Telnet chính xác |
+| [`html/themes/default/js/browsers.js`](../../../html/themes/default/js/browsers.js) | `openNativeConsole()` | Sinh URL telnet/pnetlab và gọi trình duyệt mở |
+| [`html/includes/api_nodes.php`](../../../html/includes/api_nodes.php) | `calculateConsolePort()` | Tính toán port Telnet chính xác |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Nhấp chuột vào biểu tượng Router trên Canvas.

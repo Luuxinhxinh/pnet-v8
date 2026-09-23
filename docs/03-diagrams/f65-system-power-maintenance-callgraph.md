@@ -10,7 +10,7 @@ feature_id: "F65"
 graph TD
     ADMIN_CLICK["Admin bấm 'System Cleanup'"] --> POST_API["system/api.php?action=clean"]
     POST_API --> CHECK_PERM["checkAdminRole()"]
-    CHECK_PERM --> EXEC_CLEAN["exec(sudo /opt/unetlab/scripts/clean.sh)"]
+    CHECK_PERM --> EXEC_CLEAN["exec(sudo [`scripts/clean.sh`](../../scripts/clean.sh))"]
     EXEC_CLEAN --> KILL_PROCS["killall -9 qemu i386-exec dynamips"]
     EXEC_CLEAN --> RM_TMP["rm -rf /opt/unetlab/tmp/*"]
     EXEC_CLEAN --> FLUSH_BRIDGES["Gỡ bỏ các bridge ảo br-*"]

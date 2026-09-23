@@ -42,8 +42,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| `/opt/unetlab/html/includes/lab_tasks_unl.php` | `class LabTasks`, `getTasks()`, `setTasks()` | Phân tích và quản lý thẻ `<tasks>` |
-| `/opt/unetlab/html/includes/__lab.php` | `Lab::getTasks()` | Tích hợp vào đối tượng Lab chính |
+| [`html/includes/lab_tasks_unl.php`](../../../html/includes/lab_tasks_unl.php) | `class LabTasks`, `getTasks()`, `setTasks()` | Phân tích và quản lý thẻ `<tasks>` |
+| [`html/includes/__lab.php`](../../../html/includes/__lab.php) | `Lab::getTasks()` | Tích hợp vào đối tượng Lab chính |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Chuỗi XML hoặc mảng JSON định nghĩa danh sách tasks.

@@ -12,7 +12,7 @@ sequenceDiagram
     actor User as Kỹ sư Mạng
     participant UI as Node Form (pnetlab-node-form.js)
     participant API as api_templatedefaults.php
-    participant Templates as /opt/unetlab/html/templates/
+    participant Templates as [`html/templates`](../../html/templates)/
     participant Addons as /opt/unetlab/addons/
 
     User->>UI: Mở form thêm node và chọn "Cisco CSR1000v"
