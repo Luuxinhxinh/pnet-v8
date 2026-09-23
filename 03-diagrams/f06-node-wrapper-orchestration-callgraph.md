@@ -8,7 +8,7 @@ feature_id: "F06"
 
 ```mermaid
 graph TD
-    PHP_CLI["unl_wrapper.php"] -->|execve()| WRAPPER["qemu_wrapper (setuid root)"]
+    PHP_CLI["unl_wrapper.php"] -->|"execve()"| WRAPPER["qemu_wrapper (setuid root)"]
     WRAPPER --> SET_EUID["setuid(0) -> Nâng quyền root"]
     WRAPPER --> TUN_OPEN["open('/dev/net/tun')"]
     TUN_OPEN --> IOCTL_TAP["ioctl(fd, TUNSETIFF) -> Tạo TAP"]

@@ -167,8 +167,8 @@ graph TD
     C_QEMU_WRAP -->|Create TAP| TAP_DEVS
     C_QEMU_WRAP -->|Attach Bridge| LINUX_BR
     C_QEMU_WRAP -->|Assign Cgroup| CGROUPS_FS
-    C_QEMU_WRAP -->|execve()| KVM_VMM
-    C_IOL_WRAP -->|execve()| IOL_EXEC
+    C_QEMU_WRAP -->|"execve()"| KVM_VMM
+    C_IOL_WRAP -->|"execve()"| IOL_EXEC
     C_DOCKER_WRAP -->|docker run| DOCKER_D
     KVM_VMM --> FS_TMP
     KVM_VMM --> FS_ADDONS
