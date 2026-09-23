@@ -8,11 +8,11 @@ feature_id: "F04"
 
 ```mermaid
 graph TD
-    UI["actions.js: nodeWipe()"] -->|HTTP POST| API["api.php: /nodes/wipe"]
-    API --> NODE_API["api_nodes.php: apiNodeWipe()"]
+    UI["actions.js: apiWipeLabNode()"] -->|HTTP POST| API["api.php: /nodes/wipe"]
+    API --> NODE_API["api_nodes.php: apiWipeLabNode()"]
     NODE_API --> CHECK_STATUS{"Node có đang chạy?"}
     CHECK_STATUS -- Có --> ERR["Trả về HTTP 400: Phải dừng trước"]
-    CHECK_STATUS -- Không --> FUNC_WIPE["functions.php: nodeWipe()"]
+    CHECK_STATUS -- Không --> FUNC_WIPE["functions.php: apiWipeLabNode()"]
     FUNC_WIPE --> WRAPPER["unl_wrapper.php -a wipe"]
     WRAPPER --> RM_DISK["Xóa các file qcow2 overlay"]
     WRAPPER --> RM_NVRAM["Xóa file NVRAM / startup-config"]

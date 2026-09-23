@@ -32,11 +32,9 @@ level: "Level 2"
 - **Server-Sent Events (SSE)**: Đẩy cảnh báo sự cố tức thời lên Dashboard.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/scripts/pnetlab-brokerd.py`](../../../opt/unetlab/scripts/pnetlab-brokerd.py)](../../../scripts/pnetlab-brokerd.py) | `check_satellite_heartbeats()` | Vòng lặp kiểm tra nhịp tim |
-| [`/opt/unetlab/html/cluster/api.php`](../../../opt/unetlab/html/cluster/api.php)](../../../html/cluster/api.php) | `getClusterStatus()` | Trả về tình trạng sức khỏe cụm |
-| [`/opt/unetlab/html/main/js/clusters.js`](../../../opt/unetlab/html/main/js/clusters.js)](../../../html/main/js/clusters.js) | `updateHostStatusHUD()` | Hiển thị chấm tròn xanh/đỏ trạng thái host |
+| [`/opt/unetlab/scripts/pnetlab-brokerd.py`](../../../opt/unetlab/scripts/pnetlab-brokerd.py) | IPC handler `cluster_join`, ping loop | Duy trì kết nối vệ tinh và ghi nhận trạng thái sống |
+| [`/opt/unetlab/html/cluster/api.php`](../../../opt/unetlab/html/cluster/api.php) | `?action=status`, `?action=join` | Endpoint trả về tình trạng kết nối các satellite và PSK |
+| [`/opt/unetlab/html/main/js/clusters.js`](../../../opt/unetlab/html/main/js/clusters.js) | Render bảng Cluster Hosts | Hiển thị bảng điều khiển, trạng thái Online/Offline và tài nguyên host vệ tinh |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Chu kỳ thời gian `time() - last_seen > 15s`.

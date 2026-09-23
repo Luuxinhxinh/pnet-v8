@@ -33,11 +33,10 @@ level: "Level 2"
 - **Port Compatibility Filter**: Kiểm tra kiểu dữ liệu interface (Ethernet, GigabitEthernet, Serial).
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/themes/default/js/javascript.js`](../../../opt/unetlab/html/themes/default/js/javascript.js)](../../../html/themes/default/js/javascript.js) | `startLinkDrag()`, `drawRubberband()`, `openPortModal()` | Quản lý tương tác nối dây |
-| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->put("/api/labs/session/network/manage")` | Cập nhật cấu hình cổng mạng |
-| [`/opt/unetlab/html/devices/interfc.php`](../../../opt/unetlab/html/devices/interfc.php)](../../../html/devices/interfc.php) | `getInterfaces()` | Trích xuất danh sách interface hợp lệ |
+| [`/opt/unetlab/html/themes/default/js/actions.js`](../../../opt/unetlab/html/themes/default/js/actions.js) | `#form-network-manage` submit, modal link handler | Bắt sự kiện kéo dây liên kết giữa 2 node và hiển thị modal chọn port |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php) | `$app->put("/api/labs/session/network/manage")` | Điểm tiếp nhận REST request cấu hình kết nối mạng giữa các port |
+| [`/opt/unetlab/html/includes/api_networks.php`](../../../opt/unetlab/html/includes/api_networks.php) | `apiEditLabNetworkmanage()` | Xử lý map interface vào network/bridge và cập nhật cấu hình lab |
+| [`/opt/unetlab/html/devices/interfc.php`](../../../opt/unetlab/html/devices/interfc.php) | `class Interfc`, `Interfc::getName()`, `Interfc::getNetworkId()` | Đối tượng interface của node: quản lý port type, VLAN mode và socket kết nối |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

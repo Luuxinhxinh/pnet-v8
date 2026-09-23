@@ -40,13 +40,12 @@ level: "Level 2"
 - **Setuid Root Wrappers**: Cho phép tiến trình PHP (chạy quyền www-data) gọi wrapper có quyền root an toàn để cấu hình mạng kernel.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->post("/api/labs/session/nodes/(:action)")` | Định tuyến hành động `start` |
-| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeStart()` | Kiểm tra trạng thái và điều phối khởi động |
-| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `nodeStart()` | Sinh thư mục tmp, chuẩn bị đĩa và gọi unl_wrapper |
-| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) | `startNode()` | Script CLI phân tích loại thiết bị và gọi wrapper C |
-| [`/opt/unetlab/wrappers/qemu_wrapper`](../../../opt/unetlab/wrappers/qemu_wrapper)](../../../wrappers/qemu_wrapper) | C main process | Tạo TAP, cấu hình qemu cmdline và khởi chạy QEMU |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php) | `$app->post("/api/labs/session/nodes/(:action)")` | Định tuyến hành động `start` |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiStartLabNode()`, `node_wrapper_exec()` | Kiểm tra quyền, trạng thái và gọi broker/wrapper khởi động node |
+| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php) | `createRunningPath()`, `getNodeStatus()` | Quản lý không gian thư mục tạm của node và cập nhật trạng thái |
+| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php) | CLI command switch `start` | Script CLI phân tích tham số và gọi các hàm cấu hình trong `cli.php` |
+| [`/opt/unetlab/html/includes/cli.php`](../../../opt/unetlab/html/includes/cli.php) | `addNetwork()`, `addBridge()`, `start()` | Thiết lập bridge/tap và gọi wrapper C |
+| [`/opt/unetlab/wrappers/qemu_wrapper`](../../../opt/unetlab/wrappers/qemu_wrapper) | C main process | Tạo TAP, cấu hình qemu cmdline và khởi chạy QEMU |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/1/start`

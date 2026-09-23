@@ -8,9 +8,9 @@ feature_id: "F05"
 
 ```mermaid
 graph TD
-    UI["actions.js: nodeExport()"] -->|HTTP POST| API["api.php: /nodes/export"]
-    API --> NODE_API["api_nodes.php: apiNodeExport()"]
-    NODE_API --> FUNC_EXP["functions.php: nodeExport()"]
+    UI["actions.js: apiExportLabNode()"] -->|HTTP POST| API["api.php: /nodes/export"]
+    API --> NODE_API["api_nodes.php: apiExportLabNode()"]
+    NODE_API --> FUNC_EXP["functions.php: apiExportLabNode()"]
     FUNC_EXP --> TYPE_CHECK{"Loại thiết bị?"}
     TYPE_CHECK -- IOL --> IOU_EXP["iou_export nvram_file"]
     TYPE_CHECK -- QEMU --> TELNET_SCRIPTER["pnet-showcmd.py / expect"]

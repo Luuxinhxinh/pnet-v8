@@ -17,7 +17,7 @@ level: "Level 2"
 ## 2. Cơ chế Chạy (Mechanism)
 1. **Duyệt Thư viện Tệp**:
    - Client gọi `GET /api/folders` để lấy danh sách cấu trúc cây thư mục.
-   - `api_folders.php::apiFoldersGet()` quét thư mục gốc `/opt/unetlab/labs/`, đọc danh sách các thư mục con và các file có phần mở rộng `.unl`.
+   - `api_folders.php::apiGetFolders()` quét thư mục gốc `/opt/unetlab/labs/`, đọc danh sách các thư mục con và các file có phần mở rộng `.unl`.
 2. **Tạo Mới Bài Lab**:
    - Client gửi `POST /api/labs` kèm tên lab, tác giả, mô tả, phiên bản, thư mục cha.
    - `api_labs.php` nạp khung XML mặc định, gán UUID và lưu file `.unl` vào đường dẫn `/opt/unetlab/labs/<path>/<lab_name>.unl`.
@@ -34,8 +34,8 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_folders.php`](../../../opt/unetlab/html/includes/api_folders.php)](../../../html/includes/api_folders.php) | `apiFoldersGet()`, `apiFolderAdd()` | Quản lý thư mục chứa lab |
-| [`/opt/unetlab/html/includes/api_labs.php`](../../../opt/unetlab/html/includes/api_labs.php)](../../../html/includes/api_labs.php) | `apiLabAdd()`, `apiLabDelete()`, `apiLabRename()` | Điều phối thao tác bài lab |
+| [`/opt/unetlab/html/includes/api_folders.php`](../../../opt/unetlab/html/includes/api_folders.php)](../../../html/includes/api_folders.php) | `apiGetFolders()`, `apiAddFolder()` | Quản lý thư mục chứa lab |
+| [`/opt/unetlab/html/includes/api_labs.php`](../../../opt/unetlab/html/includes/api_labs.php)](../../../html/includes/api_labs.php) | `apiAddLab()`, `apiDeleteLab()`, `apiEditLab()` | Điều phối thao tác bài lab |
 | [`/opt/unetlab/html/main/js/labs.js`](../../../opt/unetlab/html/main/js/labs.js)](../../../html/main/js/labs.js) | `renderLabTree()`, `onNewLabClick()` | Giao diện hiển thị cây bài lab |
 
 ## 5. Input / Output & Xử lý Ngoại lệ

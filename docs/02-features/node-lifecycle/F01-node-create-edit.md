@@ -17,11 +17,11 @@ level: "Level 2"
 ## 2. Cơ chế Chạy (Mechanism)
 1. **Frontend Request**: Người dùng điền thông tin trong modal `pnetlab-node-form.js`, gửi HTTP POST tới `/api/labs/session/nodes` (khi thêm mới) hoặc HTTP PUT tới `/api/labs/session/nodes/<node_id>` (khi chỉnh sửa).
 2. **Authentication & Authorization**: `api.php` trích xuất Cookie Token, đối chiếu phiên làm việc qua `$indent->authorization()`, kiểm tra quyền chỉnh sửa lab `USER_PER_EDIT_LAB` của người dùng đối với bài lab hiện hành.
-3. **Route Handling**: `api.php` gọi hàm `apiNodeAdd()` hoặc `apiNodeEdit()` nằm trong `includes/api_nodes.php`.
+3. **Route Handling**: `api.php` gọi hàm `apiAddLabNode()` hoặc `apiEditLabNode()` nằm trong `includes/api_nodes.php`.
 4. **Domain Model Validation**:
    - `api_nodes.php` nạp đối tượng `$lab = new Lab(...)`.
    - Khởi tạo instance của class `Node` (`includes/__node.php`).
-   - Hàm `checkNode()` thực hiện kiểm tra tính hợp lệ của các tham số: template có tồn tại không, số cổng mạng có vượt quá giới hạn template cho phép không, dung lượng RAM có phải số nguyên dương không.
+   - Phương thức `device::editParams()` thực hiện kiểm tra tính hợp lệ của các tham số: template có tồn tại không, số cổng mạng có vượt quá giới hạn template cho phép không, dung lượng RAM có phải số nguyên dương không.
    - Tính toán cổng console: Tự động cấp phát cổng Telnet/VNC/RDP theo công thức: `console_port = 32768 + (tenant_pod * 128) + node_id`.
 5. **Cập nhật Cấu trúc Dữ liệu XML**:
    - Ghi thông tin thẻ `<node id="..." name="..." type="..." template="..." cpu="..." ram="..." ethernet="..." ...>` vào cấu trúc DOM của bài lab.
@@ -35,13 +35,13 @@ level: "Level 2"
 - **Port Allocation Formula**: Thuật toán chia dải cổng console tránh xung đột giữa các người dùng (Tenant Pod isolation).
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->post("/api/labs/session/nodes")` | Tiếp nhận REST request từ client |
-| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeAdd()`, `apiNodeEdit()` | Xử lý logic kiểm tra và gán tham số node |
-| [`/opt/unetlab/html/includes/__node.php`](../../../opt/unetlab/html/includes/__node.php)](../../../html/includes/__node.php) | `class Node`, `checkNode()`, `getParams()` | Mô hình đối tượng Node, validate giá trị phần cứng |
-| [`/opt/unetlab/html/includes/__lab.php`](../../../opt/unetlab/html/includes/__lab.php)](../../../html/includes/__lab.php) | `Lab::addNode()`, `Lab::editNode()`, `Lab::save()` | Cập nhật thẻ XML và lưu file lab vật lý |
-| [`/opt/unetlab/html/themes/default/js/pnetlab-node-form.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-node-form.js)](../../../html/themes/default/js/pnetlab-node-form.js) | `renderNodeForm()`, `saveNodeData()` | Form nhập liệu giao diện phía trình duyệt |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php) | `$app->post("/api/labs/session/nodes")`, `$app->put("/api/labs/session/nodes/(:id)")` | Tiếp nhận REST request từ client |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiAddLabNode()`, `apiEditLabNode()` | Xử lý logic kiểm tra và gán tham số node |
+| [`/opt/unetlab/html/includes/__node.php`](../../../opt/unetlab/html/includes/__node.php) | `class Node`, `Node::edit()`, `Node::getParams()` | Mô hình đối tượng Node, khởi tạo device factory và session |
+| [`/opt/unetlab/html/devices/device.php`](../../../opt/unetlab/html/devices/device.php) | `device::editParams()`, `device::getParams()` | Factory validate và gán tham số phần cứng phần mềm cho thiết bị |
+| [`/opt/unetlab/html/includes/__lab.php`](../../../opt/unetlab/html/includes/__lab.php) | `Lab::addNode()`, `Lab::editNode()`, `Lab::save()` | Cập nhật thẻ XML và lưu file lab vật lý |
+| [`/opt/unetlab/html/themes/default/js/actions.js`](../../../opt/unetlab/html/themes/default/js/actions.js) | `formNode()`, `printForm()` | Hiển thị form thêm/sửa node và bind sự kiện submit |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-node-form.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-node-form.js) | Giao diện cấu hình 2 cột | Tái cấu trúc layout #form-node-data thành Main Settings và Additional Settings |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

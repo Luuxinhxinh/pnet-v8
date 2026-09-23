@@ -36,11 +36,10 @@ level: "Level 2"
 - **Debounced Position Sync**: Trì hoãn ghi tọa độ sau khi dừng rê chuột để giảm tải request lên server.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_topology.php`](../../../opt/unetlab/html/includes/api_topology.php)](../../../html/includes/api_topology.php) | `apiTopologyGet()` | Tính toán ma trận kết nối và trả về JSON đồ thị |
-| [`/opt/unetlab/html/themes/default/js/javascript.js`](../../../opt/unetlab/html/themes/default/js/javascript.js)](../../../html/themes/default/js/javascript.js) | `drawTopology()`, `initCanvas()`, `handleDrag()` | Vòng lặp vẽ và quản lý sự kiện chuột |
-| [`/opt/unetlab/html/themes/default/js/pnetlab-pan-button.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-pan-button.js)](../../../html/themes/default/js/pnetlab-pan-button.js) | `handlePan()` | Xử lý di chuyển khung nhìn |
+| [`/opt/unetlab/html/includes/api_topology.php`](../../../opt/unetlab/html/includes/api_topology.php) | `apiGetLabTopology()`, `apiGetLabTopologyPreview()` | Trích xuất toàn bộ cấu trúc node, interface, network của lab trả về frontend |
+| [`/opt/unetlab/html/themes/default/js/actions.js`](../../../opt/unetlab/html/themes/default/js/actions.js) | `.action-labtopologyrefresh`, event handlers | Bắt sự kiện người dùng tương tác trên canvas và kích hoạt cập nhật topology |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-app-topology-stub.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-app-topology-stub.js) | `App.topology.getTopoData()`, `printTopology()` | Object quản lý dữ liệu đồ thị topology và đồng bộ với Svelte Flow |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-pan-button.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-pan-button.js) | `applyPanMode()`, `togglePanMode()` | Toggle công cụ Pan Canvas di chuyển khung nhìn |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /api/labs/session/topology`

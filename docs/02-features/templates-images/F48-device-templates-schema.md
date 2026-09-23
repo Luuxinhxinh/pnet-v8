@@ -40,11 +40,10 @@ level: "Level 2"
 - **KVM Architecture Acceleration Flags**: Cấu hình các cờ tăng tốc ảo hóa phần cứng Intel VT-x / AMD-V tối ưu cho từng OS mạng.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_templatedefaults.php`](../../../opt/unetlab/html/includes/api_templatedefaults.php)](../../../html/includes/api_templatedefaults.php) | `apiGetTemplateDefaults()` | API đọc cấu hình mặc định của template |
-| [`/opt/unetlab/html/templates/`](../../../opt/unetlab/html/templates)](../../../html/templates)/` | Template Definitions | Thư mục chứa hàng trăm file định nghĩa thiết bị |
-| [`/opt/unetlab/html/themes/default/js/pnetlab-template-defaults.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-template-defaults.js)](../../../html/themes/default/js/pnetlab-template-defaults.js)| JavaScript | Nạp cấu hình mẫu vào form giao diện |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiGetLabNodeTemplate()` | Đọc schema YAML của template và kết hợp override defaults |
+| [`/opt/unetlab/html/includes/api_templatedefaults.php`](../../../opt/unetlab/html/includes/api_templatedefaults.php) | `template_defaults_load()`, `template_defaults_apply()`, `template_defaults_save()` | Tải và áp dụng các cấu hình ghi đè giá trị mặc định cho template |
+| [`/opt/unetlab/html/templates/`](../../../opt/unetlab/html/templates)/` | YAML Template Definitions | Thư mục chứa hàng trăm file định nghĩa thông số phần cứng thiết bị |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-template-defaults.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-template-defaults.js) | UI Default Buttons | Nút "Save as Default" và "Revert Default" trên form cấu hình node |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `GET /api/templatedefaults/csr1000v`

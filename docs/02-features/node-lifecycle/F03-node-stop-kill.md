@@ -16,7 +16,7 @@ level: "Level 2"
 
 ## 2. Cơ chế Chạy (Mechanism)
 1. **Gửi Lệnh**: Client gửi `POST /api/labs/session/nodes/<node_id>/stop`.
-2. **Truy vấn PID**: `functions.php::nodeStop()` đọc PID của tiến trình node từ file `/opt/unetlab/tmp/<pod>/<node_id>/.pid` hoặc truy vấn bảng `node_sessions`.
+2. **Truy vấn PID**: `functions.php::apiStopLabNode()` đọc PID của tiến trình node từ file `/opt/unetlab/tmp/<pod>/<node_id>/.pid` hoặc truy vấn bảng `node_sessions`.
 3. **Gửi Tín hiệu Dừng (Graceful Signal)**:
    - Gọi wrapper: `sudo [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) -a stop -T <pod> -D <node_id>`.
    - Wrapper gửi tín hiệu `SIGTERM` (Signal 15) đến tiến trình hypervisor (QEMU/IOL/Docker) để cho phép thiết bị lưu trạng thái đệm.
@@ -34,12 +34,11 @@ level: "Level 2"
 - **Kernel Tun/Tap Subsystem**: Lệnh gỡ bỏ virtual tap interfaces để giải phóng kernel network memory.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeStop()` | Tiếp nhận request stop từ router |
-| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `nodeStop()` | Quản lý logic gửi tín hiệu và dọn dẹp |
-| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) | `stopNode()` | Gọi wrapper dừng tiến trình |
-| [`/opt/unetlab/wrappers/unl_wrapper`](../../../opt/unetlab/wrappers/unl_wrapper)](../../../wrappers/unl_wrapper) | C function | `kill(pid, SIGTERM)` & `kill(pid, SIGKILL)` |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiStopLabNode()`, `node_wrapper_exec()` | Tiếp nhận request stop, kiểm tra lock và gọi broker/wrapper |
+| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php) | `deleteWiresharkByNode()` | Dọn dẹp các luồng capture Wireshark gắn liền với node khi stop |
+| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php) | CLI switch `stop` | Xử lý lệnh CLI stop node |
+| [`/opt/unetlab/html/includes/cli.php`](../../../opt/unetlab/html/includes/cli.php) | `stop()`, `delTap()`, `delBridge()` | Xóa card TAP và dừng wrapper C |
+| [`/opt/unetlab/wrappers/unl_wrapper`](../../../opt/unetlab/wrappers/unl_wrapper) | C binary | `kill(pid, SIGTERM)` & `kill(pid, SIGKILL)` dừng tiến trình emulator |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/1/stop`

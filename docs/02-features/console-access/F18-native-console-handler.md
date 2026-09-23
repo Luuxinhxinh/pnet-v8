@@ -31,10 +31,10 @@ level: "Level 2"
 - **Windows Registry Scripting (`.reg`)**: Đăng ký các khóa `HKEY_CLASSES_ROOT	elnet\shell\open\command`.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/themes/default/js/browsers.js`](../../../opt/unetlab/html/themes/default/js/browsers.js)](../../../html/themes/default/js/browsers.js) | `openNativeConsole()` | Sinh URL telnet/pnetlab và gọi trình duyệt mở |
-| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `calculateConsolePort()` | Tính toán port Telnet chính xác |
+| [`/opt/unetlab/html/themes/default/js/browsers.js`](../../../opt/unetlab/html/themes/default/js/browsers.js) | `openNativeConsole()` | Sinh URI scheme `telnet://` hoặc `pnetlab://` và gọi trình duyệt kích hoạt client desktop |
+| [`/opt/unetlab/html/devices/device.php`](../../../opt/unetlab/html/devices/device.php) | `device::getConsoleUrl()`, `device::consoleHost()` | Sinh chuỗi kết nối telnet/ssh/vnc trỏ tới đúng IP Master hoặc Satellite |
+| [`/opt/unetlab/html/includes/__node.php`](../../../opt/unetlab/html/includes/__node.php) | `Node::addNodeSession()`, `Node::createNodeSession()` | Cấp phát cổng console `PORT + $id` và lưu thông tin vào `node_sessions` |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiGetLabNodes()`, `apiGetLabNode()` | Trả về metadata URL console cho frontend |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Nhấp chuột vào biểu tượng Router trên Canvas.

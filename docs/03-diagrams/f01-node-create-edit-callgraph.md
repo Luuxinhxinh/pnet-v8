@@ -11,7 +11,7 @@ graph TD
     UI["pnetlab-node-form.js: saveNodeData()"] -->|HTTP POST| API["api.php: POST /api/labs/session/nodes"]
     API --> AUTH["api_authentication.php: authorization()"]
     AUTH --> CHECK_PERM["functions.php: checkUserPermission()"]
-    API --> CONTROLLER["api_nodes.php: apiNodeAdd()"]
+    API --> CONTROLLER["api_nodes.php: apiAddLabNode()"]
     CONTROLLER --> LOAD_LAB["__lab.php: new Lab()"]
     CONTROLLER --> NODE_INIT["__node.php: new Node()"]
     NODE_INIT --> VALIDATE["__node.php: checkNode()"]

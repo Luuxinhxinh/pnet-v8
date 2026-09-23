@@ -30,11 +30,10 @@ level: "Level 2"
 - **Client-Side Bulk State Mutation**: Cập nhật trạng thái đồ họa tức thời trước khi gửi API ngầm.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js)](../../../html/themes/default/js/pnetlab-align-distribute.js) | `alignNodes()`, `distributeNodes()` | Thuật toán toán học căn chỉnh vị trí |
-| [`/opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js)](../../../html/themes/default/js/pnetlab-node-duplicate.js) | `duplicateSelectedNodes()` | Xử lý nhân bản cấu hình thiết bị |
-| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeAdd()` | Tiếp nhận tạo node bản sao |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-align-distribute.js) | `distribute()`, `collect()` | Thuật toán toán học căn khoảng cách đều giữa các node theo trục ngang/dọc |
+| [`/opt/unetlab/html/themes/default/js/actions.js`](../../../opt/unetlab/html/themes/default/js/actions.js) | `action-halign-group`, `action-valign-group` | Căn lề trái, phải, trên, dưới cho nhóm node |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-node-duplicate.js) | `window.pnqDuplicateNodes()`, `buildPayload()`, `addOne()` | Xử lý nhân bản cấu hình và offset vị trí node bản sao |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiAddLabNode()` | Tiếp nhận tạo node bản sao và gán ID/cổng mới |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Mảng các Node ID được chọn và loại căn chỉnh: `{ "action": "align_horizontal", "node_ids": [1, 2, 3] }`

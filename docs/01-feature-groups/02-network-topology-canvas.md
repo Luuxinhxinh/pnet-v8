@@ -40,7 +40,7 @@ Dưới đây là 7 tính năng con độc lập thuộc Nhóm 02, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_networks.php`](../../opt/unetlab/html/includes/api_networks.php)](../../html/includes/api_networks.php) | PHP | Nghiệp vụ mạng: `apiNetworkAdd()`, `apiNetworkEdit()`, `apiNetworkDelete()` |
+| [`/opt/unetlab/html/includes/api_networks.php`](../../opt/unetlab/html/includes/api_networks.php)](../../html/includes/api_networks.php) | PHP | Nghiệp vụ mạng: `apiAddLabNetwork()`, `apiEditLabNetwork()`, `apiDeleteLabNetwork()` |
 | [`/opt/unetlab/html/includes/__network.php`](../../opt/unetlab/html/includes/__network.php)](../../html/includes/__network.php) | PHP | Domain Object `Network`: Đọc ghi thuộc tính mạng trong Lab XML, gán loại mạng (bridge, pnet) |
 | [`/opt/unetlab/html/includes/api_topology.php`](../../opt/unetlab/html/includes/api_topology.php)](../../html/includes/api_topology.php) | PHP | Trả về cấu trúc đồ thị mạng hoàn chỉnh (nodes, links, interfaces) cho Canvas render |
 | [`/opt/unetlab/html/includes/api_pictures.php`](../../opt/unetlab/html/includes/api_pictures.php)](../../html/includes/api_pictures.php) | PHP | Xử lý tải ảnh nền, cắt ảnh, lưu trữ và ánh xạ vị trí hotspot |

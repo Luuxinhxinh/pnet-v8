@@ -30,11 +30,9 @@ level: "Level 2"
 - **Alpha Transparency**: Hỗ trợ màu nền bán trong suốt để nhìn thấy các thành phần bên dưới.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/themes/default/js/pnetlab-shape-draw.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-shape-draw.js)](../../../html/themes/default/js/pnetlab-shape-draw.js) | `drawCustomShape()`, `initShapeTool()` | Bộ công cụ vẽ vector hình khối |
-| [`/opt/unetlab/html/includes/api_textobjects.php`](../../../opt/unetlab/html/includes/api_textobjects.php)](../../../html/includes/api_textobjects.php) | `apiTextobjectAdd()` | Lưu thông số hình khối và văn bản vào lab |
-| [`/opt/unetlab/html/includes/__textobject.php`](../../../opt/unetlab/html/includes/__textobject.php)](../../../html/includes/__textobject.php) | `class Textobject` | Mô hình dữ liệu thẻ XML của text/shape |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-shape-draw.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-shape-draw.js) | `arm()`, `commit()`, `createTextObject()` | Bộ công cụ vẽ vector hình khối tự do/đa giác và đồng bộ |
+| [`/opt/unetlab/html/includes/api_textobjects.php`](../../../opt/unetlab/html/includes/api_textobjects.php) | `apiAddLabTextObject()`, `apiEditLabTextObject()` | Lưu thông số hình khối và văn bản vào lab XML |
+| [`/opt/unetlab/html/includes/__textobject.php`](../../../opt/unetlab/html/includes/__textobject.php) | `class TextObject` | Mô hình dữ liệu thẻ XML của text/shape |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

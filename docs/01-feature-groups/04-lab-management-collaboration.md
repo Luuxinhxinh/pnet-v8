@@ -40,8 +40,8 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 04, được đ�
 
 | Đường dẫn File / Thư mục | Ngôn ngữ / Loại | Vai trò chính |
 | :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_labs.php`](../../opt/unetlab/html/includes/api_labs.php)](../../html/includes/api_labs.php) | PHP | Nghiệp vụ chính: `apiLabAdd()`, `apiLabEdit()`, `apiLabDelete()`, `apiLabGet()`, `apiLabMove()` |
-| [`/opt/unetlab/html/includes/api_folders.php`](../../opt/unetlab/html/includes/api_folders.php)](../../html/includes/api_folders.php) | PHP | Quản lý thư mục: `apiFolderGet()`, `apiFolderAdd()`, `apiFolderEdit()`, `apiFolderDelete()` |
+| [`/opt/unetlab/html/includes/api_labs.php`](../../opt/unetlab/html/includes/api_labs.php)](../../html/includes/api_labs.php) | PHP | Nghiệp vụ chính: `apiAddLab()`, `apiEditLab()`, `apiDeleteLab()`, `apiGetLab()`, `apiMoveLab()` |
+| [`/opt/unetlab/html/includes/api_folders.php`](../../opt/unetlab/html/includes/api_folders.php)](../../html/includes/api_folders.php) | PHP | Quản lý thư mục: `apiGetFolders()`, `apiAddFolder()`, `apiEditFolder()`, `apiDeleteFolder()` |
 | [`/opt/unetlab/html/includes/__lab.php`](../../opt/unetlab/html/includes/__lab.php)](../../html/includes/__lab.php) | PHP (OOP) | Domain Object `Lab` (100KB code): Quản lý toàn bộ cấu trúc dữ liệu XML của bài lab, nạp/lưu nodes, networks, textobjects |
 | [`/opt/unetlab/html/includes/lab-session-access.php`](../../opt/unetlab/html/includes/lab-session-access.php)](../../html/includes/lab-session-access.php) | PHP | Kiểm tra phiên làm việc và quyền sửa đổi bài lab của người dùng |
 | [`/opt/unetlab/html/import/api.php`](../../opt/unetlab/html/import/api.php)](../../html/import/api.php) | PHP | API tiếp nhận file tải lên, xác thực định dạng và gọi script chuyển đổi |

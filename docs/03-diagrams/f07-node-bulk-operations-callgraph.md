@@ -8,13 +8,13 @@ feature_id: "F07"
 
 ```mermaid
 graph TD
-    UI["actions.js: startAllNodes()"] -->|HTTP POST| API["api.php: /nodes/start (array)"]
-    API --> CONTROLLER["api_nodes.php: apiNodesStart()"]
-    CONTROLLER --> QUEUE["Tạo hàng đợi danh sách Node IDs"]
-    QUEUE --> LOOP["Vòng lặp foreach(node_id in queue)"]
-    LOOP --> SLEEP["Giãn cách thời gian (usleep 500ms)"]
-    LOOP --> CALL_START["functions.php: nodeStart(node_id)"]
-    CALL_START --> SSE_BROADCAST["Phát SSE thông báo node vừa chạy"]
-    LOOP --> AGGREGATE["Tổng hợp kết quả Success / Failed"]
-    AGGREGATE --> RESP["Trả về JSON tổng quan kết quả"]
+    UI["actions.js: .action-nodesstart / .action-nodestart-group"] --> POOL["actions.js: staggeredPoolRun(thunks)<br/>(concurrency=2, stagger=800ms)"]
+    POOL --> WORKER["lifecycle.js: start(node_id)"]
+    WORKER -->|HTTP POST /api/labs/session/nodes/start<br/>payload: id| API["api.php: case 'nodes' action 'start'"]
+    API --> CONTROLLER["api_nodes.php: apiStartLabNode($lab, $id, $tenant)"]
+    CONTROLLER --> WRAPPER["node_wrapper_exec($lab, $id, 'start', $tenant)"]
+    WRAPPER --> BROKER["pnetlab-brokerd Unix Socket IPC"]
+    BROKER --> SPAWN["Spawn tiến trình Emulator (QEMU/IOL)"]
+    SPAWN --> RET["Return rc=0 / error code"]
+    RET --> UI_REFRESH["App.topology.getTopoData() & Cập nhật icon Canvas"]
 ```

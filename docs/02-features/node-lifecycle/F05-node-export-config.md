@@ -33,12 +33,11 @@ level: "Level 2"
 - **Base64 Encoding**: Mã hóa văn bản cấu hình mạng để nhúng an toàn vào thẻ XML mà không bị xung đột ký tự đặc biệt `<`, `>`, `&`.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeExport()` | Tiếp nhận request xuất cấu hình |
-| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `nodeExport()` | Điều phối giải mã NVRAM hoặc gọi script |
-| [`/opt/unetlab/scripts/iou_export`](../../../opt/unetlab/scripts/iou_export)](../../../scripts/iou_export) | C binary | Trích xuất cấu hình từ file NVRAM của IOL |
-| [`/opt/unetlab/html/includes/__lab.php`](../../../opt/unetlab/html/includes/__lab.php)](../../../html/includes/__lab.php) | `Lab::saveConfig()` | Ghi chuỗi cấu hình vào cây XML của lab |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiExportLabNode()`, `node_wrapper_exec()` | Tiếp nhận request xuất cấu hình và gọi broker/wrapper |
+| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php) | CLI switch `export` | Phân tích tham số gọi hàm export |
+| [`/opt/unetlab/html/includes/cli.php`](../../../opt/unetlab/html/includes/cli.php) | `export()`, `dumpConfig()` | Trích xuất và giải mã cấu hình node |
+| [`/opt/unetlab/scripts/iou_export`](../../../opt/unetlab/scripts/iou_export) | C binary | Trích xuất cấu hình từ file NVRAM của IOL |
+| [`/opt/unetlab/html/includes/__node.php`](../../../opt/unetlab/html/includes/__node.php) | `Node::export()`, `Node::setConfigData()` | Lưu chuỗi cấu hình vào session và node object |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/1/export`

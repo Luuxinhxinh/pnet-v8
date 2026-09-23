@@ -9,7 +9,7 @@ feature_id: "F20"
 ```mermaid
 graph TD
     UI["labs.js: createLab()"] -->|HTTP POST| API["api.php: POST /api/labs"]
-    API --> CONTROLLER["api_labs.php: apiLabAdd()"]
+    API --> CONTROLLER["api_labs.php: apiAddLab()"]
     CONTROLLER --> SANITIZE["checkLabFilename() -> lọc ký tự lạ"]
     CONTROLLER --> INIT_XML["__lab.php: createEmptyLabXML()"]
     INIT_XML --> WRITE_FS["file_put_contents(/opt/unetlab/labs/...unl)"]

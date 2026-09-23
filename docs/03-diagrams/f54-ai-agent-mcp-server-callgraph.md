@@ -13,8 +13,8 @@ graph TD
     DISPATCH -- create_node --> TOOL_CREATE["tool_create_node()"]
     DISPATCH -- connect_nodes --> TOOL_CONNECT["tool_connect_interfaces()"]
     DISPATCH -- exec_command --> TOOL_EXEC["tool_exec_command()"]
-    TOOL_CREATE --> BRIDGE["mcp/bridge.php: gọi apiNodeAdd()"]
-    TOOL_CONNECT --> BRIDGE2["mcp/bridge.php: gọi apiNetworkP2PConnect()"]
+    TOOL_CREATE --> BRIDGE["mcp/bridge.php: gọi apiAddLabNode()"]
+    TOOL_CONNECT --> BRIDGE2["mcp/bridge.php: gọi apiEditLabNetwork()"]
     TOOL_EXEC --> TRANSPORT["pnet_validation_transport.py: telnet gửi lệnh"]
     BRIDGE --> RESULT["Đóng gói MCP Content Response"]
     BRIDGE2 --> RESULT

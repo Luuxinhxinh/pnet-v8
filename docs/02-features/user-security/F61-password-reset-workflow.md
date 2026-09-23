@@ -35,11 +35,9 @@ level: "Level 2"
 - **Token Invalidation on Use**: Hủy token ngay sau lần dùng đầu tiên.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/password_reset.php`](../../../opt/unetlab/html/includes/password_reset.php)](../../../html/includes/password_reset.php) | `requestPasswordReset()`, `consumePasswordReset()` | Xử lý logic đặt lại mật khẩu |
-| [`/opt/unetlab/html/includes/smtp_mailer.php`](../../../opt/unetlab/html/includes/smtp_mailer.php)](../../../html/includes/smtp_mailer.php) | `sendPasswordResetMail()` | Gửi email khôi phục mật khẩu |
-| [`/opt/unetlab/html/reset-password/`](../../../opt/unetlab/html/reset-password)](../../../html/reset-password)/` | HTML / JS Views | Giao diện trang nhập email và đặt mật khẩu mới |
+| [`/opt/unetlab/html/includes/password_reset.php`](../../../opt/unetlab/html/includes/password_reset.php) | `password_reset_create_token()`, `password_reset_consume()`, `password_reset_lookup()` | Xử lý vòng đời mã token xác thực và cập nhật mật khẩu mới |
+| [`/opt/unetlab/html/includes/smtp_mailer.php`](../../../opt/unetlab/html/includes/smtp_mailer.php) | `smtp_send_mail()`, `password_reset_send_token()` | Gửi email khôi phục mật khẩu bảo mật qua TLS |
+| [`/opt/unetlab/html/reset-password/`](../../../opt/unetlab/html/reset-password)/` | HTML / JS Views | Giao diện trang nhập email và đặt mật khẩu mới |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/password-reset/consume` với token và mật khẩu mới.

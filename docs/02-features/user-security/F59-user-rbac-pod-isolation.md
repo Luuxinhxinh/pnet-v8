@@ -28,7 +28,7 @@ level: "Level 2"
      $$	ext{Port} = 32768 + (	ext{POD} 	imes 128) + 	ext{Node\_ID}$$
    - Đảm bảo 100 học viên cùng làm bài lab có cùng Node 1 thì mỗi người vẫn có một cổng Telnet riêng biệt không trùng nhau.
 4. **Kiểm tra Quyền trên từng API Endpoint**:
-   - Mỗi request vào `api.php` đều qua bộ lọc quyền `checkUserPermission()`. Nếu user thường cố gọi API Admin -> Trả về `403 Forbidden: Administrator access is required`.
+   - Mỗi request vào `api.php` đều qua bộ lọc quyền `checkPermission()` hoặc `checkLabPermission()`. Nếu user thường cố gọi API Admin -> Trả về `403 Forbidden: Administrator access is required`.
 
 ## 3. Công nghệ & Cơ sở Sử dụng
 - **Multi-Tenant Linux Filesystem Isolation**: Phân vùng thư mục theo Tenant POD.
@@ -37,7 +37,7 @@ level: "Level 2"
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_uusers.php`](../../../opt/unetlab/html/includes/api_uusers.php)](../../../html/includes/api_uusers.php) | `apiUserAdd()`, `apiUserEdit()`, `apiUserDelete()` | Nghiệp vụ quản lý user và gán POD |
+| [`/opt/unetlab/html/includes/api_uusers.php`](../../../opt/unetlab/html/includes/api_uusers.php)](../../../html/includes/api_uusers.php) | `apiAddUUser()`, `apiEditUUser()`, `apiDeleteUUser()` | Nghiệp vụ quản lý user và gán POD |
 | [`/opt/unetlab/html/users/api.php`](../../../opt/unetlab/html/users/api.php)](../../../html/users/api.php) | PHP API | Endpoint phục vụ giao diện quản trị user |
 | [`/opt/unetlab/html/main/js/users.js`](../../../opt/unetlab/html/main/js/users.js)](../../../html/main/js/users.js) | JavaScript | Giao diện bảng danh sách tài khoản người dùng |
 

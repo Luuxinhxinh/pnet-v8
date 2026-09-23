@@ -30,11 +30,9 @@ level: "Level 2"
 - **Port Mapping Logic**: Ánh xạ slot/port tương ứng trong model `Node` và `Lab`.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | `$app->put("/api/labs/session/network/manage")` | API quản lý việc gán interface vào network |
-| [`/opt/unetlab/html/includes/api_networks.php`](../../../opt/unetlab/html/includes/api_networks.php)](../../../html/includes/api_networks.php) | `apiNetworkP2PConnect()` | Xử lý logic tự sinh mạng p2p |
-| [`/opt/unetlab/html/themes/default/js/javascript.js`](../../../opt/unetlab/html/themes/default/js/javascript.js)](../../../html/themes/default/js/javascript.js) | `connectNodes()` | Bắt sự kiện thả dây giữa 2 node trên UI |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php) | `$app->put("/api/labs/session/network/manage")` | API quản lý việc gán interface vào network |
+| [`/opt/unetlab/html/includes/api_networks.php`](../../../opt/unetlab/html/includes/api_networks.php) | `apiEditLabNetworkmanage()`, `apiAddLabNetwork()` | Xử lý logic tự sinh mạng bridge P2P kết nối 2 interface |
+| [`/opt/unetlab/html/themes/default/js/actions.js`](../../../opt/unetlab/html/themes/default/js/actions.js) | `#form-network-manage` handler | Bắt sự kiện thả dây giữa 2 node trên UI và gửi payload kết nối |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**:

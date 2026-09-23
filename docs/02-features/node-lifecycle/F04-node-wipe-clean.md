@@ -18,7 +18,7 @@ level: "Level 2"
 1. **Kiểm tra Điều kiện Tiên quyết**: Kiểm tra xem node có đang chạy hay không. Nếu node đang chạy, API từ chối thực hiện và yêu cầu phải dừng node trước.
 2. **Kích hoạt Lệnh Wipe**: Gọi `POST /api/labs/session/nodes/<node_id>/wipe`.
 3. **Xóa File Vật lý**:
-   - `functions.php::nodeWipe()` gọi `unl_wrapper.php -a wipe -T <pod> -D <node_id>`.
+   - `functions.php::apiWipeLabNode()` gọi `unl_wrapper.php -a wipe -T <pod> -D <node_id>`.
    - Xóa bỏ toàn bộ tệp tin trong thư mục tạm `/opt/unetlab/tmp/<pod>/<lab_session>/<node_id>/`:
      - Xóa các file `virtioa.qcow2`, `virtiob.qcow2` (đĩa delta).
      - Xóa file NVRAM của IOL: `nvram_<node_id>`.
@@ -32,11 +32,9 @@ level: "Level 2"
 - **QCOW2 Delta Isolation**: Bản thiết kế gốc nằm tại `/opt/unetlab/addons/` luôn được bảo vệ chỉ đọc (Read-Only), việc xóa đĩa delta ngay lập tức phục hồi trạng thái nguyên bản.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodeWipe()` | Kiểm tra node đã stop và điều phối wipe |
-| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php)](../../../html/includes/functions.php) | `nodeWipe()` | Xóa các tệp đĩa tạm và nvram |
-| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php)](../../../scripts/unl_wrapper.php) | `wipeNode()` | Thực hiện thao tác xóa an toàn qua quyền root |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiWipeLabNode()`, `node_wrapper_exec()` | Kiểm tra node đã stop và gửi lệnh wipe qua broker/wrapper |
+| [`/opt/unetlab/scripts/unl_wrapper.php`](../../../opt/unetlab/scripts/unl_wrapper.php) | CLI switch `wipe` | Xử lý lệnh CLI wipe node |
+| [`/opt/unetlab/html/includes/cli.php`](../../../opt/unetlab/html/includes/cli.php) | `wipe()` | Xóa các file qcow2 overlay, nvram trong thư mục làm việc của node |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/labs/session/nodes/1/wipe`

@@ -8,7 +8,7 @@ feature_id: "F59"
 
 ```mermaid
 graph TD
-    ADMIN_UI["users.js: saveUser()"] --> POST_API["api_uusers.php: apiUserAdd()"]
+    ADMIN_UI["users.js: saveUser()"] --> POST_API["api_uusers.php: apiAddUUser()"]
     POST_API --> CHECK_ADMIN["checkUserPermission('ADMIN')"]
     CHECK_ADMIN --> CHECK_POD["SELECT pod FROM users WHERE pod = target_pod"]
     CHECK_POD --> CHECK_DUP{"POD đã có người dùng?"}

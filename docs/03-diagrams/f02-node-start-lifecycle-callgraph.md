@@ -8,9 +8,9 @@ feature_id: "F02"
 
 ```mermaid
 graph TD
-    UI["actions.js: nodeStart()"] -->|HTTP POST| API["api.php: /api/labs/session/nodes/1/start"]
-    API --> NODE_API["api_nodes.php: apiNodeStart()"]
-    NODE_API --> FUNC_START["functions.php: nodeStart()"]
+    UI["actions.js: apiStartLabNode()"] -->|HTTP POST| API["api.php: /api/labs/session/nodes/1/start"]
+    API --> NODE_API["api_nodes.php: apiStartLabNode()"]
+    NODE_API --> FUNC_START["functions.php: apiStartLabNode()"]
     FUNC_START --> MK_TMP["mkdir(/opt/unetlab/tmp/pod/node_id)"]
     FUNC_START --> PREP_DISK["functions.php: prepareDisk()"]
     PREP_DISK --> QEMU_IMG["qemu-img create -f qcow2 -b base virtioa.qcow2"]

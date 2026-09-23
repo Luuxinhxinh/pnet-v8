@@ -15,33 +15,37 @@ level: "Level 2"
 - **Thời điểm kích hoạt**: Nhấn các nút trên menu tác vụ bên trái Canvas ("Start all nodes", "Stop all nodes", "Wipe all nodes") hoặc dùng chuột bôi đen vùng chọn nhiều node và chọn "Bulk edit".
 
 ## 2. Cơ chế Chạy (Mechanism)
-1. **Phân tích Danh sách Node (Queue Resolution)**:
-   - Client gửi mảng ID các node: `POST /api/labs/session/nodes/start` với payload `{ "nodes": [1, 2, 3, 4, 5] }`.
-2. **Điều phối Tránh Quá Tải CPU/I/O (Staggered Startup)**:
-   - Nếu khởi động đồng thời 50 máy ảo QEMU cùng lúc, máy chủ sẽ bị nghẽn I/O đĩa cứng (I/O storm) và cạn RAM tức thì.
-   - PNet v8 áp dụng cơ chế khởi động giãn cách (Staggered Delay): Khởi động từng cụm node (mỗi cụm 3-5 node), nghỉ cách nhau từ 2 đến 5 giây giữa các lượt.
-3. **Thực thi Song song có Kiểm soát**:
-   - Sử dụng vòng lặp kiểm tra trạng thái trong `api_nodes.php::apiNodesStart()`.
-   - Gọi lần lượt `nodeStart()` cho từng node ID.
+1. **Phân tích Danh sách Node (Client-side Queue Resolution)**:
+   - Khi người dùng bấm "Start all nodes" (`.action-nodesstart`) hoặc chọn một nhóm node (`.action-nodestart-group`), client trích xuất danh sách node IDs (`Object.keys(window.nodes)` hoặc `selectedNodeIds()`).
+2. **Điều phối Tránh Quá Tải CPU/I/O (Staggered Startup Pool)**:
+   - Nếu khởi động đồng thời nhiều máy ảo QEMU/IOL cùng lúc, máy chủ sẽ bị nghẽn I/O đĩa cứng (I/O storm) và cạn RAM tức thì.
+   - PNet áp dụng cơ chế khởi động giãn cách qua hàm `staggeredPoolRun(thunks)` trong `actions.js`:
+     - Giới hạn luồng chạy song song: `START_CONCURRENCY = 2`.
+     - Giãn cách khởi động giữa các node: `START_STAGGER_MS = 800` ms.
+3. **Thực thi Gọi API Từng Node**:
+   - Hàm `start(node_id)` trong `lifecycle.js` phát `POST /api/labs/session/nodes/start` với payload `{ id: node_id }`.
+   - Server tiếp nhận qua `api.php`, ủy quyền cho `apiStartLabNode($lab, $node_id, $tenant)` trong `api_nodes.php`.
+   - `apiStartLabNode()` thực thi lệnh qua `node_wrapper_exec()` tương tác với daemon broker.
 4. **Cập nhật Tiến trình Đồ họa Thời gian thực**:
-   - Client hiển thị thanh phần trăm tiến độ (Progress bar).
-   - Mỗi node khởi động xong sẽ phát sự kiện SSE cập nhật màu icon ngay lập tức.
+   - Khi nhận request start, giao diện cập nhật trạng thái tạm (`data-status = 5` - booting).
+   - Khi `start(node_id)` trả về HTTP 200, icon node chuyển sang màu xanh (`data-status = 3` - running) và trigger `App.topology.getTopoData()` để tải metadata console/port.
 
 ## 3. Công nghệ & Cơ sở Sử dụng
-- **Asynchronous Batching**: Hàng đợi xử lý tác vụ theo lô.
-- **Throttling & Rate Limiting**: Ngăn chặn cạn kiệt tài nguyên hệ thống bằng cách kiểm soát số lượng tiến trình khởi động đồng thời.
+- **Client-side Staggered Worker Pool**: Điều phối hàng đợi Promise song song có độ trễ (`staggeredPoolRun`) giúp bảo vệ máy chủ khỏi CPU ramp/I/O storm.
+- **Micro-dispatch Pattern**: Phân rã tác vụ hàng loạt thành các request đơn lẻ `apiStartLabNode()` để đảm bảo tính cô lập: nếu 1 node bị lỗi, các node khác vẫn khởi động bình thường.
 
 ## 4. File / Hàm Liên quan
 | Đường dẫn File | Hàm / Class | Vai trò |
 | :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php)](../../../html/includes/api_nodes.php) | `apiNodesStart()`, `apiNodesStop()` | Xử lý danh sách node hàng loạt |
-| [`/opt/unetlab/html/themes/default/js/actions.js`](../../../opt/unetlab/html/themes/default/js/actions.js)](../../../html/themes/default/js/actions.js) | `startAllNodes()`, `stopAllNodes()` | Giao diện điều khiển nút bấm hàng loạt |
-| [`/opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js)](../../../html/themes/default/js/pnetlab-bulk-node-edit.js) | `saveBulkNodeForm()` | Cập nhật tham số của nhiều node cùng lúc |
+| [`/opt/unetlab/html/includes/api_nodes.php`](../../../opt/unetlab/html/includes/api_nodes.php) | `apiStartLabNode()`, `apiStopLabNode()` | Xử lý khởi động/dừng từng node đơn lẻ qua `node_wrapper_exec()` |
+| [`/opt/unetlab/html/themes/default/js/actions.js`](../../../opt/unetlab/html/themes/default/js/actions.js) | `staggeredPoolRun()`, `.action-nodesstart`, `.action-nodesstop` | Hàng đợi khởi động giãn cách (concurrency=2, stagger=800ms) |
+| [`/opt/unetlab/html/themes/default/js/functions/nodes/lifecycle.js`](../../../opt/unetlab/html/themes/default/js/functions/nodes/lifecycle.js) | `start(node_id)`, `stop(node_id)` | Phát HTTP POST request điều khiển lifecycle từng node |
+| [`/opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-bulk-node-edit.js) | `saveBulkNodeForm()` | Cập nhật tham số của nhiều node cùng lúc |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
-- **Input**: `POST /api/labs/session/nodes/start` với JSON: `{"nodes": [1, 2, 3]}`
-- **Output**: `{"code": 200, "status": "success", "message": "Nodes started successfully"}`
-- **Edge Cases**: Trong lúc đang Start All, có 1 node bị lỗi image -> Hệ thống bỏ qua node lỗi, tiếp tục khởi động các node còn lại và trả về danh sách cảnh báo chi tiết các node thất bại.
+- **Input**: `POST /api/labs/session/nodes/start` với payload form-data / JSON: `{"id": <node_id>}`
+- **Output**: `{"code": 200, "status": "success", "message": "Node started"}`
+- **Edge Cases**: Khi thực hiện Start All, các node được phân rã thành các lời gọi độc lập. Node bị lỗi image/config trả về mã lỗi riêng mà không làm gián đoạn tiến trình khởi động của các node còn lại trong hàng đợi.
 
 ## 6. Liên kết Sơ đồ Level 3
 - [Sơ đồ Gọi hàm (Call Graph)](../../03-diagrams/f07-node-bulk-operations-callgraph.md)

@@ -9,7 +9,7 @@ feature_id: "F10"
 ```mermaid
 graph TD
     INIT["window.onload: initCanvas()"] --> FETCH_TOPO["fetch('/api/labs/session/topology')"]
-    FETCH_TOPO --> API_TOPO["api_topology.php: apiTopologyGet()"]
+    FETCH_TOPO --> API_TOPO["api_topology.php: apiGetLabTopology()"]
     API_TOPO --> LOAD_ELEMENTS["__lab.php: getNodes(), getNetworks()"]
     LOAD_ELEMENTS --> RETURN_JSON["Trả về JSON Graph"]
     RETURN_JSON --> RENDER_LOOP["javascript.js: drawTopology()"]

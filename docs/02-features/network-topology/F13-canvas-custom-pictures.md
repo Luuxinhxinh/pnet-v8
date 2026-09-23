@@ -30,11 +30,9 @@ level: "Level 2"
 - **Image Map Hotspot Collision**: Thuật toán tính khoảng cách Euclid từ điểm click tới tâm hotspot.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_pictures.php`](../../../opt/unetlab/html/includes/api_pictures.php)](../../../html/includes/api_pictures.php) | `apiPictureAdd()`, `apiPictureEdit()` | Quản lý upload và tọa độ ảnh |
-| [`/opt/unetlab/html/includes/__picture.php`](../../../opt/unetlab/html/includes/__picture.php)](../../../html/includes/__picture.php) | `class Picture` | Đối tượng Picture trong Lab XML |
-| [`/opt/unetlab/html/themes/default/js/pnetlab-image-store.js`](../../../opt/unetlab/html/themes/default/js/pnetlab-image-store.js)](../../../html/themes/default/js/pnetlab-image-store.js) | `renderPictureView()` | Hiển thị và xử lý click trên ảnh nền |
+| [`/opt/unetlab/html/includes/api_pictures.php`](../../../opt/unetlab/html/includes/api_pictures.php) | `apiAddLabPicture()`, `apiEditLabPicture()`, `apiGetLabPictureData()` | Quản lý upload binary, trích xuất metadata và lưu tọa độ ảnh |
+| [`/opt/unetlab/html/includes/__picture.php`](../../../opt/unetlab/html/includes/__picture.php) | `class Picture` | Đối tượng Picture trong Lab XML |
+| [`/opt/unetlab/html/themes/default/js/actions.js`](../../../opt/unetlab/html/themes/default/js/actions.js) | `displayPictureForm()`, `#form-picture-add` submit | Form upload và tương tác background picture trên canvas |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: Multipart Form Data gồm file ảnh và JSON danh sách hotspots.

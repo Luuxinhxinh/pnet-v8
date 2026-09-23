@@ -8,9 +8,9 @@ feature_id: "F03"
 
 ```mermaid
 graph TD
-    UI["actions.js: nodeStop()"] -->|HTTP POST| API["api.php: /nodes/stop"]
-    API --> NODE_API["api_nodes.php: apiNodeStop()"]
-    NODE_API --> FUNC_STOP["functions.php: nodeStop()"]
+    UI["actions.js: apiStopLabNode()"] -->|HTTP POST| API["api.php: /nodes/stop"]
+    API --> NODE_API["api_nodes.php: apiStopLabNode()"]
+    NODE_API --> FUNC_STOP["functions.php: apiStopLabNode()"]
     FUNC_STOP --> READ_PID["Đọc file .pid trong /tmp/"]
     FUNC_STOP --> WRAPPER["unl_wrapper.php -a stop"]
     WRAPPER --> SIG_TERM["kill(PID, SIGTERM)"]

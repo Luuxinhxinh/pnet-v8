@@ -17,7 +17,7 @@ sequenceDiagram
 
     LLM->>MCP: JSON-RPC tools/call (name: "create_node", args: {template: "iol", name: "Border_R1"})
     MCP->>Bridge: Chuyển tiếp yêu cầu qua HTTP nội bộ
-    Bridge->>API: Gọi hàm apiNodeAdd()
+    Bridge->>API: Gọi hàm apiAddLabNode()
     API->>API: Tạo node Border_R1 trong file XML
     API-->>Bridge: Node 1 Created
     Bridge-->>MCP: Thành công

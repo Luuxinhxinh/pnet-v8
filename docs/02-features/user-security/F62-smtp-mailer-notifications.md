@@ -30,11 +30,9 @@ level: "Level 2"
 - **PHPMailer / Native Stream Socket Client**: Thư viện socket xử lý giao tiếp SMTP tin cậy.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/smtp_mailer.php`](../../../opt/unetlab/html/includes/smtp_mailer.php)](../../../html/includes/smtp_mailer.php) | `SMTPMailer`, `sendMail()`, `testConnection()` | Lõi gửi email qua SMTP socket (9.4KB) |
-| [`/opt/unetlab/html/main/js/mail-settings.js`](../../../opt/unetlab/html/main/js/mail-settings.js)](../../../html/main/js/mail-settings.js) | JavaScript | Giao diện cấu hình máy chủ gửi thư |
-| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | Các route `/api/admin/mail/*` | REST API quản trị cấu hình mail |
+| [`/opt/unetlab/html/includes/smtp_mailer.php`](../../../opt/unetlab/html/includes/smtp_mailer.php) | `smtp_send_mail()`, `smtp_settings()`, `smtp_valid_host()` | Lõi gửi email thuần qua stream socket client với xác thực TLS |
+| [`/opt/unetlab/html/main/js/mail-settings.js`](../../../opt/unetlab/html/main/js/mail-settings.js) | JavaScript | Giao diện cấu hình máy chủ gửi thư |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php) | Các route `/api/admin/mail/*`, `/api/admin/mail/test` | REST API quản trị cấu hình mail và gửi test email |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/admin/mail/test` với `{ "recipient": "admin@domain.com" }`.

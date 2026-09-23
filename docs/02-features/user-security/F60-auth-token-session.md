@@ -36,10 +36,10 @@ level: "Level 2"
 - **HTTP-Only Cookies**: Bảo vệ chống trích xuất phiên từ mã JavaScript độc hại.
 
 ## 4. File / Hàm Liên quan
-| Đường dẫn File | Hàm / Class | Vai trò |
-| :--- | :--- | :--- |
-| [`/opt/unetlab/html/includes/api_authentication.php`](../../../opt/unetlab/html/includes/api_authentication.php)](../../../html/includes/api_authentication.php) | `apiAuthentication()`, `authorization()` | Xác thực thông tin đăng nhập và cấp token |
-| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php)](../../../html/api.php) | Middleware `$app->hook('slim.before')` | Bộ lọc kiểm tra phiên trước mọi API |
+| [`/opt/unetlab/html/api.php`](../../../opt/unetlab/html/api.php) | `$app->post("/api/auth")`, `$app->get("/api/auth/logout")` | Endpoint đăng nhập xác thực thông tin tài khoản, cấp session cookie và đăng xuất |
+| [`/opt/unetlab/html/includes/functions.php`](../../../opt/unetlab/html/includes/functions.php) | `authThrottleRetryAfter()`, `authThrottleFail()`, `authThrottleClear()` | Cơ chế chống tấn công Brute-Force giới hạn số lần đăng nhập thất bại theo IP |
+| [`/opt/unetlab/html/includes/api_authentication.php`](../../../opt/unetlab/html/includes/api_authentication.php) | `apiLogout()` | Xóa sạch cookie và session trong database |
+| [`/opt/unetlab/html/includes/classes/indentify.php`](../../../opt/unetlab/html/includes/classes/indentify.php) | `indentify::authorization()` | Giải mã cookie token và phân quyền tenant/user |
 
 ## 5. Input / Output & Xử lý Ngoại lệ
 - **Input**: `POST /api/auth` với username và password.

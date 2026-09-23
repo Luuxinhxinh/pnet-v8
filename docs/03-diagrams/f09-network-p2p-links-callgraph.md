@@ -9,7 +9,7 @@ feature_id: "F09"
 ```mermaid
 graph TD
     UI["javascript.js: onLinkDrop()"] -->|HTTP PUT| API["api.php: /network/manage"]
-    API --> CONTROLLER["api_networks.php: apiNetworkP2PConnect()"]
+    API --> CONTROLLER["api_networks.php: apiEditLabNetwork()"]
     CONTROLLER --> CREATE_STUB["__lab.php: createP2PNetworkStub()"]
     CREATE_STUB --> ATTACH_SRC["__node.php: setInterfaceNetwork(src_node, net_id)"]
     CREATE_STUB --> ATTACH_DST["__node.php: setInterfaceNetwork(dst_node, net_id)"]
