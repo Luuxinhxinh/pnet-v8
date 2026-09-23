@@ -56,46 +56,56 @@ Dưới đây là 5 tính năng con độc lập thuộc Nhóm 11, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Security & PKI Subsystem)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 11 (User Management, Security, POD & PKI)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(user_browser, "Giao diện Quản trị An ninh (Browser)") {
-        Component(users_ui, "users.js", "User Management UI", "Thêm/xóa user, gán role admin/user, cấu hình POD ID")
-        Component(login_ui, "login/index.html", "Login & Reset UI", "Form đăng nhập và form yêu cầu quên mật khẩu")
-        Component(mail_ui, "mail-settings.js", "Mail Settings UI", "Nhập thông tin SMTP host, port, user, password")
-    }
+    subgraph SG_user_browser [" 📦 Giao diện Quản trị An ninh (Browser) "]
+        direction TB
+        users_ui["<b>users.js</b><br/><i>(User Management UI)</i><br/>Thêm/xóa user, gán role admin/user, cấu hình POD ID"]:::ui
+        login_ui["<b>login/index.html</b><br/><i>(Login & Reset UI)</i><br/>Form đăng nhập và form yêu cầu quên mật khẩu"]:::ui
+        mail_ui["<b>mail-settings.js</b><br/><i>(Mail Settings UI)</i><br/>Nhập thông tin SMTP host, port, user, password"]:::ui
+    end
 
-    Container_Boundary(security_backend, "Tầng Backend Security & Auth APIs (PHP)") {
-        Component(auth_api, "api_authentication.php", "Auth & RBAC Service", "Kiểm tra mật khẩu băm, tạo token phiên")
-        Component(uusers_api, "api_uusers.php", "User CRUD Service", "Tạo thư mục POD /opt/unetlab/tmp/<pod>")
-        Component(pw_reset, "password_reset.php", "Password Reset Service", "Tạo token ngẫu nhiên và kiểm tra thời hạn")
-        Component(mailer_svc, "smtp_mailer.php", "SMTP Mailer Service", "Gửi email kích hoạt hoặc link reset mật khẩu")
-        Component(audit_svc, "activity_log.php", "Audit Trail Service", "Ghi log truy cập vào MariaDB")
-    }
+    subgraph SG_security_backend [" 📦 Tầng Backend Security & Auth APIs (PHP) "]
+        direction TB
+        auth_api["<b>api_authentication.php</b><br/><i>(Auth & RBAC Service)</i><br/>Kiểm tra mật khẩu băm, tạo token phiên"]:::api
+        uusers_api["<b>api_uusers.php</b><br/><i>(User CRUD Service)</i><br/>Tạo thư mục POD /opt/unetlab/tmp/<pod>"]:::api
+        pw_reset["<b>password_reset.php</b><br/><i>(Password Reset Service)</i><br/>Tạo token ngẫu nhiên và kiểm tra thời hạn"]:::api
+        mailer_svc["<b>smtp_mailer.php</b><br/><i>(SMTP Mailer Service)</i><br/>Gửi email kích hoạt hoặc link reset mật khẩu"]:::api
+        audit_svc["<b>activity_log.php</b><br/><i>(Audit Trail Service)</i><br/>Ghi log truy cập vào MariaDB"]:::api
+    end
 
-    Container_Boundary(pki_subsystem, "Tầng Hạ tầng Chứng chỉ Số (PKI)") {
-        Component(pki_api, "pki/api.php", "PKI API Controller", "Nhận yêu cầu cấp chứng chỉ cho vệ tinh")
-        Component(pki_engine, "pnet-pki.py", "X.509 PKI Engine", "Tương tác với OpenSSL sinh Root CA, CSR và Certificate")
-    }
+    subgraph SG_pki_subsystem [" 📦 Tầng Hạ tầng Chứng chỉ Số (PKI) "]
+        direction TB
+        pki_api["<b>pki/api.php</b><br/><i>(PKI API Controller)</i><br/>Nhận yêu cầu cấp chứng chỉ cho vệ tinh"]:::wrap
+        pki_engine["<b>pnet-pki.py</b><br/><i>(X.509 PKI Engine)</i><br/>Tương tác với OpenSSL sinh Root CA, CSR và Certificate"]:::wrap
+    end
 
-    Container_Boundary(security_db, "Cơ sở Dữ liệu Hệ thống (MariaDB: pnetlab_db)") {
-        Component(tbl_users, "users & user_roles", "User Tables", "Lưu username, password hash, role, pod_id")
-        Component(tbl_resets, "password_resets", "Reset Tokens", "Lưu email, token hash, expired_at")
-        Component(tbl_logs, "activity_log", "Audit Log Table", "Lưu user, IP, action, timestamp")
-    }
+    subgraph SG_security_db [" 📦 Cơ sở Dữ liệu Hệ thống (MariaDB: pnetlab_db) "]
+        direction TB
+        tbl_users["<b>users & user_roles</b><br/><i>(User Tables)</i><br/>Lưu username, password hash, role, pod_id"]:::kernel
+        tbl_resets["<b>password_resets</b><br/><i>(Reset Tokens)</i><br/>Lưu email, token hash, expired_at"]:::kernel
+        tbl_logs["<b>activity_log</b><br/><i>(Audit Log Table)</i><br/>Lưu user, IP, action, timestamp"]:::kernel
+    end
 
-    Rel(login_ui, auth_api, "POST /api/auth", "Username + Password")
-    Rel(auth_api, tbl_users, "Truy vấn kiểm tra hash", "SELECT password FROM users")
-    Rel(auth_api, audit_svc, "Ghi log đăng nhập thành công", "logActivity()")
-    Rel(audit_svc, tbl_logs, "INSERT", "activity_log")
-    Rel(users_ui, uusers_api, "POST /api/uusers", "Tạo user mới kèm gán POD")
-    Rel(uusers_api, tbl_users, "INSERT INTO users", "Lưu thông tin tài khoản")
-    Rel(login_ui, pw_reset, "POST /api/password-reset/check", "Gửi email reset")
-    Rel(pw_reset, tbl_resets, "Lưu token một lần", "INSERT INTO password_resets")
-    Rel(pw_reset, mailer_svc, "Gửi email cho người dùng", "sendMail()")
-    Rel(mail_ui, mailer_svc, "PUT /api/admin/mail", "Lưu cấu hình SMTP")
-    Rel(users_ui, pki_api, "POST /pki/api.php", "Yêu cầu sinh cert cho Satellite")
-    Rel(pki_api, pki_engine, "Gọi script", "python3 pnet-pki.py generate-cert")
+    %% Quan hệ giữa các thành phần
+    login_ui -->|"POST /api/auth<br/><i>[Username + Password]</i>"| auth_api
+    auth_api -->|"Truy vấn kiểm tra hash<br/><i>[SELECT password FROM users]</i>"| tbl_users
+    auth_api -->|"Ghi log đăng nhập thành công<br/><i>[logActivity()]</i>"| audit_svc
+    audit_svc -->|"INSERT<br/><i>[activity_log]</i>"| tbl_logs
+    users_ui -->|"POST /api/uusers<br/><i>[Tạo user mới kèm gán POD]</i>"| uusers_api
+    uusers_api -->|"INSERT INTO users<br/><i>[Lưu thông tin tài khoản]</i>"| tbl_users
+    login_ui -->|"POST /api/password-reset/check<br/><i>[Gửi email reset]</i>"| pw_reset
+    pw_reset -->|"Lưu token một lần<br/><i>[INSERT INTO password_resets]</i>"| tbl_resets
+    pw_reset -->|"Gửi email cho người dùng<br/><i>[sendMail()]</i>"| mailer_svc
+    mail_ui -->|"PUT /api/admin/mail<br/><i>[Lưu cấu hình SMTP]</i>"| mailer_svc
+    users_ui -->|"POST /pki/api.php<br/><i>[Yêu cầu sinh cert cho Satellite]</i>"| pki_api
+    pki_api -->|"Gọi script<br/><i>[python3 pnet-pki.py generate-cert]</i>"| pki_engine
 ```
 
 ---

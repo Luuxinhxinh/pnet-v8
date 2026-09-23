@@ -55,42 +55,52 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 06, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: NetEm & Telemetry Engine)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 06 (NetEm & Real-time Telemetry Engine)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(canvas_view, "Giao diện Canvas Trình duyệt (Browser)") {
-        Component(netem_modal, "pnetlab-netem-advanced.js", "NetEm Modal UI", "Cho phép nhập delay (ms), loss (%), jitter, bandwidth limit")
-        Component(glow_render, "pnetlab-egress-glow.js", "Canvas Animation Engine", "Vẽ hạt sáng chuyển động thể hiện mật độ lưu lượng truyền")
-        Component(sse_client, "pnetlab-labstate-client.js", "SSE Client Listener", "Nhận sự kiện node start/stop và cập nhật biểu tượng tức thời")
-        Component(stats_hud, "pnetlab-node-stats.js", "Node HUD Monitor", "Hiển thị badge CPU% và RAM MB ngay dưới chân thiết bị")
-    }
+    subgraph SG_canvas_view [" 📦 Giao diện Canvas Trình duyệt (Browser) "]
+        direction TB
+        netem_modal["<b>pnetlab-netem-advanced.js</b><br/><i>(NetEm Modal UI)</i><br/>Cho phép nhập delay (ms), loss (%), jitter, bandwidth limit"]:::ui
+        glow_render["<b>pnetlab-egress-glow.js</b><br/><i>(Canvas Animation Engine)</i><br/>Vẽ hạt sáng chuyển động thể hiện mật độ lưu lượng truyền"]:::ui
+        sse_client["<b>pnetlab-labstate-client.js</b><br/><i>(SSE Client Listener)</i><br/>Nhận sự kiện node start/stop và cập nhật biểu tượng tức thời"]:::ui
+        stats_hud["<b>pnetlab-node-stats.js</b><br/><i>(Node HUD Monitor)</i><br/>Hiển thị badge CPU% và RAM MB ngay dưới chân thiết bị"]:::ui
+    end
 
-    Container_Boundary(telemetry_apis, "Tầng Backend Telemetry APIs (PHP)") {
-        Component(netem_api, "pnq-linkwatch.php", "NetEm Controller", "Biên dịch tham số người dùng thành lệnh tc Linux")
-        Component(linkstats_api, "pnq-linkstats.php", "Link Stats Provider", "Đọc bộ đếm if_packets từ /sys/class/net/")
-        Component(nodestats_api, "pnq-nodestats.php", "Node Stats Provider", "Phối hợp với pnq-nodestats.sh đọc cgroups")
-        Component(sysmon_api, "pnq-sysmon.php", "System Monitor Provider", "Đọc /proc/stat, /proc/meminfo, /sys/kernel/mm/ksm/")
-    }
+    subgraph SG_telemetry_apis [" 📦 Tầng Backend Telemetry APIs (PHP) "]
+        direction TB
+        netem_api["<b>pnq-linkwatch.php</b><br/><i>(NetEm Controller)</i><br/>Biên dịch tham số người dùng thành lệnh tc Linux"]:::api
+        linkstats_api["<b>pnq-linkstats.php</b><br/><i>(Link Stats Provider)</i><br/>Đọc bộ đếm if_packets từ /sys/class/net/"]:::api
+        nodestats_api["<b>pnq-nodestats.php</b><br/><i>(Node Stats Provider)</i><br/>Phối hợp với pnq-nodestats.sh đọc cgroups"]:::api
+        sysmon_api["<b>pnq-sysmon.php</b><br/><i>(System Monitor Provider)</i><br/>Đọc /proc/stat, /proc/meminfo, /sys/kernel/mm/ksm/"]:::api
+    end
 
-    Container_Boundary(realtime_daemons, "Tầng Daemons Giám sát Nền (Python)") {
-        Component(linkwatchd, "pnetlab-linkwatchd.py", "Link Watcher Daemon", "Theo dõi thay đổi trạng thái giao diện và áp đặt qdisc")
-        Component(labstated, "pnetlab-labstated.py", "Lab State SSE Daemon", "Duy trì kết nối SSE đẩy sự kiện tới hàng trăm trình duyệt")
-    }
+    subgraph SG_realtime_daemons [" 📦 Tầng Daemons Giám sát Nền (Python) "]
+        direction TB
+        linkwatchd["<b>pnetlab-linkwatchd.py</b><br/><i>(Link Watcher Daemon)</i><br/>Theo dõi thay đổi trạng thái giao diện và áp đặt qdisc"]:::wrap
+        labstated["<b>pnetlab-labstated.py</b><br/><i>(Lab State SSE Daemon)</i><br/>Duy trì kết nối SSE đẩy sự kiện tới hàng trăm trình duyệt"]:::wrap
+    end
 
-    Container_Boundary(kernel_space, "Nhân Hệ điều hành Linux (Kernel Space)") {
-        Component(tc_netem, "Traffic Control (tc netem)", "Kernel Packet Scheduler", "Làm trễ hoặc hủy gói tin theo thuật toán mô phỏng")
-        Component(cgroups_subsys, "Linux Cgroups v1/v2", "Resource Accounting", "Bộ đếm chu kỳ CPU và dung lượng bộ nhớ trang của tiến trình")
-        Component(sysfs_net, "/sys/class/net/<intf>/statistics", "Sysfs Virtual FS", "Bộ đếm rx_bytes, tx_bytes, rx_packets, tx_packets")
-    }
+    subgraph SG_kernel_space [" 📦 Nhân Hệ điều hành Linux (Kernel Space) "]
+        direction TB
+        tc_netem["<b>Traffic Control (tc netem)</b><br/><i>(Kernel Packet Scheduler)</i><br/>Làm trễ hoặc hủy gói tin theo thuật toán mô phỏng"]:::kernel
+        cgroups_subsys["<b>Linux Cgroups v1/v2</b><br/><i>(Resource Accounting)</i><br/>Bộ đếm chu kỳ CPU và dung lượng bộ nhớ trang của tiến trình"]:::kernel
+        sysfs_net["<b>/sys/class/net/<intf>/statistics</b><br/><i>(Sysfs Virtual FS)</i><br/>Bộ đếm rx_bytes, tx_bytes, rx_packets, tx_packets"]:::kernel
+    end
 
-    Rel(netem_modal, netem_api, "POST /pnq-linkwatch.php", "JSON: {link_id, delay, loss...}")
-    Rel(netem_api, tc_netem, "Thực thi lệnh shell", "tc qdisc replace dev tap... netem delay 50ms")
-    Rel(glow_render, linkstats_api, "GET /pnq-linkstats.php", "Polling số liệu byte/s")
-    Rel(linkstats_api, sysfs_net, "Đọc trực tiếp tệp hệ thống", "rx_bytes / tx_bytes")
-    Rel(stats_hud, nodestats_api, "GET /pnq-nodestats.php", "Lấy CPU% & RAM MB")
-    Rel(nodestats_api, cgroups_subsys, "Đọc cpuacct.usage & memory.usage_in_bytes", "Cgroups FS")
-    Rel(sse_client, labstated, "Kết nối Server-Sent Events (SSE)", "HTTP GET /events/labstate")
-    Rel(labstated, sse_client, "Đẩy thông báo JSON", "event: node_status_change")
+    %% Quan hệ giữa các thành phần
+    netem_modal -->|"POST /pnq-linkwatch.php<br/><i>[JSON: {link_id, delay, loss...}]</i>"| netem_api
+    netem_api -->|"Thực thi lệnh shell<br/><i>[tc qdisc replace dev tap... netem delay 50ms]</i>"| tc_netem
+    glow_render -->|"GET /pnq-linkstats.php<br/><i>[Polling số liệu byte/s]</i>"| linkstats_api
+    linkstats_api -->|"Đọc trực tiếp tệp hệ thống<br/><i>[rx_bytes / tx_bytes]</i>"| sysfs_net
+    stats_hud -->|"GET /pnq-nodestats.php<br/><i>[Lấy CPU% & RAM MB]</i>"| nodestats_api
+    nodestats_api -->|"Đọc cpuacct.usage & memory.usage_in_bytes<br/><i>[Cgroups FS]</i>"| cgroups_subsys
+    sse_client -->|"Kết nối Server-Sent Events (SSE)<br/><i>[HTTP GET /events/labstate]</i>"| labstated
+    labstated -->|"Đẩy thông báo JSON<br/><i>[event: node_status_change]</i>"| sse_client
 ```
 
 ---

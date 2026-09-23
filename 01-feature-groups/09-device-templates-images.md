@@ -56,35 +56,44 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 09, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Template & Image Subsystem)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 09 (Device Templates, Images & App Store)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(web_dashboard, "Dashboard Quản trị Tài nguyên (Browser)") {
-        Component(images_ui, "images.js", "Image Manager UI", "Xem dung lượng đĩa, danh sách image đã cài đặt và tab IShare2")
-        Component(devices_ui, "devices.js", "Device Template UI", "Chỉnh sửa cấu hình mặc định của thiết bị")
-    }
+    subgraph SG_web_dashboard [" 📦 Dashboard Quản trị Tài nguyên (Browser) "]
+        direction TB
+        images_ui["<b>images.js</b><br/><i>(Image Manager UI)</i><br/>Xem dung lượng đĩa, danh sách image đã cài đặt và tab IShare2"]:::ui
+        devices_ui["<b>devices.js</b><br/><i>(Device Template UI)</i><br/>Chỉnh sửa cấu hình mặc định của thiết bị"]:::ui
+    end
 
-    Container_Boundary(image_apis, "Tầng Backend Image & Template APIs (PHP)") {
-        Component(template_api, "api_templatedefaults.php", "Template Config Service", "Quét thư mục /opt/unetlab/html/templates/")
-        Component(factory_api, "devices-factory/api.php", "Template Factory Service", "Lưu file template tùy biến mới")
-        Component(manage_api, "images-manage/api.php", "Filesystem Browser", "Quét thư mục /opt/unetlab/addons/")
-        Component(ishare_api, "ishare2/api.php", "IShare2 Client Service", "Giao tiếp HTTPS với máy chủ đám mây IShare2")
-        Component(normalizer_api, "image_normalize.php", "Disk Format Checker", "Kiểm tra file virtioa.qcow2 hợp lệ")
-    }
+    subgraph SG_image_apis [" 📦 Tầng Backend Image & Template APIs (PHP) "]
+        direction TB
+        template_api["<b>api_templatedefaults.php</b><br/><i>(Template Config Service)</i><br/>Quét thư mục /opt/unetlab/html/templates/"]:::api
+        factory_api["<b>devices-factory/api.php</b><br/><i>(Template Factory Service)</i><br/>Lưu file template tùy biến mới"]:::api
+        manage_api["<b>images-manage/api.php</b><br/><i>(Filesystem Browser)</i><br/>Quét thư mục /opt/unetlab/addons/"]:::api
+        ishare_api["<b>ishare2/api.php</b><br/><i>(IShare2 Client Service)</i><br/>Giao tiếp HTTPS với máy chủ đám mây IShare2"]:::api
+        normalizer_api["<b>image_normalize.php</b><br/><i>(Disk Format Checker)</i><br/>Kiểm tra file virtioa.qcow2 hợp lệ"]:::api
+    end
 
-    Container_Boundary(system_workers, "Tầng Worker Nền & Hệ thống Tệp") {
-        Component(ishare_worker, "ishare2.sh", "Download Background Worker", "Tiến trình tải ngầm qua aria2/curl")
-        Component(qemu_img, "qemu-img (Binary)", "Disk Tool", "Chuyển đổi vmdk sang qcow2")
-        Component(addons_fs, "/opt/unetlab/addons/", "Disk Storage", "Lưu trữ các thư mục qemu, iol, dynamips")
-    }
+    subgraph SG_system_workers [" 📦 Tầng Worker Nền & Hệ thống Tệp "]
+        direction TB
+        ishare_worker["<b>ishare2.sh</b><br/><i>(Download Background Worker)</i><br/>Tiến trình tải ngầm qua aria2/curl"]:::wrap
+        qemu_img["<b>qemu-img (Binary)</b><br/><i>(Disk Tool)</i><br/>Chuyển đổi vmdk sang qcow2"]:::wrap
+        addons_fs["<b>/opt/unetlab/addons/</b><br/><i>(Disk Storage)</i><br/>Lưu trữ các thư mục qemu, iol, dynamips"]:::wrap
+    end
 
-    Rel(images_ui, manage_api, "GET /images-manage/api.php", "Lấy danh sách image cục bộ")
-    Rel(images_ui, ishare_api, "POST /ishare2/api.php?action=download", "Chọn tải image từ Cloud")
-    Rel(manage_api, addons_fs, "Duyệt thư mục", "scandir(/opt/unetlab/addons)")
-    Rel(ishare_api, ishare_worker, "Kích hoạt worker nền", "nohup /opt/unetlab/scripts/workers/ishare2.sh &")
-    Rel(ishare_worker, addons_fs, "Ghi file đã tải về", "Giải nén vào /opt/unetlab/addons/qemu/...")
-    Rel(normalizer_api, qemu_img, "Chuyển đổi đĩa ảo", "qemu-img convert -O qcow2")
-    Rel(devices_ui, template_api, "GET /api/templatedefaults", "Đọc cấu hình mẫu")
+    %% Quan hệ giữa các thành phần
+    images_ui -->|"GET /images-manage/api.php<br/><i>[Lấy danh sách image cục bộ]</i>"| manage_api
+    images_ui -->|"POST /ishare2/api.php?action=download<br/><i>[Chọn tải image từ Cloud]</i>"| ishare_api
+    manage_api -->|"Duyệt thư mục<br/><i>[scandir(/opt/unetlab/addons)]</i>"| addons_fs
+    ishare_api -->|"Kích hoạt worker nền<br/><i>[nohup /opt/unetlab/scripts/workers/ishare2.sh &]</i>"| ishare_worker
+    ishare_worker -->|"Ghi file đã tải về<br/><i>[Giải nén vào /opt/unetlab/addons/qemu/...]</i>"| addons_fs
+    normalizer_api -->|"Chuyển đổi đĩa ảo<br/><i>[qemu-img convert -O qcow2]</i>"| qemu_img
+    devices_ui -->|"GET /api/templatedefaults<br/><i>[Đọc cấu hình mẫu]</i>"| template_api
 ```
 
 ---

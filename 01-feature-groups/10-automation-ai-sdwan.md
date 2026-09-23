@@ -55,40 +55,50 @@ Dưới đây là 5 tính năng con độc lập thuộc Nhóm 10, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Automation & AI Subsystem)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 10 (Automation, AI Agent MCP & Cisco SD-WAN)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(canvas_widgets, "Giao diện Tương tác Tự động hóa (Browser)") {
-        Component(ai_chat_ui, "pnetlab-ai-builder.js", "AI Floating Chat", "Khung chat nhập prompt ngôn ngữ tự nhiên")
-        Component(sdwan_wizard, "pnetlab-sdwan-builder.js", "SD-WAN Wizard UI", "Form nhập Org Name, vBond IP, chọn số lượng vEdge")
-    }
+    subgraph SG_canvas_widgets [" 📦 Giao diện Tương tác Tự động hóa (Browser) "]
+        direction TB
+        ai_chat_ui["<b>pnetlab-ai-builder.js</b><br/><i>(AI Floating Chat)</i><br/>Khung chat nhập prompt ngôn ngữ tự nhiên"]:::ui
+        sdwan_wizard["<b>pnetlab-sdwan-builder.js</b><br/><i>(SD-WAN Wizard UI)</i><br/>Form nhập Org Name, vBond IP, chọn số lượng vEdge"]:::ui
+    end
 
-    Container_Boundary(mcp_and_apis, "Tầng Backend APIs & MCP Bridge (PHP)") {
-        Component(mcp_api, "mcp/api.php", "MCP REST API", "Nhận tin nhắn chat từ UI và chuyển tiếp")
-        Component(mcp_bridge, "mcp/bridge.php", "Security Bridge", "Xác thực cookie token phiên của người dùng")
-        Component(sdwan_api, "sdwan/api.php", "SD-WAN Orchestrator API", "Tạo các node vManage, vSmart, vBond và nối dây tự động")
-    }
+    subgraph SG_mcp_and_apis [" 📦 Tầng Backend APIs & MCP Bridge (PHP) "]
+        direction TB
+        mcp_api["<b>mcp/api.php</b><br/><i>(MCP REST API)</i><br/>Nhận tin nhắn chat từ UI và chuyển tiếp"]:::api
+        mcp_bridge["<b>mcp/bridge.php</b><br/><i>(Security Bridge)</i><br/>Xác thực cookie token phiên của người dùng"]:::api
+        sdwan_api["<b>sdwan/api.php</b><br/><i>(SD-WAN Orchestrator API)</i><br/>Tạo các node vManage, vSmart, vBond và nối dây tự động"]:::api
+    end
 
-    Container_Boundary(ai_and_daemons, "Tầng Động cơ Tự động hóa (Python)") {
-        Component(mcp_server, "pnetlab-mcp.py", "MCP Protocol Server", "Định nghĩa Tool: create_node, connect_nodes, start_node")
-        Component(ai_agent_py, "ai_lab_agent.py", "LLM Reasoning Engine", "Biên dịch câu lệnh người dùng thành chuỗi tool calls")
-        Component(sdwan_onboard, "sdwan-onboard.py", "SD-WAN Bootstrap Engine", "Gửi API HTTPS REST tới vManage, ký chứng chỉ Root CA")
-        Component(push_engine, "pnet-pushconfig.py", "Mass Config Pusher", "Đẩy file cấu hình startup qua SSH socket song song")
-    }
+    subgraph SG_ai_and_daemons [" 📦 Tầng Động cơ Tự động hóa (Python) "]
+        direction TB
+        mcp_server["<b>pnetlab-mcp.py</b><br/><i>(MCP Protocol Server)</i><br/>Định nghĩa Tool: create_node, connect_nodes, start_node"]:::wrap
+        ai_agent_py["<b>ai_lab_agent.py</b><br/><i>(LLM Reasoning Engine)</i><br/>Biên dịch câu lệnh người dùng thành chuỗi tool calls"]:::wrap
+        sdwan_onboard["<b>sdwan-onboard.py</b><br/><i>(SD-WAN Bootstrap Engine)</i><br/>Gửi API HTTPS REST tới vManage, ký chứng chỉ Root CA"]:::wrap
+        push_engine["<b>pnet-pushconfig.py</b><br/><i>(Mass Config Pusher)</i><br/>Đẩy file cấu hình startup qua SSH socket song song"]:::wrap
+    end
 
-    Container_Boundary(lab_nodes_domain, "Topology & Devices trong Lab") {
-        Component(vmanage_node, "Cisco vManage (KVM)", "SD-WAN NMS", "Tiếp nhận cấu hình qua REST API 8443")
-        Component(routers_fleet, "Virtual Routers (Nodes)", "Network Devices", "Nhận config qua cổng console/ssh")
-    }
+    subgraph SG_lab_nodes_domain [" 📦 Topology & Devices trong Lab "]
+        direction TB
+        vmanage_node["<b>Cisco vManage (KVM)</b><br/><i>(SD-WAN NMS)</i><br/>Tiếp nhận cấu hình qua REST API 8443"]:::kernel
+        routers_fleet["<b>Virtual Routers (Nodes)</b><br/><i>(Network Devices)</i><br/>Nhận config qua cổng console/ssh"]:::kernel
+    end
 
-    Rel(ai_chat_ui, mcp_api, "POST /mcp/api.php", "Prompt: 'Tạo mạng tam giác 3 router'")
-    Rel(mcp_api, mcp_server, "JSON-RPC (Port 8090)", "Gửi request gọi Tool")
-    Rel(mcp_server, ai_agent_py, "Xử lý prompt", "Phân tích ngữ nghĩa")
-    Rel(mcp_server, mcp_api, "Gọi tool create_node", "Tạo R1, R2, R3 trên Lab")
-    Rel(sdwan_wizard, sdwan_api, "POST /sdwan/api.php", "Khởi tạo Fabric SD-WAN")
-    Rel(sdwan_api, sdwan_onboard, "Kích hoạt script", "python3 sdwan-onboard.py")
-    Rel(sdwan_onboard, vmanage_node, "HTTPS REST (8443)", "Upload Root CA & Kích hoạt vSmart/vBond")
-    Rel(push_engine, routers_fleet, "SSH / Telnet song song", "Nạp cấu hình startup")
+    %% Quan hệ giữa các thành phần
+    ai_chat_ui -->|"POST /mcp/api.php<br/><i>[Prompt: 'Tạo mạng tam giác 3 router']</i>"| mcp_api
+    mcp_api -->|"JSON-RPC (Port 8090)<br/><i>[Gửi request gọi Tool]</i>"| mcp_server
+    mcp_server -->|"Xử lý prompt<br/><i>[Phân tích ngữ nghĩa]</i>"| ai_agent_py
+    mcp_server -->|"Gọi tool create_node<br/><i>[Tạo R1, R2, R3 trên Lab]</i>"| mcp_api
+    sdwan_wizard -->|"POST /sdwan/api.php<br/><i>[Khởi tạo Fabric SD-WAN]</i>"| sdwan_api
+    sdwan_api -->|"Kích hoạt script<br/><i>[python3 sdwan-onboard.py]</i>"| sdwan_onboard
+    sdwan_onboard -->|"HTTPS REST (8443)<br/><i>[Upload Root CA & Kích hoạt vSmart/vBond]</i>"| vmanage_node
+    push_engine -->|"SSH / Telnet song song<br/><i>[Nạp cấu hình startup]</i>"| routers_fleet
 ```
 
 ---

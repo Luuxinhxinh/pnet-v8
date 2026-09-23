@@ -61,42 +61,51 @@ Dưới đây là 7 tính năng con độc lập thuộc Nhóm 07, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Protocol Analytics Engine)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 07 (Protocol Analytics & Visual Overlay Engine)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(canvas_overlays, "Giao diện Phân tích Trực quan (Browser)") {
-        Component(overlay_js, "pnetlab-lazy-overlays.js", "Overlay Canvas Layer", "Vẽ các đường viền vùng màu OSPF/BGP/VLAN đè lên topo")
-        Component(bgp_waterfall, "pnetlab-bgp-waterfall.js", "Waterfall Timeline", "Render biểu đồ hội tụ tuyến đường BGP theo thời gian")
-        Component(proto_inspect, "pnetlab-protocol-inspector.js", "Packet Inspector Pane", "Hiển thị cây phân tích header gói tin chi tiết")
-        Component(wifi_painter, "pnetlab-wifi-painter.js", "WiFi Heatmap Layer", "Render vùng phủ sóng vô tuyến theo bán kính suy hao")
-        Component(rack_ui, "pnetlab-rack-view.js", "Datacenter Rack View", "Hiển thị mặt trước/sau của các thiết bị trong tủ rack 42U")
-    }
+    subgraph SG_canvas_overlays [" 📦 Giao diện Phân tích Trực quan (Browser) "]
+        direction TB
+        overlay_js["<b>pnetlab-lazy-overlays.js</b><br/><i>(Overlay Canvas Layer)</i><br/>Vẽ các đường viền vùng màu OSPF/BGP/VLAN đè lên topo"]:::ui
+        bgp_waterfall["<b>pnetlab-bgp-waterfall.js</b><br/><i>(Waterfall Timeline)</i><br/>Render biểu đồ hội tụ tuyến đường BGP theo thời gian"]:::ui
+        proto_inspect["<b>pnetlab-protocol-inspector.js</b><br/><i>(Packet Inspector Pane)</i><br/>Hiển thị cây phân tích header gói tin chi tiết"]:::ui
+        wifi_painter["<b>pnetlab-wifi-painter.js</b><br/><i>(WiFi Heatmap Layer)</i><br/>Render vùng phủ sóng vô tuyến theo bán kính suy hao"]:::ui
+        rack_ui["<b>pnetlab-rack-view.js</b><br/><i>(Datacenter Rack View)</i><br/>Hiển thị mặt trước/sau của các thiết bị trong tủ rack 42U"]:::ui
+    end
 
-    Container_Boundary(analytics_apis, "Tầng Backend Analytics APIs (PHP)") {
-        Component(overlay_api, "pnq-overlay.php", "Overlay Aggregator", "Tổng hợp thông tin định tuyến từ các node trong lab")
-        Component(bgp_api, "pnq-bgppath.php", "BGP Path Provider", "Xử lý đồ thị AS-Path")
-        Component(trace_api, "pnq-prototrace.php", "Live Trace Provider", "Truyền gói tin giải mã về UI")
-        Component(wifi_api, "pnq-wifi.php", "WiFi Physics Provider", "Cung cấp tọa độ và công suất phát sóng TX Power")
-    }
+    subgraph SG_analytics_apis [" 📦 Tầng Backend Analytics APIs (PHP) "]
+        direction TB
+        overlay_api["<b>pnq-overlay.php</b><br/><i>(Overlay Aggregator)</i><br/>Tổng hợp thông tin định tuyến từ các node trong lab"]:::api
+        bgp_api["<b>pnq-bgppath.php</b><br/><i>(BGP Path Provider)</i><br/>Xử lý đồ thị AS-Path"]:::api
+        trace_api["<b>pnq-prototrace.php</b><br/><i>(Live Trace Provider)</i><br/>Truyền gói tin giải mã về UI"]:::api
+        wifi_api["<b>pnq-wifi.php</b><br/><i>(WiFi Physics Provider)</i><br/>Cung cấp tọa độ và công suất phát sóng TX Power"]:::api
+    end
 
-    Container_Boundary(python_engines, "Tầng Động cơ Tính toán Chuyên sâu (Python)") {
-        Component(overlay_engine, "pnet_routeoverlay.py", "Route Math Engine", "Phân tích RIB/FIB, tính toán đường bao lồi (Convex Hull)")
-        Component(bgp_parser, "pnet_bgpparse.py", "BGP Parser", "Bóc tách cú pháp Cisco IOS/Juniper CLI 'show ip bgp'")
-        Component(proto_tracer, "pnetlab-prototracer.py", "Packet Capture & Decoder", "Bắt gói tin raw, chuyển qua pnet_protodecode.py")
-        Component(air_handler, "airhandler.py", "Radio Simulation Daemon", "Tính công thức suy hao Log-distance path loss model")
-        Component(rack_engine, "pnet_racklayout.py", "Rack Packing Engine", "Thuật toán bin-packing xếp thiết bị vào rack")
-    }
+    subgraph SG_python_engines [" 📦 Tầng Động cơ Tính toán Chuyên sâu (Python) "]
+        direction TB
+        overlay_engine["<b>pnet_routeoverlay.py</b><br/><i>(Route Math Engine)</i><br/>Phân tích RIB/FIB, tính toán đường bao lồi (Convex Hull)"]:::wrap
+        bgp_parser["<b>pnet_bgpparse.py</b><br/><i>(BGP Parser)</i><br/>Bóc tách cú pháp Cisco IOS/Juniper CLI 'show ip bgp'"]:::wrap
+        proto_tracer["<b>pnetlab-prototracer.py</b><br/><i>(Packet Capture & Decoder)</i><br/>Bắt gói tin raw, chuyển qua pnet_protodecode.py"]:::wrap
+        air_handler["<b>airhandler.py</b><br/><i>(Radio Simulation Daemon)</i><br/>Tính công thức suy hao Log-distance path loss model"]:::wrap
+        rack_engine["<b>pnet_racklayout.py</b><br/><i>(Rack Packing Engine)</i><br/>Thuật toán bin-packing xếp thiết bị vào rack"]:::wrap
+    end
 
-    Rel(overlay_js, overlay_api, "GET /pnq-overlay.php?proto=ospf", "Lấy tọa độ vùng phủ")
-    Rel(overlay_api, overlay_engine, "Gọi xử lý", "python3 pnet_routeoverlay.py")
-    Rel(bgp_waterfall, bgp_api, "GET /pnq-bgppath.php", "Lấy dữ liệu BGP")
-    Rel(bgp_api, bgp_parser, "Thực thi parser", "python3 pnet_bgpparse.py")
-    Rel(proto_inspect, trace_api, "SSE / WebSocket", "Nhận luồng gói tin đã giải mã")
-    Rel(trace_api, proto_tracer, "Đọc buffer", "Shared memory / Unix socket")
-    Rel(wifi_painter, wifi_api, "GET /pnq-wifi.php", "Lấy thông số phát sóng")
-    Rel(wifi_api, air_handler, "Truy vấn socket daemon", "Port IPC")
-    Rel(rack_ui, overlay_api, "GET /pnq-overlay.php?view=rack", "Lấy sơ đồ rack")
-    Rel(overlay_api, rack_engine, "Gọi script", "python3 pnet_racklayout.py")
+    %% Quan hệ giữa các thành phần
+    overlay_js -->|"GET /pnq-overlay.php?proto=ospf<br/><i>[Lấy tọa độ vùng phủ]</i>"| overlay_api
+    overlay_api -->|"Gọi xử lý<br/><i>[python3 pnet_routeoverlay.py]</i>"| overlay_engine
+    bgp_waterfall -->|"GET /pnq-bgppath.php<br/><i>[Lấy dữ liệu BGP]</i>"| bgp_api
+    bgp_api -->|"Thực thi parser<br/><i>[python3 pnet_bgpparse.py]</i>"| bgp_parser
+    proto_inspect -->|"SSE / WebSocket<br/><i>[Nhận luồng gói tin đã giải mã]</i>"| trace_api
+    trace_api -->|"Đọc buffer<br/><i>[Shared memory / Unix socket]</i>"| proto_tracer
+    wifi_painter -->|"GET /pnq-wifi.php<br/><i>[Lấy thông số phát sóng]</i>"| wifi_api
+    wifi_api -->|"Truy vấn socket daemon<br/><i>[Port IPC]</i>"| air_handler
+    rack_ui -->|"GET /pnq-overlay.php?view=rack<br/><i>[Lấy sơ đồ rack]</i>"| overlay_api
+    overlay_api -->|"Gọi script<br/><i>[python3 pnet_racklayout.py]</i>"| rack_engine
 ```
 
 ---

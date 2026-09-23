@@ -47,35 +47,45 @@ Dưới đây là 4 tính năng con độc lập thuộc Nhóm 08, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Lab Validation Engine)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 08 (Lab Validation & Automated Assessment Engine)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(student_ui, "Giao diện Học viên / Thí sinh (Browser)") {
-        Component(validate_ui, "validate.js", "Validation Dashboard", "Hiển thị danh sách câu hỏi, số điểm đạt/tổng điểm, nút 'Check My Lab'")
-    }
+    subgraph SG_student_ui [" 📦 Giao diện Học viên / Thí sinh (Browser) "]
+        direction TB
+        validate_ui["<b>validate.js</b><br/><i>(Validation Dashboard)</i><br/>Hiển thị danh sách câu hỏi, số điểm đạt/tổng điểm, nút 'Check My Lab'"]:::ui
+    end
 
-    Container_Boundary(validation_backend, "Tầng Backend Chấm điểm (PHP)") {
-        Component(task_parser, "lab_tasks_unl.php", "Task XML Parser", "Đọc danh sách tiêu chí kiểm tra từ file .unl của bài lab")
-        Component(probe_engine, "lab_validation_probe.php", "Validation Probe Engine", "Lập lịch thực thi các bài kiểm tra đối chiếu")
-        Component(score_store, "lab_validation_store.php", "Score Storage Service", "Lưu điểm số vào tệp JSON phiên người dùng")
-    }
+    subgraph SG_validation_backend [" 📦 Tầng Backend Chấm điểm (PHP) "]
+        direction TB
+        task_parser["<b>lab_tasks_unl.php</b><br/><i>(Task XML Parser)</i><br/>Đọc danh sách tiêu chí kiểm tra từ file .unl của bài lab"]:::api
+        probe_engine["<b>lab_validation_probe.php</b><br/><i>(Validation Probe Engine)</i><br/>Lập lịch thực thi các bài kiểm tra đối chiếu"]:::api
+        score_store["<b>lab_validation_store.php</b><br/><i>(Score Storage Service)</i><br/>Lưu điểm số vào tệp JSON phiên người dùng"]:::api
+    end
 
-    Container_Boundary(probe_executor, "Tầng Thực thi Probe Ngoại vi (Python)") {
-        Component(transport_py, "pnet_validation_transport.py", "CLI Transport Worker", "Tự động Telnet/SSH vào console port của thiết bị")
-    }
+    subgraph SG_probe_executor [" 📦 Tầng Thực thi Probe Ngoại vi (Python) "]
+        direction TB
+        transport_py["<b>pnet_validation_transport.py</b><br/><i>(CLI Transport Worker)</i><br/>Tự động Telnet/SSH vào console port của thiết bị"]:::wrap
+    end
 
-    Container_Boundary(running_devices, "Thiết bị Đang Chạy trong Lab") {
-        Component(target_node, "Virtual Router / Switch", "Console TCP Port", "Tiếp nhận lệnh 'show ip route', trả về kết quả cấu hình")
-    }
+    subgraph SG_running_devices [" 📦 Thiết bị Đang Chạy trong Lab "]
+        direction TB
+        target_node["<b>Virtual Router / Switch</b><br/><i>(Console TCP Port)</i><br/>Tiếp nhận lệnh 'show ip route', trả về kết quả cấu hình"]:::kernel
+    end
 
-    Rel(validate_ui, probe_engine, "POST /api/labs/session/validate", "Yêu cầu chấm điểm")
-    Rel(probe_engine, task_parser, "Lấy danh sách câu hỏi và quy tắc", "getLabTasks()")
-    Rel(probe_engine, transport_py, "Thực thi kiểm tra", "python3 pnet_validation_transport.py --host 127.0.0.1 --port ... --cmd ...")
-    Rel(transport_py, target_node, "Telnet Socket / SSH", "show running-config")
-    Rel(target_node, transport_py, "Trả về văn bản CLI output", "interface GigabitEthernet0/0...")
-    Rel(transport_py, probe_engine, "Trả kết quả text", "stdout JSON")
-    Rel(probe_engine, score_store, "So khớp Regex và lưu điểm", "storeResult(taskId, PASS/FAIL, score)")
-    Rel(score_store, validate_ui, "Trả về kết quả chấm", "JSON: {score: 80, total: 100, tasks: [...]}")
+    %% Quan hệ giữa các thành phần
+    validate_ui -->|"POST /api/labs/session/validate<br/><i>[Yêu cầu chấm điểm]</i>"| probe_engine
+    probe_engine -->|"Lấy danh sách câu hỏi và quy tắc<br/><i>[getLabTasks()]</i>"| task_parser
+    probe_engine -->|"Thực thi kiểm tra<br/><i>[python3 pnet_validation_transport.py --host 127.0.0.1 --port ... --cmd ...]</i>"| transport_py
+    transport_py -->|"Telnet Socket / SSH<br/><i>[show running-config]</i>"| target_node
+    target_node -->|"Trả về văn bản CLI output<br/><i>[interface GigabitEthernet0/0...]</i>"| transport_py
+    transport_py -->|"Trả kết quả text<br/><i>[stdout JSON]</i>"| probe_engine
+    probe_engine -->|"So khớp Regex và lưu điểm<br/><i>[storeResult(taskId, PASS/FAIL, score)]</i>"| score_store
+    score_store -->|"Trả về kết quả chấm<br/><i>[JSON: {score: 80, total: 100, tasks: [...]}]</i>"| validate_ui
 ```
 
 ---

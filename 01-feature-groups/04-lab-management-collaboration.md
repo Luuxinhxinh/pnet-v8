@@ -53,38 +53,47 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 04, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Lab Management Subsystem)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 04 (Lab Management & Collaboration Subsystem)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(web_client, "Giao diện Web Browser (Client)") {
-        Component(labs_js, "labs.js", "Lab Management Controller", "Hiển thị cây thư mục, danh sách lab, các nút Thêm/Sửa/Xóa/Export")
-        Component(workbook_ui, "PDF Workbook Modal", "Viewer Component", "Hiển thị tài liệu PDF đề thi / bài lab")
-    }
+    subgraph SG_web_client [" 📦 Giao diện Web Browser (Client) "]
+        direction TB
+        labs_js["<b>labs.js</b><br/><i>(Lab Management Controller)</i><br/>Hiển thị cây thư mục, danh sách lab, các nút Thêm/Sửa/Xóa/Export"]:::ui
+        workbook_ui["<b>PDF Workbook Modal</b><br/><i>(Viewer Component)</i><br/>Hiển thị tài liệu PDF đề thi / bài lab"]:::ui
+    end
 
-    Container_Boundary(api_service, "Tầng Backend Lab API (PHP)") {
-        Component(folder_api, "api_folders.php", "Folder Service", "Quét và trả về cây thư mục từ /opt/unetlab/labs")
-        Component(lab_api, "api_labs.php", "Lab Service", "Điều phối các thao tác CRUD bài lab")
-        Component(session_access, "lab-session-access.php", "Concurrency Controller", "Kiểm tra phiên đăng nhập và khóa quyền sửa đổi")
-        Component(import_api, "import/api.php", "Import/Export Service", "Tiếp nhận file ZIP/CML tải lên")
-        Component(lab_model, "__lab.php", "Domain Model (Lab)", "Đọc ghi file XML .unl, tính toán toàn vẹn dữ liệu")
-    }
+    subgraph SG_api_service [" 📦 Tầng Backend Lab API (PHP) "]
+        direction TB
+        folder_api["<b>api_folders.php</b><br/><i>(Folder Service)</i><br/>Quét và trả về cây thư mục từ /opt/unetlab/labs"]:::api
+        lab_api["<b>api_labs.php</b><br/><i>(Lab Service)</i><br/>Điều phối các thao tác CRUD bài lab"]:::api
+        session_access["<b>lab-session-access.php</b><br/><i>(Concurrency Controller)</i><br/>Kiểm tra phiên đăng nhập và khóa quyền sửa đổi"]:::api
+        import_api["<b>import/api.php</b><br/><i>(Import/Export Service)</i><br/>Tiếp nhận file ZIP/CML tải lên"]:::api
+        lab_model["<b>__lab.php</b><br/><i>(Domain Model (Lab))</i><br/>Đọc ghi file XML .unl, tính toán toàn vẹn dữ liệu"]:::api
+    end
 
-    Container_Boundary(storage_layer, "Tầng Lưu trữ & Cơ sở Dữ liệu") {
-        Component(labs_dir, "/opt/unetlab/labs/", "Filesystem Storage", "Chứa toàn bộ các file định dạng .unl được phân thư mục")
-        Component(import_worker, "import.sh", "Shell Background Worker", "Giải nén ZIP, sửa quyền sở hữu www-data")
-        Component(db_sessions, "MariaDB: lab_sessions", "Database Table", "Lưu trữ pod, user_id, lab_path và trạng thái phiên mở")
-    }
+    subgraph SG_storage_layer [" 📦 Tầng Lưu trữ & Cơ sở Dữ liệu "]
+        direction TB
+        labs_dir["<b>/opt/unetlab/labs/</b><br/><i>(Filesystem Storage)</i><br/>Chứa toàn bộ các file định dạng .unl được phân thư mục"]:::wrap
+        import_worker["<b>import.sh</b><br/><i>(Shell Background Worker)</i><br/>Giải nén ZIP, sửa quyền sở hữu www-data"]:::wrap
+        db_sessions["<b>MariaDB: lab_sessions</b><br/><i>(Database Table)</i><br/>Lưu trữ pod, user_id, lab_path và trạng thái phiên mở"]:::wrap
+    end
 
-    Rel(labs_js, folder_api, "GET /api/folders", "Lấy danh sách thư mục")
-    Rel(labs_js, lab_api, "POST /api/labs", "Thao tác Tạo / Đổi tên / Di chuyển")
-    Rel(labs_js, import_api, "POST /api/import", "Upload file ZIP hoặc CML")
-    Rel(folder_api, labs_dir, "Quét thư mục vật lý", "opendir() / readdir()")
-    Rel(lab_api, session_access, "Xác thực phiên làm việc", "checkLabAccess()")
-    Rel(session_access, db_sessions, "Đọc ghi trạng thái khóa", "SELECT / INSERT / UPDATE")
-    Rel(lab_api, lab_model, "Nạp mô hình Lab", "new Lab('/opt/unetlab/labs/...')")
-    Rel(lab_model, labs_dir, "Ghi nội dung file .unl", "file_put_contents()")
-    Rel(import_api, import_worker, "Kích hoạt worker nền", "sudo /opt/unetlab/scripts/workers/import.sh")
-    Rel(import_worker, labs_dir, "Giải nén file vào đích", "unzip / rsync")
+    %% Quan hệ giữa các thành phần
+    labs_js -->|"GET /api/folders<br/><i>[Lấy danh sách thư mục]</i>"| folder_api
+    labs_js -->|"POST /api/labs<br/><i>[Thao tác Tạo / Đổi tên / Di chuyển]</i>"| lab_api
+    labs_js -->|"POST /api/import<br/><i>[Upload file ZIP hoặc CML]</i>"| import_api
+    folder_api -->|"Quét thư mục vật lý<br/><i>[opendir() / readdir()]</i>"| labs_dir
+    lab_api -->|"Xác thực phiên làm việc<br/><i>[checkLabAccess()]</i>"| session_access
+    session_access -->|"Đọc ghi trạng thái khóa<br/><i>[SELECT / INSERT / UPDATE]</i>"| db_sessions
+    lab_api -->|"Nạp mô hình Lab<br/><i>[new Lab('/opt/unetlab/labs/...')]</i>"| lab_model
+    lab_model -->|"Ghi nội dung file .unl<br/><i>[file_put_contents()]</i>"| labs_dir
+    import_api -->|"Kích hoạt worker nền<br/><i>[sudo /opt/unetlab/scripts/workers/import.sh]</i>"| import_worker
+    import_worker -->|"Giải nén file vào đích<br/><i>[unzip / rsync]</i>"| labs_dir
 ```
 
 ---

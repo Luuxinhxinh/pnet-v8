@@ -59,40 +59,50 @@ Dưới đây là 6 tính năng con độc lập thuộc Nhóm 12, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: System Administration & Doctor)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 12 (System Administration, Platform & Doctor)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(admin_dashboard, "Giao diện Quản trị Hệ thống (Browser)") {
-        Component(system_ui, "system.js", "System Admin UI", "Các nút Reboot, Shutdown, nút Chạy Doctor, bảng cấu hình KSM")
-    }
+    subgraph SG_admin_dashboard [" 📦 Giao diện Quản trị Hệ thống (Browser) "]
+        direction TB
+        system_ui["<b>system.js</b><br/><i>(System Admin UI)</i><br/>Các nút Reboot, Shutdown, nút Chạy Doctor, bảng cấu hình KSM"]:::ui
+    end
 
-    Container_Boundary(system_apis, "Tầng Backend System APIs (PHP)") {
-        Component(sys_api, "system/api.php", "System Controller", "Tiếp nhận lệnh quản trị từ UI")
-        Component(doctor_core, "includes/doctor.php", "Doctor Diagnostic Engine", "Quét kiểm tra trạng thái dịch vụ, phân quyền file")
-    }
+    subgraph SG_system_apis [" 📦 Tầng Backend System APIs (PHP) "]
+        direction TB
+        sys_api["<b>system/api.php</b><br/><i>(System Controller)</i><br/>Tiếp nhận lệnh quản trị từ UI"]:::api
+        doctor_core["<b>includes/doctor.php</b><br/><i>(Doctor Diagnostic Engine)</i><br/>Quét kiểm tra trạng thái dịch vụ, phân quyền file"]:::api
+    end
 
-    Container_Boundary(maintenance_scripts, "Tầng Kịch bản Bảo trì & Nền tảng (Bash & C)") {
-        Component(clean_script, "clean.sh", "Cleanup Script", "Xóa sạch tệp tạm /opt/unetlab/tmp/")
-        Component(ksm_tuner, "pnetlab-ksm-tune.sh", "KSM Memory Tuner", "Ghi giá trị vào sysfs ksm")
-        Component(ksm_binary, "ksm_merge_exec", "Setuid C Helper", "Gọi madvise(MADV_MERGEABLE) trên tiến trình node")
-        Component(ovf_netcfg, "pnetlab-netcfg.sh", "OVF Netcfg Wizard", "Thiết lập IP tĩnh / DHCP qua dialog ncurses")
-        Component(bridge_init, "pnet-bridges.sh", "Bridge Initializer", "Khởi tạo pnet0 đến pnet9 và gắn card vật lý")
-        Component(hardening_sh, "enable-web-hardening.sh", "Security Hardening Script", "Gia cố Apache conf và cấm mod_userdir")
-    }
+    subgraph SG_maintenance_scripts [" 📦 Tầng Kịch bản Bảo trì & Nền tảng (Bash & C) "]
+        direction TB
+        clean_script["<b>clean.sh</b><br/><i>(Cleanup Script)</i><br/>Xóa sạch tệp tạm /opt/unetlab/tmp/"]:::wrap
+        ksm_tuner["<b>pnetlab-ksm-tune.sh</b><br/><i>(KSM Memory Tuner)</i><br/>Ghi giá trị vào sysfs ksm"]:::wrap
+        ksm_binary["<b>ksm_merge_exec</b><br/><i>(Setuid C Helper)</i><br/>Gọi madvise(MADV_MERGEABLE) trên tiến trình node"]:::wrap
+        ovf_netcfg["<b>pnetlab-netcfg.sh</b><br/><i>(OVF Netcfg Wizard)</i><br/>Thiết lập IP tĩnh / DHCP qua dialog ncurses"]:::wrap
+        bridge_init["<b>pnet-bridges.sh</b><br/><i>(Bridge Initializer)</i><br/>Khởi tạo pnet0 đến pnet9 và gắn card vật lý"]:::wrap
+        hardening_sh["<b>enable-web-hardening.sh</b><br/><i>(Security Hardening Script)</i><br/>Gia cố Apache conf và cấm mod_userdir"]:::wrap
+    end
 
-    Container_Boundary(os_kernel, "Nhân Hệ điều hành & Systemd") {
-        Component(systemd_svc, "Systemd Service Manager", "Init System", "Quản lý 12 systemd service của PNet v8")
-        Component(ksm_kernel, "/sys/kernel/mm/ksm/", "Kernel Memory Dedup", "Khử trùng lặp bộ nhớ vật lý")
-        Component(iptables_fwd, "Netfilter & IP Forwarding", "Packet Routing", "Cho phép gói tin đi qua các bridge")
-    }
+    subgraph SG_os_kernel [" 📦 Nhân Hệ điều hành & Systemd "]
+        direction TB
+        systemd_svc["<b>Systemd Service Manager</b><br/><i>(Init System)</i><br/>Quản lý 12 systemd service của PNet v8"]:::kernel
+        ksm_kernel["<b>/sys/kernel/mm/ksm/</b><br/><i>(Kernel Memory Dedup)</i><br/>Khử trùng lặp bộ nhớ vật lý"]:::kernel
+        iptables_fwd["<b>Netfilter & IP Forwarding</b><br/><i>(Packet Routing)</i><br/>Cho phép gói tin đi qua các bridge"]:::kernel
+    end
 
-    Rel(system_ui, sys_api, "POST /system/api.php", "Lệnh Reboot / Cleanup / Doctor")
-    Rel(sys_api, doctor_core, "Thực thi chẩn đoán", "runDoctorChecks()")
-    Rel(doctor_core, systemd_svc, "Kiểm tra dịch vụ", "systemctl is-active ...")
-    Rel(sys_api, clean_script, "Kích hoạt dọn dẹp", "sudo /opt/unetlab/scripts/clean.sh")
-    Rel(sys_api, ksm_tuner, "Cấu hình KSM", "sudo /opt/unetlab/scripts/pnetlab-ksm-tune.sh")
-    Rel(ksm_tuner, ksm_kernel, "Ghi thông số", "echo 1 > /sys/kernel/mm/ksm/run")
-    Rel(bridge_init, iptables_fwd, "Áp cấu hình", "iptables -A FORWARD ...")
+    %% Quan hệ giữa các thành phần
+    system_ui -->|"POST /system/api.php<br/><i>[Lệnh Reboot / Cleanup / Doctor]</i>"| sys_api
+    sys_api -->|"Thực thi chẩn đoán<br/><i>[runDoctorChecks()]</i>"| doctor_core
+    doctor_core -->|"Kiểm tra dịch vụ<br/><i>[systemctl is-active ...]</i>"| systemd_svc
+    sys_api -->|"Kích hoạt dọn dẹp<br/><i>[sudo /opt/unetlab/scripts/clean.sh]</i>"| clean_script
+    sys_api -->|"Cấu hình KSM<br/><i>[sudo /opt/unetlab/scripts/pnetlab-ksm-tune.sh]</i>"| ksm_tuner
+    ksm_tuner -->|"Ghi thông số<br/><i>[echo 1 > /sys/kernel/mm/ksm/run]</i>"| ksm_kernel
+    bridge_init -->|"Áp cấu hình<br/><i>[iptables -A FORWARD ...]</i>"| iptables_fwd
 ```
 
 ---

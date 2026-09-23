@@ -58,44 +58,54 @@ Toàn bộ logic của Nhóm 01 nằm tại các file nguồn cốt lõi sau:
 Sơ đồ thể hiện các thành phần nội bộ bên trong Nhóm 01 và luồng gọi dữ liệu:
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần bên trong Nhóm 01 (Node Lifecycle & Emulation Engine)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(web_ui, "Giao diện Web Canvas (Client Browser)") {
-        Component(actions_js, "actions.js / node-form.js", "JavaScript Canvas Controller", "Gửi lệnh Start/Stop/Wipe/Edit qua REST API")
-        Component(bulk_js, "pnetlab-bulk-node-edit.js", "Bulk Edit UI", "Quản lý thao tác chọn và chỉnh sửa hàng loạt node")
-    }
+    subgraph SG_web_ui [" 📦 Giao diện Web Canvas (Client Browser) "]
+        direction TB
+        actions_js["<b>actions.js / node-form.js</b><br/><i>(JavaScript Canvas Controller)</i><br/>Gửi lệnh Start/Stop/Wipe/Edit qua REST API"]:::ui
+        bulk_js["<b>pnetlab-bulk-node-edit.js</b><br/><i>(Bulk Edit UI)</i><br/>Quản lý thao tác chọn và chỉnh sửa hàng loạt node"]:::ui
+    end
 
-    Container_Boundary(php_engine, "Tầng Backend API (PHP Engine)") {
-        Component(api_router, "api.php", "Slim Router", "Định tuyến các endpoint /api/labs/session/nodes/*")
-        Component(api_nodes, "api_nodes.php", "Node Business Service", "Kiểm tra quyền người dùng, validate input và điều phối phiên")
-        Component(node_model, "__node.php", "Domain Model (Node)", "Biểu diễn node trong bộ nhớ, tính toán port telnet/vnc và map slot")
-        Component(functions_core, "functions.php", "Core Infrastructure Bridge", "Sinh thư mục /opt/unetlab/tmp/<pod>/<id>, tạo overlay disk")
-    }
+    subgraph SG_php_engine [" 📦 Tầng Backend API (PHP Engine) "]
+        direction TB
+        api_router["<b>api.php</b><br/><i>(Slim Router)</i><br/>Định tuyến các endpoint /api/labs/session/nodes/*"]:::api
+        api_nodes["<b>api_nodes.php</b><br/><i>(Node Business Service)</i><br/>Kiểm tra quyền người dùng, validate input và điều phối phiên"]:::api
+        node_model["<b>__node.php</b><br/><i>(Domain Model (Node))</i><br/>Biểu diễn node trong bộ nhớ, tính toán port telnet/vnc và map slot"]:::api
+        functions_core["<b>functions.php</b><br/><i>(Core Infrastructure Bridge)</i><br/>Sinh thư mục /opt/unetlab/tmp/<pod>/<id>, tạo overlay disk"]:::api
+    end
 
-    Container_Boundary(system_layer, "Tầng Điều phối Hệ thống (System & Wrappers)") {
-        Component(unl_wrapper_php, "unl_wrapper.php", "CLI Orchestrator", "Kịch bản PHP CLI nhận tham số từ Web để kích hoạt tiến trình ảo hóa")
-        Component(c_wrappers, "qemu_wrapper / iol_wrapper / docker_wrapper", "Setuid Root Binaries", "Tạo TAP interface, gắn vào Linux Bridge, khởi chạy QEMU/Docker/IOL")
-    }
+    subgraph SG_system_layer [" 📦 Tầng Điều phối Hệ thống (System & Wrappers) "]
+        direction TB
+        unl_wrapper_php["<b>unl_wrapper.php</b><br/><i>(CLI Orchestrator)</i><br/>Kịch bản PHP CLI nhận tham số từ Web để kích hoạt tiến trình ảo hóa"]:::wrap
+        c_wrappers["<b>qemu_wrapper / iol_wrapper / docker_wrapper</b><br/><i>(Setuid Root Binaries)</i><br/>Tạo TAP interface, gắn vào Linux Bridge, khởi chạy QEMU/Docker/IOL"]:::wrap
+    end
 
-    Container_Boundary(kernel_layer, "Linux Kernel & Hypervisors") {
-        Component(kvm_qemu, "KVM / QEMU Engine", "Virtual Machine", "Thực thi ảo hóa phần cứng máy ảo mạng")
-        Component(iol_exec, "Cisco IOL Executable", "Native Linux Process", "Chạy trực tiếp binary Cisco IOS L2/L3")
-        Component(docker_engine, "Docker Engine (dockerd)", "Linux Containers", "Chạy container mạng với network namespace riêng biệt")
-        Component(cgroups, "Linux Cgroups & NetEm", "Kernel Resource Control", "Giới hạn tải CPU/RAM và tạo độ trễ đường truyền")
-    }
+    subgraph SG_kernel_layer [" 📦 Linux Kernel & Hypervisors "]
+        direction TB
+        kvm_qemu["<b>KVM / QEMU Engine</b><br/><i>(Virtual Machine)</i><br/>Thực thi ảo hóa phần cứng máy ảo mạng"]:::kernel
+        iol_exec["<b>Cisco IOL Executable</b><br/><i>(Native Linux Process)</i><br/>Chạy trực tiếp binary Cisco IOS L2/L3"]:::kernel
+        docker_engine["<b>Docker Engine (dockerd)</b><br/><i>(Linux Containers)</i><br/>Chạy container mạng với network namespace riêng biệt"]:::kernel
+        cgroups["<b>Linux Cgroups & NetEm</b><br/><i>(Kernel Resource Control)</i><br/>Giới hạn tải CPU/RAM và tạo độ trễ đường truyền"]:::kernel
+    end
 
-    Rel(actions_js, api_router, "HTTP POST /api/labs/session/nodes/start", "JSON Payload")
-    Rel(bulk_js, api_router, "HTTP POST /api/labs/session/nodes/bulk", "JSON Payload")
-    Rel(api_router, api_nodes, "Gọi hàm nghiệp vụ", "apiNodeStart / apiNodeStop")
-    Rel(api_nodes, node_model, "Đọc cấu hình node từ Lab XML", "$lab->getNodes()")
-    Rel(api_nodes, functions_core, "Thực thi hạ tầng", "nodeStart() / nodeStop()")
-    Rel(functions_core, unl_wrapper_php, "Thực thi lệnh shell", "sudo /opt/unetlab/scripts/unl_wrapper.php -a start")
-    Rel(unl_wrapper_php, c_wrappers, "Gọi trực tiếp file nhị phân", "execve(/opt/unetlab/wrappers/qemu_wrapper)")
-    Rel(c_wrappers, kvm_qemu, "Khởi chạy tiến trình máy ảo", "execve(qemu-system-x86_64)")
-    Rel(c_wrappers, iol_exec, "Khởi chạy tiến trình IOL", "execve(i386-exec)")
-    Rel(c_wrappers, docker_engine, "Điều khiển container", "docker run / docker exec")
-    Rel(c_wrappers, cgroups, "Gán tiến trình vào cgroup", "/sys/fs/cgroup/cpu,memory")
+    %% Quan hệ giữa các thành phần
+    actions_js -->|"HTTP POST /api/labs/session/nodes/start<br/><i>[JSON Payload]</i>"| api_router
+    bulk_js -->|"HTTP POST /api/labs/session/nodes/bulk<br/><i>[JSON Payload]</i>"| api_router
+    api_router -->|"Gọi hàm nghiệp vụ<br/><i>[apiNodeStart / apiNodeStop]</i>"| api_nodes
+    api_nodes -->|"Đọc cấu hình node từ Lab XML<br/><i>[$lab->getNodes()]</i>"| node_model
+    api_nodes -->|"Thực thi hạ tầng<br/><i>[nodeStart() / nodeStop()]</i>"| functions_core
+    functions_core -->|"Thực thi lệnh shell<br/><i>[sudo /opt/unetlab/scripts/unl_wrapper.php -a start]</i>"| unl_wrapper_php
+    unl_wrapper_php -->|"Gọi trực tiếp file nhị phân<br/><i>[execve(/opt/unetlab/wrappers/qemu_wrapper)]</i>"| c_wrappers
+    c_wrappers -->|"Khởi chạy tiến trình máy ảo<br/><i>[execve(qemu-system-x86_64)]</i>"| kvm_qemu
+    c_wrappers -->|"Khởi chạy tiến trình IOL<br/><i>[execve(i386-exec)]</i>"| iol_exec
+    c_wrappers -->|"Điều khiển container<br/><i>[docker run / docker exec]</i>"| docker_engine
+    c_wrappers -->|"Gán tiến trình vào cgroup<br/><i>[/sys/fs/cgroup/cpu,memory]</i>"| cgroups
 ```
 
 ---

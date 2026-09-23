@@ -55,39 +55,48 @@ Dưới đây là 7 tính năng con độc lập thuộc Nhóm 02, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Network Topology Engine)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 02 (Network Topology & Canvas Graphic Engine)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(canvas_ui, "Tầng Giao diện Đồ họa Canvas (Browser)") {
-        Component(canvas_core, "javascript.js", "HTML5 Canvas Renderer", "Vẽ node, tính toán tọa độ, render đường dây kết nối và bắt sự kiện kéo thả")
-        Component(shape_tool, "pnetlab-shape-draw.js", "Shape Vector Tool", "Vẽ khối hình chữ nhật, hình tròn, đổi màu nền hex, độ trong suốt")
-        Component(align_tool, "pnetlab-align-distribute.js", "Alignment Math Engine", "Thuật toán căn lề (min/max X, Y) và dàn đều khoảng cách giữa các node")
-        Component(dup_tool, "pnetlab-node-duplicate.js", "Duplication Handler", "Nhân bản đối tượng node kèm gán tự động tên và port mới")
-    }
+    subgraph SG_canvas_ui [" 📦 Tầng Giao diện Đồ họa Canvas (Browser) "]
+        direction TB
+        canvas_core["<b>javascript.js</b><br/><i>(HTML5 Canvas Renderer)</i><br/>Vẽ node, tính toán tọa độ, render đường dây kết nối và bắt sự kiện kéo thả"]:::ui
+        shape_tool["<b>pnetlab-shape-draw.js</b><br/><i>(Shape Vector Tool)</i><br/>Vẽ khối hình chữ nhật, hình tròn, đổi màu nền hex, độ trong suốt"]:::ui
+        align_tool["<b>pnetlab-align-distribute.js</b><br/><i>(Alignment Math Engine)</i><br/>Thuật toán căn lề (min/max X, Y) và dàn đều khoảng cách giữa các node"]:::ui
+        dup_tool["<b>pnetlab-node-duplicate.js</b><br/><i>(Duplication Handler)</i><br/>Nhân bản đối tượng node kèm gán tự động tên và port mới"]:::ui
+    end
 
-    Container_Boundary(api_layer, "Tầng REST API & Domain Models (PHP)") {
-        Component(topo_api, "api_topology.php", "Topology Service", "Tính toán ma trận kết nối và trả về JSON đồ thị mạng cho Canvas")
-        Component(net_api, "api_networks.php", "Network Service", "Thêm, sửa, xóa đối tượng Network và gán card mạng vào Bridge")
-        Component(net_model, "__network.php", "Domain Model (Network)", "Biểu diễn thực thể mạng trong file Lab XML")
-        Component(pic_api, "api_pictures.php", "Picture Service", "Lưu trữ và ánh xạ ảnh bản đồ nền, tính tọa độ hotspot")
-        Component(text_api, "api_textobjects.php", "Text Annotation Service", "Quản lý các nhãn ghi chú văn bản trên sơ đồ")
-    }
+    subgraph SG_api_layer [" 📦 Tầng REST API & Domain Models (PHP) "]
+        direction TB
+        topo_api["<b>api_topology.php</b><br/><i>(Topology Service)</i><br/>Tính toán ma trận kết nối và trả về JSON đồ thị mạng cho Canvas"]:::api
+        net_api["<b>api_networks.php</b><br/><i>(Network Service)</i><br/>Thêm, sửa, xóa đối tượng Network và gán card mạng vào Bridge"]:::api
+        net_model["<b>__network.php</b><br/><i>(Domain Model (Network))</i><br/>Biểu diễn thực thể mạng trong file Lab XML"]:::api
+        pic_api["<b>api_pictures.php</b><br/><i>(Picture Service)</i><br/>Lưu trữ và ánh xạ ảnh bản đồ nền, tính tọa độ hotspot"]:::api
+        text_api["<b>api_textobjects.php</b><br/><i>(Text Annotation Service)</i><br/>Quản lý các nhãn ghi chú văn bản trên sơ đồ"]:::api
+    end
 
-    Container_Boundary(kernel_net, "Tầng Nhân Mạng Linux (Kernel Networking)") {
-        Component(linux_bridge, "Linux Bridge (br-*)", "L2 Virtual Switch", "Gom nhóm các card mạng TAP của các node vào chung một broadcast domain")
-        Component(pnet_clouds, "Physical Bridges (pnet0-pnet9)", "External L2 Interface", "Nối dây ảo trực tiếp vào card mạng vật lý hoặc VLAN Trunk")
-        Component(iptables_nat, "Kernel NAT / IP Forwarding", "L3 Gateway", "Cung cấp kết nối Internet cho các node qua cơ chế masquerade")
-    }
+    subgraph SG_kernel_net [" 📦 Tầng Nhân Mạng Linux (Kernel Networking) "]
+        direction TB
+        linux_bridge["<b>Linux Bridge (br-*)</b><br/><i>(L2 Virtual Switch)</i><br/>Gom nhóm các card mạng TAP của các node vào chung một broadcast domain"]:::wrap
+        pnet_clouds["<b>Physical Bridges (pnet0-pnet9)</b><br/><i>(External L2 Interface)</i><br/>Nối dây ảo trực tiếp vào card mạng vật lý hoặc VLAN Trunk"]:::wrap
+        iptables_nat["<b>Kernel NAT / IP Forwarding</b><br/><i>(L3 Gateway)</i><br/>Cung cấp kết nối Internet cho các node qua cơ chế masquerade"]:::wrap
+    end
 
-    Rel(canvas_core, topo_api, "GET /api/labs/session/topology", "Nhận JSON đồ thị mạng")
-    Rel(canvas_core, net_api, "POST /api/labs/session/networks", "Tạo hoặc nối dây vào Network")
-    Rel(shape_tool, canvas_core, "Vẽ đối tượng lên Canvas", "Canvas 2D Context")
-    Rel(align_tool, canvas_core, "Cập nhật lại mảng tọa độ", "Array of {id, left, top}")
-    Rel(dup_tool, canvas_core, "Sinh bản sao trên UI", "Clone Node Object")
-    Rel(net_api, net_model, "Đọc ghi vào cấu trúc XML", "$lab->getNetworks()")
-    Rel(net_api, linux_bridge, "Gọi lệnh brctl / ip link", "Tạo bridge br-<lab_id>-<net_id>")
-    Rel(net_api, pnet_clouds, "Gán interface vào bridge", "brctl addif pnet0 tap...")
-    Rel(net_api, iptables_nat, "Cấu hình quy tắc iptables", "iptables -t nat -A POSTROUTING")
+    %% Quan hệ giữa các thành phần
+    canvas_core -->|"GET /api/labs/session/topology<br/><i>[Nhận JSON đồ thị mạng]</i>"| topo_api
+    canvas_core -->|"POST /api/labs/session/networks<br/><i>[Tạo hoặc nối dây vào Network]</i>"| net_api
+    shape_tool -->|"Vẽ đối tượng lên Canvas<br/><i>[Canvas 2D Context]</i>"| canvas_core
+    align_tool -->|"Cập nhật lại mảng tọa độ<br/><i>[Array of {id, left, top}]</i>"| canvas_core
+    dup_tool -->|"Sinh bản sao trên UI<br/><i>[Clone Node Object]</i>"| canvas_core
+    net_api -->|"Đọc ghi vào cấu trúc XML<br/><i>[$lab->getNetworks()]</i>"| net_model
+    net_api -->|"Gọi lệnh brctl / ip link<br/><i>[Tạo bridge br-<lab_id>-<net_id>]</i>"| linux_bridge
+    net_api -->|"Gán interface vào bridge<br/><i>[brctl addif pnet0 tap...]</i>"| pnet_clouds
+    net_api -->|"Cấu hình quy tắc iptables<br/><i>[iptables -t nat -A POSTROUTING]</i>"| iptables_nat
 ```
 
 ---

@@ -52,45 +52,55 @@ Dưới đây là 5 tính năng con độc lập thuộc Nhóm 03, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Console & Remote Access Subsystem)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 03 (Console & Remote Access Subsystem)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(user_client, "Client của Người dùng") {
-        Component(web_terminal, "pnetlab-webconsole.js", "xterm.js Web Terminal", "Hiển thị màn hình dòng lệnh, bắt sự kiện gõ phím")
-        Component(web_vnc, "Guacamole HTML5 Client", "Canvas VNC/RDP Viewer", "Hiển thị màn hình đồ họa Windows/Desktop")
-        Component(native_tools, "SecureCRT / Wireshark", "Desktop Native Apps", "Ứng dụng chuyên nghiệp cài trên máy người dùng")
-    }
+    subgraph SG_user_client [" 📦 Client của Người dùng "]
+        direction TB
+        web_terminal["<b>pnetlab-webconsole.js</b><br/><i>(xterm.js Web Terminal)</i><br/>Hiển thị màn hình dòng lệnh, bắt sự kiện gõ phím"]:::ui
+        web_vnc["<b>Guacamole HTML5 Client</b><br/><i>(Canvas VNC/RDP Viewer)</i><br/>Hiển thị màn hình đồ họa Windows/Desktop"]:::ui
+        native_tools["<b>SecureCRT / Wireshark</b><br/><i>(Desktop Native Apps)</i><br/>Ứng dụng chuyên nghiệp cài trên máy người dùng"]:::ui
+    end
 
-    Container_Boundary(reverse_proxy, "Tầng Reverse Proxy & Web Server (Apache)") {
-        Component(apache_mux, "mod_proxy_wstunnel", "WebSocket Proxy", "Định tuyến /ws-cli sang cổng 8080, /ws-guac sang cổng 8082")
-        Component(token_api, "token_mint.php", "Token Mint Service", "Tạo HMAC Token cho phép mở console")
-        Component(capture_api, "capture_native.php", "Wireshark Streamer", "Cung cấp script và luồng stream pcap qua SSH")
-    }
+    subgraph SG_reverse_proxy [" 📦 Tầng Reverse Proxy & Web Server (Apache) "]
+        direction TB
+        apache_mux["<b>mod_proxy_wstunnel</b><br/><i>(WebSocket Proxy)</i><br/>Định tuyến /ws-cli sang cổng 8080, /ws-guac sang cổng 8082"]:::api
+        token_api["<b>token_mint.php</b><br/><i>(Token Mint Service)</i><br/>Tạo HMAC Token cho phép mở console"]:::api
+        capture_api["<b>capture_native.php</b><br/><i>(Wireshark Streamer)</i><br/>Cung cấp script và luồng stream pcap qua SSH"]:::api
+    end
 
-    Container_Boundary(console_daemons, "Tầng Backend Console Daemons") {
-        Component(ws_bridge, "http_ws_bridge.py", "WebSocket CLI Bridge", "Xác thực token, giải mã websocket frames và forward sang TCP socket")
-        Component(guac_lite, "guacamole-lite-server.js", "Guacamole Lite Node.js", "Nhận kết nối VNC/RDP qua WebSocket và giao tiếp với guacd")
-        Component(guac_daemon, "guacd (C Daemon)", "Native Guacamole Daemon", "Giao tiếp trực tiếp với server VNC/RDP của QEMU")
-        Component(raw_fwd, "simple_forwarder", "C Packet Forwarder", "Lắng nghe raw socket trên card TAP và đẩy byte ra stdout")
-    }
+    subgraph SG_console_daemons [" 📦 Tầng Backend Console Daemons "]
+        direction TB
+        ws_bridge["<b>http_ws_bridge.py</b><br/><i>(WebSocket CLI Bridge)</i><br/>Xác thực token, giải mã websocket frames và forward sang TCP socket"]:::wrap
+        guac_lite["<b>guacamole-lite-server.js</b><br/><i>(Guacamole Lite Node.js)</i><br/>Nhận kết nối VNC/RDP qua WebSocket và giao tiếp với guacd"]:::wrap
+        guac_daemon["<b>guacd (C Daemon)</b><br/><i>(Native Guacamole Daemon)</i><br/>Giao tiếp trực tiếp với server VNC/RDP của QEMU"]:::wrap
+        raw_fwd["<b>simple_forwarder</b><br/><i>(C Packet Forwarder)</i><br/>Lắng nghe raw socket trên card TAP và đẩy byte ra stdout"]:::wrap
+    end
 
-    Container_Boundary(virtual_nodes, "Thiết bị Ảo (Virtual Nodes)") {
-        Component(node_telnet, "Node Telnet Port", "TCP 32768+", "Cổng Serial của QEMU / IOL / Dynamips")
-        Component(node_vnc, "Node VNC Port", "TCP 5900+", "Màn hình đồ họa ảo của QEMU")
-        Component(tap_intf, "Node TAP Interface", "Linux TAP Device", "Card mạng ảo của thiết bị đang trao đổi gói tin")
-    }
+    subgraph SG_virtual_nodes [" 📦 Thiết bị Ảo (Virtual Nodes) "]
+        direction TB
+        node_telnet["<b>Node Telnet Port</b><br/><i>(TCP 32768+)</i><br/>Cổng Serial của QEMU / IOL / Dynamips"]:::kernel
+        node_vnc["<b>Node VNC Port</b><br/><i>(TCP 5900+)</i><br/>Màn hình đồ họa ảo của QEMU"]:::kernel
+        tap_intf["<b>Node TAP Interface</b><br/><i>(Linux TAP Device)</i><br/>Card mạng ảo của thiết bị đang trao đổi gói tin"]:::kernel
+    end
 
-    Rel(web_terminal, apache_mux, "WebSocket (wss://.../ws-cli)", "Truyền nhận ký tự gõ phím")
-    Rel(web_vnc, apache_mux, "WebSocket (wss://.../ws-guac)", "Truyền nhận hình ảnh đồ họa")
-    Rel(apache_mux, ws_bridge, "Forward WebSocket", "Port 8080")
-    Rel(apache_mux, guac_lite, "Forward WebSocket", "Port 8082")
-    Rel(ws_bridge, token_api, "Xác thực HMAC Token", "Bảo vệ truy cập trái phép")
-    Rel(ws_bridge, node_telnet, "Mở TCP Socket", "Telnet connection")
-    Rel(guac_lite, guac_daemon, "Guacamole Protocol", "Port 4822")
-    Rel(guac_daemon, node_vnc, "VNC Protocol", "TCP 5900+")
-    Rel(native_tools, capture_api, "Tải kịch bản capture", "HTTP GET")
-    Rel(capture_api, raw_fwd, "Khởi chạy qua SSH named pipe", "Đọc raw Ethernet frames")
-    Rel(raw_fwd, tap_intf, "Bắt gói tin raw", "PF_PACKET socket")
+    %% Quan hệ giữa các thành phần
+    web_terminal -->|"WebSocket (wss://.../ws-cli)<br/><i>[Truyền nhận ký tự gõ phím]</i>"| apache_mux
+    web_vnc -->|"WebSocket (wss://.../ws-guac)<br/><i>[Truyền nhận hình ảnh đồ họa]</i>"| apache_mux
+    apache_mux -->|"Forward WebSocket<br/><i>[Port 8080]</i>"| ws_bridge
+    apache_mux -->|"Forward WebSocket<br/><i>[Port 8082]</i>"| guac_lite
+    ws_bridge -->|"Xác thực HMAC Token<br/><i>[Bảo vệ truy cập trái phép]</i>"| token_api
+    ws_bridge -->|"Mở TCP Socket<br/><i>[Telnet connection]</i>"| node_telnet
+    guac_lite -->|"Guacamole Protocol<br/><i>[Port 4822]</i>"| guac_daemon
+    guac_daemon -->|"VNC Protocol<br/><i>[TCP 5900+]</i>"| node_vnc
+    native_tools -->|"Tải kịch bản capture<br/><i>[HTTP GET]</i>"| capture_api
+    capture_api -->|"Khởi chạy qua SSH named pipe<br/><i>[Đọc raw Ethernet frames]</i>"| raw_fwd
+    raw_fwd -->|"Bắt gói tin raw<br/><i>[PF_PACKET socket]</i>"| tap_intf
 ```
 
 ---

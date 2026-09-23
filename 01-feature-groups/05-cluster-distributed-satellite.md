@@ -52,41 +52,47 @@ Dưới đây là 5 tính năng con độc lập thuộc Nhóm 05, được đ�
 ## 4. Sơ đồ Component Diagram (C4 Level 3: Cluster & Distributed Satellite Engine)
 
 ```mermaid
-C4Component
-    title C4 Level 3: Sơ đồ Thành phần Nhóm 05 (Cluster & Distributed Satellite Engine)
+flowchart TD
+    %% Styling classes
+    classDef ui fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef api fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef wrap fill:#d29922,stroke:#f0883e,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef kernel fill:#8957e5,stroke:#a371f7,stroke-width:2px,color:#ffffff,rx:6px,ry:6px;
+    classDef storage fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:6px,ry:6px;
 
-    Container_Boundary(master_node, "PNet v8 Primary Server (Master)") {
-        Component(cluster_ui, "clusters.js / sat-badge.js", "Cluster Web UI", "Quản lý vệ tinh và hiển thị vị trí chạy của node")
-        Component(cluster_api, "cluster/api.php", "Cluster REST API", "Tiếp nhận cấu hình cụm từ UI")
-        Component(broker_client, "includes/cluster.php", "Broker IPC Client", "Gửi lệnh JSON-RPC vào Unix Socket của brokerd")
-        Component(broker_daemon, "pnetlab-brokerd.py", "Cluster Broker Daemon", "Duy trì pool kết nối mTLS tới tất cả các vệ tinh")
-        Component(db_cluster, "MariaDB: cluster_hosts", "Cluster Database", "Lưu IP, Port, Token xác thực và trạng thái vệ tinh")
-    }
+    subgraph SG_master_node [" 📦 PNet v8 Primary Server (Master) "]
+        direction TB
+        cluster_ui["<b>clusters.js / sat-badge.js</b><br/><i>(Cluster Web UI)</i><br/>Quản lý vệ tinh và hiển thị vị trí chạy của node"]:::ui
+        cluster_api["<b>cluster/api.php</b><br/><i>(Cluster REST API)</i><br/>Tiếp nhận cấu hình cụm từ UI"]:::ui
+        broker_client["<b>includes/cluster.php</b><br/><i>(Broker IPC Client)</i><br/>Gửi lệnh JSON-RPC vào Unix Socket của brokerd"]:::ui
+        broker_daemon["<b>pnetlab-brokerd.py</b><br/><i>(Cluster Broker Daemon)</i><br/>Duy trì pool kết nối mTLS tới tất cả các vệ tinh"]:::ui
+        db_cluster["<b>MariaDB: cluster_hosts</b><br/><i>(Cluster Database)</i><br/>Lưu IP, Port, Token xác thực và trạng thái vệ tinh"]:::ui
+    end
 
-    Container_Boundary(sat_node_1, "PNet Satellite Server 01 (Worker)") {
-        Component(satd_agent_1, "pnetlab-satd.py", "Satellite Daemon", "Nhận lệnh start/stop node từ Broker và thực thi")
-        Component(local_wrapper_1, "qemu_wrapper / iol_wrapper", "Local Wrappers", "Chạy node ảo hóa trên phần cứng của Satellite 01")
-        Component(vxlan_ep_1, "VXLAN VTEP (br-vxlan)", "Tunnel Endpoint", "Đóng gói frame Ethernet qua mạng IP về phía Master")
-    }
+    subgraph SG_sat_node_1 [" 📦 PNet Satellite Server 01 (Worker) "]
+        direction TB
+        satd_agent_1["<b>pnetlab-satd.py</b><br/><i>(Satellite Daemon)</i><br/>Nhận lệnh start/stop node từ Broker và thực thi"]:::api
+        local_wrapper_1["<b>qemu_wrapper / iol_wrapper</b><br/><i>(Local Wrappers)</i><br/>Chạy node ảo hóa trên phần cứng của Satellite 01"]:::api
+        vxlan_ep_1["<b>VXLAN VTEP (br-vxlan)</b><br/><i>(Tunnel Endpoint)</i><br/>Đóng gói frame Ethernet qua mạng IP về phía Master"]:::api
+    end
 
-    Container_Boundary(sat_node_2, "PNet Satellite Server 02 (Worker)") {
-        Component(satd_agent_2, "pnetlab-satd.py", "Satellite Daemon", "Nhận lệnh start/stop node từ Broker và thực thi")
-        Component(local_wrapper_2, "qemu_wrapper / iol_wrapper", "Local Wrappers", "Chạy node ảo hóa trên phần cứng của Satellite 02")
-        Component(vxlan_ep_2, "VXLAN VTEP (br-vxlan)", "Tunnel Endpoint", "Đóng gói frame Ethernet sang Satellite khác")
-    }
+    subgraph SG_sat_node_2 [" 📦 PNet Satellite Server 02 (Worker) "]
+        direction TB
+        satd_agent_2["<b>pnetlab-satd.py</b><br/><i>(Satellite Daemon)</i><br/>Nhận lệnh start/stop node từ Broker và thực thi"]:::wrap
+        local_wrapper_2["<b>qemu_wrapper / iol_wrapper</b><br/><i>(Local Wrappers)</i><br/>Chạy node ảo hóa trên phần cứng của Satellite 02"]:::wrap
+        vxlan_ep_2["<b>VXLAN VTEP (br-vxlan)</b><br/><i>(Tunnel Endpoint)</i><br/>Đóng gói frame Ethernet sang Satellite khác"]:::wrap
+    end
 
-    Rel(cluster_ui, cluster_api, "REST Request", "HTTPS /api/cluster/*")
-    Rel(cluster_api, db_cluster, "Đọc ghi danh sách vệ tinh", "SELECT / UPDATE cluster_hosts")
-    Rel(cluster_api, broker_client, "Gửi tín hiệu IPC", "Unix Domain Socket")
-    Rel(broker_client, broker_daemon, "JSON-RPC IPC", "/run/pnetlab/broker.sock")
-    
-    Rel(broker_daemon, satd_agent_1, "mTLS TCP (Port 8088)", "Lệnh Start/Stop node & Nhận Heartbeat")
-    Rel(broker_daemon, satd_agent_2, "mTLS TCP (Port 8088)", "Lệnh Start/Stop node & Nhận Heartbeat")
-    
-    Rel(satd_agent_1, local_wrapper_1, "Khởi chạy tiến trình", "sudo unl_wrapper.php")
-    Rel(satd_agent_2, local_wrapper_2, "Khởi chạy tiến trình", "sudo unl_wrapper.php")
-    
-    Rel(vxlan_ep_1, vxlan_ep_2, "UDP Port 4789 (VXLAN Mesh)", "Truyền gói tin L2 giữa 2 node trên 2 satellite")
+    %% Quan hệ giữa các thành phần
+    cluster_ui -->|"REST Request<br/><i>[HTTPS /api/cluster/*]</i>"| cluster_api
+    cluster_api -->|"Đọc ghi danh sách vệ tinh<br/><i>[SELECT / UPDATE cluster_hosts]</i>"| db_cluster
+    cluster_api -->|"Gửi tín hiệu IPC<br/><i>[Unix Domain Socket]</i>"| broker_client
+    broker_client -->|"JSON-RPC IPC<br/><i>[/run/pnetlab/broker.sock]</i>"| broker_daemon
+    broker_daemon -->|"mTLS TCP (Port 8088)<br/><i>[Lệnh Start/Stop node & Nhận Heartbeat]</i>"| satd_agent_1
+    broker_daemon -->|"mTLS TCP (Port 8088)<br/><i>[Lệnh Start/Stop node & Nhận Heartbeat]</i>"| satd_agent_2
+    satd_agent_1 -->|"Khởi chạy tiến trình<br/><i>[sudo unl_wrapper.php]</i>"| local_wrapper_1
+    satd_agent_2 -->|"Khởi chạy tiến trình<br/><i>[sudo unl_wrapper.php]</i>"| local_wrapper_2
+    vxlan_ep_1 -->|"UDP Port 4789 (VXLAN Mesh)<br/><i>[Truyền gói tin L2 giữa 2 node trên 2 satellite]</i>"| vxlan_ep_2
 ```
 
 ---
