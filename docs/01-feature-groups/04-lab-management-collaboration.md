@@ -13,7 +13,7 @@ level: "Level 1"
 
 Nhóm **Quản lý Lab, Import/Export & Phân quyền Lab** đảm nhiệm việc tổ chức, lưu trữ, trao đổi và kiểm soát quyền truy cập đối với các bài thực hành (Lab Files) trong hệ thống PNet v8:
 1. **Cấu trúc Cây Thư mục & Quản lý Tệp Lab (File Tree & CRUD Labs)**: Cho phép tổ chức các bài lab theo cấu trúc thư mục lồng nhau không giới hạn cấp độ; thực hiện các thao tác Tạo mới, Xem chi tiết, Đổi tên, Di chuyển (Move/Cut/Paste), Sao chép (Clone) và Xóa lab an toàn.
-2. **Bộ Xử lý Định dạng UNetLab XML (XML Serializer & Parser)**: Đọc và ghi toàn bộ cấu trúc dữ liệu của một bài lab (thông số lab, danh sách node, danh sách mạng kết nối, tọa độ dây nối, hình khối, ghi chú, cấu hình ban đầu) vào định dạng chuẩn `.unl` (XML schema).
+2. **Bộ Xử lý Định dạng Lab XML (XML Serializer & Parser)**: Đọc và ghi toàn bộ cấu trúc dữ liệu của một bài lab (thông số lab, danh sách node, danh sách mạng kết nối, tọa độ dây nối, hình khối, ghi chú, cấu hình ban đầu) vào định dạng chuẩn `.unl` (XML schema).
 3. **Đóng gói & Trao đổi Lab (Zip Export & Import)**: Xuất toàn bộ bài lab cùng toàn bộ hình ảnh minh họa, file startup-config và tài liệu workbook thành một tệp nén `.zip` độc lập; hỗ trợ nhập khẩu (Import) lab vào hệ thống tự động giải nén và phân quyền.
 4. **Bộ Chuyển đổi Khả chuyển Định dạng (CML/VIRL Converter)**: Tự động chuyển đổi các bài lab được thiết kế từ phần mềm Cisco Modeling Labs (CML / VIRL) sang định dạng `.unl` của PNet v8 để tái sử dụng tài nguyên học liệu.
 5. **Kiểm soát Truy cập & Khóa Phiên Lab Đồng thời (Lab Locking & Concurrency Control)**: Ngăn chặn xung đột ghi đè dữ liệu khi nhiều người dùng cùng mở một bài lab bằng cơ chế cờ khóa `F-LOCK` và quản lý phiên trong bảng `lab_sessions`.

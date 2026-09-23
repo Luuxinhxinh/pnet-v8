@@ -22,7 +22,7 @@ level: "Level 2"
    - Khi người dùng nhấn nút "Get Image":
    - API gọi kịch bản nền: `nohup [`/opt/unetlab/scripts/workers/ishare2.sh`](../../../opt/unetlab/scripts/workers/ishare2.sh)](../../../scripts/workers/ishare2.sh) --download <image_id> > /tmp/ishare.log 2>&1 &`.
 3. **Tải & Giải nén Tự động**:
-   - Worker sử dụng công cụ tải đa luồng `aria2c` hoặc `curl` để đạt tốc độ tối đa.
+   - Worker sử dụng công cụ tải đa luồng `curl` hoặc `curl` để đạt tốc độ tối đa.
    - Sau khi tải xong: Kiểm tra mã băm SHA256 đối chiếu với manifest.
    - Tự động giải nén (Tar / Unzip / Zstd) vào đúng vị trí `/opt/unetlab/addons/qemu/<image_name>/`.
    - Tự động gọi lệnh sửa phân quyền `unl_wrapper -a fixpermissions`.
@@ -30,7 +30,7 @@ level: "Level 2"
    - Trình duyệt định kỳ đọc file log hoặc nhận sự kiện SSE để hiển thị thanh phần trăm tiến độ tải (% Downloaded).
 
 ## 3. Công nghệ & Cơ sở Sử dụng
-- **Aria2c / cURL Multi-connection Download**: Tăng tốc độ tải file dung lượng lớn bằng cách chia nhỏ thành nhiều kết nối HTTP song song.
+- **cURL Single-Worker Multi-file Download & Snapshot Locking**: Tăng tốc độ tải file dung lượng lớn bằng cách chia nhỏ thành nhiều kết nối HTTP song song.
 - **Cryptographic Hash Verification (SHA-256)**: Đảm bảo image tải về không bị lỗi hỏng hoặc bị can thiệp mã độc.
 
 ## 4. File / Hàm Liên quan

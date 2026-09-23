@@ -36,7 +36,7 @@ level: "Level 2"
    - Các biểu thức regex và câu lệnh kiểm tra được lưu trữ an toàn trong XML để học viên không thể xem trước đáp án khi chỉ mở giao diện Canvas thông thường.
 
 ## 3. Công nghệ & Cơ sở Sử dụng
-- **XML Schema Extensibility**: Mở rộng định dạng UNetLab gốc mà vẫn giữ tương thích ngược.
+- **XML Schema Extensibility**: Mở rộng định dạng Lab XML schema phục vụ chấm điểm và thẩm định.
 - **Regular Expressions (PCRE)**: Cung cấp độ linh hoạt tối đa trong việc bắt các mẫu cú pháp cấu hình mạng phức tạp.
 
 ## 4. File / Hàm Liên quan

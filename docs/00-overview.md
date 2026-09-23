@@ -12,7 +12,7 @@ level: "Level 0"
 ## 1. Giới thiệu & Bài toán Nghiệp vụ
 
 ### 1.1. PNet v8 là gì?
-**PNet v8** (tên thương mại: **PNETLab v8**, phát triển kế thừa và mở rộng từ nền tảng UNetLab / EVE-NG) là một **Hệ thống Giả lập Hạ tầng Mạng Phân tán Doanh nghiệp (Enterprise Distributed Network Emulation Platform)** chạy trên nền Linux (Ubuntu/Debian). 
+**PNet v8** là một **Hệ thống Giả lập Hạ tầng Mạng Phân tán Doanh nghiệp (Enterprise Distributed Network Emulation Platform)** chạy trên nền Linux (Ubuntu/Debian). 
 
 Hệ thống cho phép các kỹ sư mạng, chuyên gia bảo mật, giảng viên và học viên xây dựng, cấu hình, kiểm thử và vận hành các topo mạng viễn thông phức tạp với hàng trăm thiết bị ảo hóa từ nhiều nhà sản xuất khác nhau (Cisco, Juniper, Arista, Fortinet, Check Point, Palo Alto, Huawei, Linux, Windows...) trên một giao diện đồ họa Web duy nhất.
 

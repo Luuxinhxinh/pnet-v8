@@ -201,7 +201,7 @@ PNet v8 tuân thủ triệt để nguyên tắc **Copy-on-Write (CoW)** nhằm t
    - Đảm bảo 100 học viên cùng làm một bài lab giống nhau trên một máy chủ không bao giờ bị xung đột cổng hay ghi đè dữ liệu của nhau.
 2. **Nguyên tắc Đặc quyền Tối thiểu (Principle of Least Privilege)**:
    - Web Server chạy dưới tài khoản `www-data` không có quyền root.
-   - Khi cần can thiệp hệ thống (tạo TAP, chỉnh sửa Bridge), PHP gọi qua `sudo` hoặc các file nhị phân có gán cờ `setuid root`.
+   - Khi cần can thiệp hệ thống, PHP giao tiếp với Privilege Broker (`pnetlab-brokerd`) qua Unix Domain Socket (`/run/pnetlab/broker.sock`) sử dụng cơ chế RPC JSON có kiểm tra danh sách verb cho phép (allowlist), loại bỏ hoàn toàn việc cấp quyền `sudo` trực tiếp cho từng hành động node.
    - Sau khi wrapper nhị phân thực hiện xong các hàm hạt nhân `ioctl(TUNSETIFF)` và `ioctl(SIOCBRADDIF)`, nó lập tức gọi hàm `setuid(unl_uid)` để hạ quyền về user bình thường trước khi thực thi tiến trình QEMU/IOL.
 3. **Xác thực Token & Console Guard**:
    - Truy cập giao diện và API yêu cầu cookie token xác thực `session_id` được ký và lưu trong MariaDB.

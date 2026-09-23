@@ -20,7 +20,7 @@ sequenceDiagram
     UI->>API: POST /ishare2/api.php?action=download&id=vios-15.9
     API->>Worker: Khởi chạy worker chạy ngầm ishare2.sh
     API-->>UI: HTTP 200 OK (Download started)
-    Worker->>Cloud: Tải gói nén đa luồng qua aria2c
+    Worker->>Cloud: Tải gói nén đa luồng qua curl
     loop Cập nhật thanh tiến độ
         UI->>API: GET /ishare2/api.php?action=progress
         API-->>UI: 45% ... 78% ... 100%
