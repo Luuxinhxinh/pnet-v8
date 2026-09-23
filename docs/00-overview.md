@@ -88,12 +88,12 @@ Toàn bộ hệ thống được xây dựng trên stack công nghệ phân lớ
 
 | Tầng chức năng | Công nghệ / Thư viện sử dụng | Vai trò trong hệ thống |
 | :--- | :--- | :--- |
-| **Hệ điều hành nền** | Linux Kernel 5.x / 6.x (Ubuntu Server 20.04/22.04 LTS) | Cung cấp KVM, Network Namespaces, veth, Bridge, TC (Traffic Control), Cgroups v1/v2, KSM |
+| **Hệ điều hành nền** | Linux Kernel 7.0.x / 6.12+ KSM (Ubuntu Server 26.04 LTS (Resolute Raccoon)) | Cung cấp KVM, Network Namespaces, veth, Bridge, TC (Traffic Control), Cgroups v1/v2, KSM |
 | **Web Server & Reverse Proxy** | Apache HTTP Server 2.4 (mod_php, mod_proxy, mod_proxy_wstunnel) | Phục vụ giao diện tĩnh, định tuyến REST API, chuyển tiếp WebSocket bridge |
-| **Tầng Backend API** | PHP 7.4 / 8.x + Slim Framework v2 / v3 + PDO MySQL | Xử lý nghiệp vụ Web, xác thực quyền, tương tác cơ sở dữ liệu và gọi CLI wrappers |
-| **Cơ sở dữ liệu** | MariaDB / MySQL 8.0 (`pnetlab_db`, `guacdb`) | Lưu trữ người dùng, quyền POD, phiên lab, thông số cluster, cấu hình Guacamole |
+| **Tầng Backend API** | PHP 8.5.x + Slim Framework v2 / v3 + PDO MySQL | Xử lý nghiệp vụ Web, xác thực quyền, tương tác cơ sở dữ liệu và gọi CLI wrappers |
+| **Cơ sở dữ liệu** | MariaDB / MySQL 8.4 LTS (`pnetlab_db`, `guacdb`) | Lưu trữ người dùng, quyền POD, phiên lab, thông số cluster, cấu hình Guacamole |
 | **Console Web HTML5** | Apache Guacamole Lite (Node.js) + Python WebSocket Multiplexer | Cung cấp terminal Telnet/SSH/Serial và màn hình đồ họa VNC/RDP ngay trên trình duyệt |
-| **Các Daemon nền (Daemons)** | Python 3 (asyncio, socket, threading, scapy, paramiko) | `pnetlab-brokerd` (Cluster), `pnetlab-labstated` (Live SSE), `pnetlab-linkwatchd` (NetEm), `pnq-telemetryd` (Thống kê) |
+| **Các Daemon nền (Daemons)** | Python 3.14 (asyncio, socket, threading, scapy, paramiko) | `pnetlab-brokerd` (Cluster), `pnetlab-labstated` (Live SSE), `pnetlab-linkwatchd` (NetEm), `pnq-telemetryd` (Thống kê) |
 | **Tầng Ảo hóa & Wrapper** | QEMU/KVM, Cisco IOL, Dynamips, Docker CE, VPCS, C binary wrappers | `qemu_wrapper`, `iol_wrapper`, `docker_wrapper`, `dynamips_wrapper`, `simple_forwarder` |
 | **Giao diện Người dùng (Frontend)**| Vanilla JavaScript (ES6+), HTML5 Canvas, EJS Templates, Ace Editor | Render bản đồ mạng mượt mà, kéo thả linh kiện, vẽ luồng gói tin, chỉnh sửa file cấu hình |
 | **Trí tuệ nhân tạo (AI)** | Model Context Protocol (MCP) Server, Python AI Agent Bridge | Cho phép LLM can thiệp vào canvas lab theo thời gian thực |
