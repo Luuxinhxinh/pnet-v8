@@ -31,33 +31,53 @@ Hệ thống cho phép các kỹ sư mạng, chuyên gia bảo mật, giảng vi
 PNet v8 áp dụng kiến trúc **Hỗn hợp Hướng Dịch vụ (Service-Oriented Hybrid Architecture)** kết hợp giữa Web Monolith (PHP Slim REST API), hệ thống Micro-Daemons nền (Python asyncio & Node.js), tầng Wrapper nhị phân C/C++ trực tiếp điều khiển Linux Kernel Virtualization, và tầng xử lý phân tán qua Cluster Satellite.
 
 ```mermaid
-C4Context
-    title C4 Level 1: Context Diagram - Hệ thống PNet v8 và Các Tác nhân / Hệ thống Ngoài
+flowchart TD
+    %% Định nghĩa Style
+    classDef users fill:#1f6feb,stroke:#58a6ff,stroke-width:2px,color:#ffffff,rx:8px,ry:8px;
+    classDef core fill:#238636,stroke:#3fb950,stroke-width:2px,color:#ffffff,rx:8px,ry:8px;
+    classDef sat fill:#1b4b72,stroke:#388bfd,stroke-width:2px,color:#ffffff,rx:8px,ry:8px;
+    classDef external fill:#21262d,stroke:#8b949e,stroke-width:1.5px,color:#c9d1d9,rx:8px,ry:8px;
+    classDef cloud fill:#6e40c9,stroke:#bc8cff,stroke-width:1.5px,color:#ffffff,rx:8px,ry:8px;
 
-    Person(engineer, "Kỹ sư Mạng / Học viên", "Truy cập Web UI Canvas, cấu hình thiết bị qua Web Console hoặc SecureCRT/PuTTY")
-    Person(admin, "Quản trị viên Hệ thống", "Quản lý User, phân bổ POD, giám sát phần cứng, cấu hình Cluster, cài đặt Image")
-    System_Ext(ai_agent, "AI Assistant / MCP Client", "Trợ lý ảo giao tiếp qua Model Context Protocol để dựng Lab tự động")
-    System_Ext(ishare2, "IShare2 Cloud Repository", "Kho lưu trữ hình ảnh thiết bị (QEMU/IOL/Docker) trên đám mây")
-    System_Ext(sdwan_vmanage, "Cisco SD-WAN Controller", "Hệ thống vManage / vSmart / vBond tiếp nhận cấu hình tự động")
-    System_Ext(smtp_server, "SMTP Mail Server", "Gửi email kích hoạt, đặt lại mật khẩu và cảnh báo hệ thống")
-    System_Ext(phys_net, "Mạng Vật lý Ngoại vi", "Kết nối qua card mạng pnet0-pnet9 để liên thông mạng lab với Internet/Switch thật")
+    %% 1. TẦNG NGƯỜI DÙNG & TÁC NHÂN
+    subgraph G_USERS [" 👥 NGƯỜI DÙNG & TÁC NHÂN "]
+        direction LR
+        USER_ENG["<b>Kỹ sư Mạng / Học viên</b><br/>• Web UI Canvas & Lab Studio<br/>• WebConsole CLI / Native Putty"]:::users
+        USER_ADM["<b>Quản trị viên Hệ thống</b><br/>• Quản lý POD & User<br/>• Giám sát Host & Cấu hình Cụm"]:::users
+        AI_AGENT["<b>AI Assistant / MCP Client</b><br/>• Tự động hóa qua MCP Protocol<br/>• Sinh Topo Lab từ câu lệnh tự nhiên"]:::cloud
+    end
 
-    Enterprise_Boundary(pnet_boundary, "Hạ tầng PNet v8 (Cluster System)") {
-        System(pnet_master, "PNet v8 Primary Server", "Máy chủ điều phối trung tâm: REST API, Web Canvas, Database, Broker Daemon")
-        System(pnet_sat, "PNet v8 Satellite Workers", "Các máy chủ tính toán vệ tinh chạy các node QEMU/Docker phân tán")
-    }
+    %% 2. TẦNG HẠ TẦNG PNET V8 CLUSTER
+    subgraph G_CLUSTER [" ⚡ HẠ TẦNG PNET V8 (DISTRIBUTED EMULATION CLUSTER) "]
+        direction TB
+        
+        MASTER["<b>PNet v8 Primary Server (Master)</b><br/>━━━━━━━━━━━━━━━━━━<br/>• Apache Reverse Proxy (443 / WSS)<br/>• REST API Backend (PHP Slim)<br/>• WebConsole Bridge (Port 8080/8082)<br/>• Cluster Broker Daemon (Port 8088)<br/>• MariaDB (pnetlab_db & guacdb)"]:::core
 
-    Rel(engineer, pnet_master, "HTTPS (Port 443) / WebSockets", "Thao tác Canvas, quản lý Lab, mở WebConsole")
-    Rel(engineer, pnet_master, "Native Port (30000-40000)", "Telnet/SSH console trực tiếp vào thiết bị")
-    Rel(admin, pnet_master, "HTTPS (Port 443)", "Quản trị người dùng, template, cluster, backup")
-    Rel(ai_agent, pnet_master, "MCP Protocol / JSON-RPC", "Sinh topo tự động qua AI Agent")
-    
-    Rel(pnet_master, pnet_sat, "mTLS / JSON-RPC (Broker Port 8088)", "Điều phối chạy node ảo trên vệ tinh")
-    Rel(pnet_master, ishare2, "HTTPS API", "Tải image thiết bị mạng chuẩn hóa")
-    Rel(pnet_master, sdwan_vmanage, "REST API / NETCONF", "Onboard & Bootstrap fabric SD-WAN")
-    Rel(pnet_master, smtp_server, "SMTP / SMTPS (Port 587/465)", "Gửi mail đặt lại mật khẩu")
-    Rel(pnet_master, phys_net, "Raw L2 Bridging / 802.1Q VLAN", "Nối dây từ node ảo ra card mạng vật lý")
-    Rel(pnet_sat, phys_net, "VXLAN / GRE Mesh", "Thông luồng mạng giữa các node trên vệ tinh khác nhau")
+        SATELLITE["<b>PNet v8 Satellite Workers (Vệ tinh)</b><br/>━━━━━━━━━━━━━━━━━━<br/>• Satellite Daemon Agent<br/>• QEMU/KVM Hypervisors<br/>• Cisco IOL / Dynamips Engine<br/>• Docker Container Runtime"]:::sat
+
+        MASTER <==>|"mTLS / JSON-RPC (Port 8088)<br/>[Điều phối Node & Đồng bộ State]"| SATELLITE
+    end
+
+    %% 3. TẦNG HỆ THỐNG NGOẠI VI & CLOUD
+    subgraph G_EXT [" 🌐 HỆ THỐNG NGOẠI VI & ĐÁM MÂY "]
+        direction LR
+        ISHARE["<b>IShare2 Cloud Store</b><br/>Tải Template & Image chuẩn"]:::external
+        SDWAN["<b>Cisco SD-WAN Controller</b><br/>vManage / vSmart REST API"]:::external
+        PHYS_NET["<b>Mạng Vật lý Ngoại vi</b><br/>pnet0 - pnet9 / VLAN Trunk"]:::external
+        SMTP["<b>SMTP Mail Server</b><br/>Email thông báo & Reset pass"]:::external
+    end
+
+    %% LIÊN KẾT TỪ NGƯỜI DÙNG ĐẾN PNET MASTER
+    USER_ENG ==>|"HTTPS (443) / WebSocket<br/>Native Port (30000-40000)"| MASTER
+    USER_ADM ==>|"HTTPS (Port 443)<br/>[Web Admin Portal]"| MASTER
+    AI_AGENT ==>|"MCP Protocol (JSON-RPC)<br/>[Sinh Topo & Config Push]"| MASTER
+
+    %% LIÊN KẾT TỪ CLUSTER ĐẾN NGOẠI VI
+    MASTER -->|"HTTPS REST API"| ISHARE
+    MASTER -->|"NETCONF / REST API"| SDWAN
+    MASTER -->|"SMTP / TLS (587)"| SMTP
+    MASTER -->|"L2 Bridging / 802.1Q"| PHYS_NET
+    SATELLITE -->|"VXLAN / GRE Mesh<br/>L2 Bridging"| PHYS_NET
 ```
 
 ---
