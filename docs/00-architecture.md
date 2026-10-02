@@ -68,17 +68,17 @@ flowchart TD
     subgraph TIER_DAEMON [" ⚙️ TẦNG 3: HỆ THỐNG DAEMON NỀN REALTIME (Python & Node.js) "]
         direction LR
         WS_BRIDGE["<b>pnet-webconsole (Port 8080)</b><br/>Node.js WebSocket Multiplexer"]:::daemon
-        BROKER_D["<b>cluster_broker.py (Port 8088)</b><br/>Python asyncio Cluster Broker"]:::daemon
+        BROKER_D["<b>pnetlab-brokerd.py (/run/pnetlab/broker.sock)</b><br/>Python Root Privilege Broker (126 Verbs)"]:::daemon
         TELEMETRY_D["<b>linkwatch.py & stats_collector</b><br/>AF_NETLINK & Cgroups Monitor"]:::daemon
     end
 
     %% TẦNG 4: EXECUTION & BINARY WRAPPERS
     subgraph TIER_WRAPPER [" 🛡️ TẦNG 4: ĐIỀU PHỐI THỰC THI & SETUID WRAPPERS "]
         direction LR
-        CLI_UNL["<b>unl_wrapper.php</b><br/>CLI Orchestrator (sudo execution)"]:::wrap
+        CLI_UNL["<b>unl_wrapper (PHP CLI)</b><br/>Legacy Orchestrator (Subprocess by Broker)"]:::wrap
         QEMU_WRAP["<b>qemu_wrapper (C binary)</b><br/>Setuid root, TAP ioctl, cgroup"]:::wrap
         IOL_WRAP["<b>iol_wrapper (C binary)</b><br/>Setuid root, NVRAM parser, NETMAP"]:::wrap
-        DOCKER_WRAP["<b>docker_wrapper</b><br/>Docker API bridge & Netns isolation"]:::wrap
+        DOCKER_WRAP["<b>docker / Docker API</b><br/>Container lifecycle & Netns isolation"]:::wrap
     end
 
     %% TẦNG 5: LINUX KERNEL & HYPERVISORS
@@ -98,12 +98,15 @@ flowchart TD
     EXT_APP ==>|"Direct TCP (Port 30000-40000)"| HYPERVISORS
 
     APACHE -->|"Reverse Proxy WS"| WS_BRIDGE
-    DOMAIN_MODELS -->|"CLI Exec"| CLI_UNL
-    DOMAIN_MODELS -->|"Unix Domain Socket"| BROKER_D
+    DOMAIN_MODELS -->|"Unix Domain Socket (/run/pnetlab/broker.sock)"| BROKER_D
 
-    CLI_UNL --> QEMU_WRAP
-    CLI_UNL --> IOL_WRAP
-    CLI_UNL --> DOCKER_WRAP
+    BROKER_D -->|"Native Verbs (Docker, NetEm, VXLAN, KSM, PKI)"| LINUX_NET
+    BROKER_D -->|"Native Verbs (Docker Engine)"| HYPERVISORS
+    BROKER_D -->|"verb_wrapper (Subprocess call)"| CLI_UNL
+
+    CLI_UNL -->|"execve()"| QEMU_WRAP
+    CLI_UNL -->|"execve()"| IOL_WRAP
+    CLI_UNL -->|"CLI wrapper"| DOCKER_WRAP
 
     WS_BRIDGE -->|"TCP Telnet / VNC"| HYPERVISORS
     TELEMETRY_D -->|"Netlink Events"| LINUX_NET
